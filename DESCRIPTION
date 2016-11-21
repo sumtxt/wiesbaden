@@ -1,0 +1,21 @@
+Package: wiesbaden
+Title: Client to access the data from the Federal Statistical Office, Germany
+Version: 0.0.0.9000
+Date: 2016-11-01
+Author: Moritz Marbach" <marbach@ipz.uzh.ch [aut, cre]
+Maintainer: Moritz Marbach <marbach@ipz.uzh.ch>
+Description: This package uses the DESTATIS XML web service to retrieve the
+    GENESIS data tables.
+Depends:
+    R (>= 3.3.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    httr (>= 1.2.1),
+    xml2 (>= 1.0.0),
+    stringr (>= 1.1.0)
+Suggests:
+    dplyr,
+    tidyr
+RoxygenNote: 5.0.1
