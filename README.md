@@ -33,7 +33,7 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
 in their name. 
 
-	d %>% filter( str_detect(tablename, "Kreise") ) 
+	d %>% filter( str_detect(description, "Kreise") ) 
 
 Having identified the data table we want to retrieve, we call the retrieve_data() function
 
