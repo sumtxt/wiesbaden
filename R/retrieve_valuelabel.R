@@ -56,7 +56,7 @@ retrieve_valuelabel <- function(
 	entries <- xml_find_all(datenaufbau, '//merkmalAuspraegungenKatalogEintraege') 
 	entries <- lapply(entries, function(x) xml_text(xml_find_all(x, './code|./inhalt')) )
 	d <- as.data.frame(do.call(rbind, entries))
-	colnames(d) <- c("name", "description")
+	colnames(d) <- c(variablename, "description")
 
 	return(d)
 	}
