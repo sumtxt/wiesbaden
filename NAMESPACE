@@ -3,6 +3,7 @@
 export(retrieve_data)
 export(retrieve_datalist)
 export(retrieve_metadata)
+export(retrieve_valuelabel)
 import(httr)
 import(stringr)
 import(xml2)
