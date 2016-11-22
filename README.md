@@ -23,6 +23,11 @@ Lets assume we want to download the federal election results on the county level
 
 Using the retrieve_datalist() function we download a dataframe of all data tables in this series: 
 
+	library(dplyr)
+	library(stringr)
+
+	destatis_user <- c(user="ABCDEF", password="XXXXX")
+
 	d <- retrieve_datalist(tableseries="14111")
 
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)

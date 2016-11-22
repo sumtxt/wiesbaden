@@ -8,6 +8,8 @@ retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
   password = NULL, db = "regio")
 }
 \arguments{
+\item{tablename}{name of the table to retrieve.}
+
 \item{startyear}{only retrieve values for years equal or larger to \code{startyear}. Default: 1990.}
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.}
@@ -17,8 +19,6 @@ retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
 \item{password}{(required) password.}
 
 \item{db}{select database. Default: regio (currently the only option).}
-
-\item{dataname}{name of the table to retrieve.}
 }
 \value{
 a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
@@ -28,7 +28,10 @@ of these variables is unknown.
 \code{retrieve_data} retrieves a single data table from DESTATIS
 }
 \details{
-abc
+Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
+
+ Instead of setting user/password via the function, one can also set a vector with user/paswword in this form: 
+ \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 }
 \examples{
  \dontrun{

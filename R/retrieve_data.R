@@ -1,8 +1,8 @@
-#' Retrieves Data from DESTATIS
+#'  Retrieves Data from DESTATIS
 #'
 #' \code{retrieve_data} retrieves a single data table from DESTATIS 
 #'
-#' @param dataname name of the table to retrieve.
+#' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: 1990.
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.
 #' @param user (required) user name. 
@@ -12,7 +12,10 @@
 #'   
 #'   
 #' @details 
-#'  abc
+#' 	Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
+#' 
+#'  Instead of setting user/password via the function, one can also set a vector with user/paswword in this form: 
+#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown. 
@@ -68,7 +71,7 @@ retrieve_data <- function(
 		sprache = 'de')
 
 		httrdata <- GET(baseurl, query  = param, progress()); cat("\n")
-		xmldata <- content(httrdata, type='text/xml', options="HUGE")
+		xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")
 		sstr <- xml_text(xml_find_all(xmldata, './/quaderDaten'))
 	
 		sstr <- str_split(sstr, '\nK')

@@ -7,13 +7,13 @@
 retrieve_metadata(tablename, user = NULL, password = NULL, db = "regio")
 }
 \arguments{
+\item{tablename}{name of the table to retrieve.}
+
 \item{user}{(required) user name.}
 
 \item{password}{(required) password.}
 
 \item{db}{select database. Default: regio (currently the only option).}
-
-\item{dataname}{name of the table to retrieve.}
 }
 \value{
 a \code{data.frame}.
@@ -22,7 +22,10 @@ a \code{data.frame}.
 \code{retrieve_metadata} retrieves meta data.
 }
 \details{
-abc
+Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
+
+ Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
+ \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 }
 \examples{
  \dontrun{

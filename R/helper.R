@@ -6,11 +6,15 @@ readstr_csv <- function(string,skip=0){
 
 set_user <- function(user=user, password=password){
 
+	if ( !is.null(user) & !is.null(password) ) return(NULL)
+
 	if ( is.null(user) | is.null(password) ) {
-	if ( !is.null(destatis_user) ){
-		user <- destatis_user['user']
-		password <- destatis_user['password']
-	} } else {
+		if ( !is.null(destatis_user) ){
+			user <- destatis_user['user']
+			password <- destatis_user['password']
+			return(NULL)
+			} 
+	} else {
 		stop("User/Password missing")
 	}
 

@@ -4,12 +4,12 @@
 \alias{retrieve_datalist}
 \title{Retrieves Data List from DESTATIS}
 \usage{
-retrieve_datalist(user = NULL, tableseries, password = NULL, db = "regio")
+retrieve_datalist(tableseries, user = NULL, password = NULL, db = "regio")
 }
 \arguments{
-\item{user}{(required) user name.}
-
 \item{tableseries}{name of series for which tables should be retrieved.}
+
+\item{user}{(required) user name.}
 
 \item{password}{(required) password.}
 
@@ -22,7 +22,8 @@ a \code{data.frame}
 \code{retrieve_datalist} retrieves a list of available data tables in a series
 }
 \details{
-abc
+Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
+ \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 }
 \examples{
  \dontrun{

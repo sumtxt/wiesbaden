@@ -10,7 +10,8 @@
 #'   
 #'   
 #' @details 
-#'  abc
+#'  Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
+#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 #'  
 #' @return a \code{data.frame}
 #'
@@ -25,7 +26,7 @@
 #' 
 #' 
 #' @export
-retrieve_datalist <- function(user=NULL, tableseries, password=NULL, db="regio"){
+retrieve_datalist <- function(tableseries, user=NULL, password=NULL, db="regio"){
 
 	set_user(user=user, password=password)
 
@@ -43,7 +44,7 @@ retrieve_datalist <- function(user=NULL, tableseries, password=NULL, db="regio")
 		sprache = 'de')
 
 	httrdata <- GET(baseurl, query  = param) 
-	xmldata <- content(httrdata, type='text/xml')
+	xmldata <- content(httrdata, type='text/xml', encoding="UTF-8")
 	
 	entries <- xml_find_all(xmldata, '//datenKatalogEintraege') 
 	entries <- lapply(entries, function(x) xml_text(xml_find_all(x, './code|./beschriftungstext')) )
