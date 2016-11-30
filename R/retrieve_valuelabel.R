@@ -6,7 +6,7 @@
 #' @param valuelabel "*" (default) retrieves all value labels. 
 #' @param user (required) user name. 
 #' @param password (required) password. 
-#' @param db select database. Default: regio (currently the only option). 
+#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
 #' 
 #'   
 #'   
@@ -36,9 +36,7 @@ retrieve_valuelabel <- function(
 
 	set_user(user=user, password=password)
 
-	if (db=="regio") { 
-		baseurl <- "https://www.regionalstatistik.de/genesisws/services/RechercheService_2010"
-	}  else { stop("DB: Currently not implemented.\n")}
+	baseurl <- paste(set_db(db=db), "RechercheService_2010", sep="")
 
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',

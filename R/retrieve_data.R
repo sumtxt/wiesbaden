@@ -7,7 +7,7 @@
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.
 #' @param user (required) user name. 
 #' @param password (required) password. 
-#' @param db select database. Default: regio (currently the only option). 
+#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
 #' 
 #'   
 #'   
@@ -41,9 +41,7 @@ retrieve_data <- function(
 
 	set_user(user=user, password=password)
 
-	if (db=="regio") { 
-		baseurl <- "https://www.regionalstatistik.de/genesisws/services/ExportService_2010"
-	}  else { stop("DB: Currently not implemented.\n")}
+	baseurl <- paste(set_db(db=db), "ExportService_2010", sep="")
 
 	param <- list(
 		method  = 'DatenExport',

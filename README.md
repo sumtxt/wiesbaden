@@ -26,7 +26,7 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 	library(dplyr)
 	library(stringr)
 
-	destatis_user <- c(user="ABCDEF", password="XXXXX")
+	genesis_user <- c(user="ABCDEF", password="XXXXX")
 
 	d <- retrieve_datalist(tableseries="14111")
 

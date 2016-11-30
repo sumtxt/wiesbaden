@@ -5,7 +5,7 @@
 #' @param tableseries name of series for which tables should be retrieved. 
 #' @param user (required) user name. 
 #' @param password (required) password. 
-#' @param db select database. Default: regio (currently the only option). 
+#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
 #' 
 #'   
 #'   
@@ -30,9 +30,7 @@ retrieve_datalist <- function(tableseries, user=NULL, password=NULL, db="regio")
 
 	set_user(user=user, password=password)
 
-	if (db=="regio") { 
-		baseurl <- "https://www.regionalstatistik.de/genesisws/services/RechercheService_2010"
-	}  else { stop("DB: Currently not implemented.")}
+	baseurl <- paste(set_db(db=db), "RechercheService_2010", sep="")
 
 	param <- list(
 		method  = 'DatenKatalog',
