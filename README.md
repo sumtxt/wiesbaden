@@ -1,10 +1,8 @@
-The package 'wiesbaden' provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. 
-
-For now, it only works with the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) Website. Support for [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) will soon be implemented. 
+The package 'wiesbaden' provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden, that is data from the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). Access to [landesdatenbank.nrw.de](landesdatenbank.nrw.de) is also implemented. 
 
 In principle any of the data can be downloaded through [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online), however the retrievable csv files come with multi-line headers that are difficult to process in R. 
 
-The package uses the SOAP XML web service from DESTATIS. A rough documentation is available on their website [here](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
+The package uses the SOAP XML web service from DESTATIS. A very rough [documentation](https://www-genesis.destatis.de/genesis/online?Menu=Webservice) is available on the DESTATIS website.
 
 The package's approach is heavily inspired by [ReGENESIS](https://github.com/pudo/regenesis) - an (unmaintained) Python library to bulk download all available data on the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online). 
 
@@ -12,7 +10,7 @@ The package is powered by the amazing [httr](https://github.com/hadley/httr) and
 
 # Setup 
 
-Unfortunatly, this package can only be used if the user registered on [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and has a personal login name and password. Register here: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
+Unfortunately, this package can only be used if the user registered on [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and has a personal login name and password. Register here: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
 
 
 # Howto 
@@ -26,7 +24,7 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 	library(dplyr)
 	library(stringr)
 
-	genesis_user <- c(user="ABCDEF", password="XXXXX")
+	genesis_user <- c(user="ABCDEF", password="XXXXX", db="regio")
 
 	d <- retrieve_datalist(tableseries="14111")
 

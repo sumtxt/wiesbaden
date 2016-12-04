@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve_data.R
 \name{retrieve_data}
 \alias{retrieve_data}
-\title{Retrieves Data from DESTATIS}
+\title{Retrieves Data from GENESIS Databases}
 \usage{
 retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
   password = NULL, db = "regio")
@@ -14,28 +14,29 @@ retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.}
 
-\item{user}{(required) user name.}
+\item{user}{user name (see below).}
 
-\item{password}{(required) password.}
+\item{password}{password (see below).}
 
-\item{db}{select database. Default: regio (currently the only option).}
+\item{db}{select database, default 'regio' (see below).}
 }
 \value{
 a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 of these variables is unknown.
 }
 \description{
-\code{retrieve_data} retrieves a single data table from DESTATIS
+\code{retrieve_data} retrieves a single data table.
 }
 \details{
-Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
-
- Instead of setting user/password via the function, one can also set a vector with user/paswword in this form: 
- \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
+package description (\code{\link{wiebaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
- abc. 
+ # Retrieve values for the table 14111KJ002 which contains the 
+ # federal election results on the county level. 
+
+ data <- retrieve_data(tablename="14111KJ002", user="ABCDEF", password="XXXXX", db="regio")
  }
 
 
@@ -43,6 +44,6 @@ Use \code{retrieve_datalist} to find the \code{tablename} based on the series yo
 
 }
 \seealso{
-\code{\link{retrieve_datalist}}
+\code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 }
 

@@ -2,32 +2,34 @@
 % Please edit documentation in R/retrieve_datalist.R
 \name{retrieve_datalist}
 \alias{retrieve_datalist}
-\title{Retrieves Data List from DESTATIS}
+\title{Retrieves List of Tables from GENESIS Databases}
 \usage{
 retrieve_datalist(tableseries, user = NULL, password = NULL, db = "regio")
 }
 \arguments{
 \item{tableseries}{name of series for which tables should be retrieved.}
 
-\item{user}{(required) user name.}
+\item{user}{user name (see below).}
 
-\item{password}{(required) password.}
+\item{password}{password (see below).}
 
-\item{db}{select database. Default: regio (currently the only option).}
+\item{db}{select database, default 'regio' (see below).}
 }
 \value{
 a \code{data.frame}
 }
 \description{
-\code{retrieve_datalist} retrieves a list of available data tables in a series
+\code{retrieve_datalist} retrieves a list of available data tables in a series.
 }
 \details{
-Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
- \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
- abc. 
+ # Retrieves list of available tables for the table series 14111 
+ # which contains the federal election results. 
+
+ d <- retrieve_datalist(tableseries="14111")
  }
 
 
@@ -35,6 +37,6 @@ Instead of setting user/password via the function, one can also a vector with us
 
 }
 \seealso{
-\code{\link{retrieve_data}}
+\code{\link{retrieve_data}} \code{\link{wiebaden}}
 }
 

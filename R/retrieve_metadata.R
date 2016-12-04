@@ -1,27 +1,27 @@
-#' Retrieves Meta Data from DESTATIS
+#' Retrieves Meta Data from GENESIS Databases 
 #'
 #' \code{retrieve_metadata} retrieves meta data.
 #'
 #' @param tablename name of the table to retrieve.
-#' @param user (required) user name. 
-#' @param password (required) password. 
-#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
+#' @param user user name (see below).
+#' @param password password (see below). 
+#' @param db select database, default 'regio' (see below). 
 #' 
 #'   
 #'   
 #' @details 
-#'  Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
-#' 
-#'  Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
-#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+#'  See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
 #'  
 #' @return a \code{data.frame}.
 #'
-#' @seealso \code{\link{retrieve_datalist}}
+#' @seealso \code{\link{wiebaden}}
 #'
 #' @examples 
 #'  \dontrun{
-#'  abc. 
+#'  # Meta data contain the explanations to the variable names for the table
+#'  # federal election results on the county level. 
+#' 
+#'  metadata <- retrieve_metadata(tablename="14111KJ002")
 #'  }
 #' 
 #' 

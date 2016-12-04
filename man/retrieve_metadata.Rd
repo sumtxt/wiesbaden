@@ -2,18 +2,18 @@
 % Please edit documentation in R/retrieve_metadata.R
 \name{retrieve_metadata}
 \alias{retrieve_metadata}
-\title{Retrieves Meta Data from DESTATIS}
+\title{Retrieves Meta Data from GENESIS Databases}
 \usage{
 retrieve_metadata(tablename, user = NULL, password = NULL, db = "regio")
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
 
-\item{user}{(required) user name.}
+\item{user}{user name (see below).}
 
-\item{password}{(required) password.}
+\item{password}{password (see below).}
 
-\item{db}{select database. Default: regio (currently the only option).}
+\item{db}{select database, default 'regio' (see below).}
 }
 \value{
 a \code{data.frame}.
@@ -22,14 +22,14 @@ a \code{data.frame}.
 \code{retrieve_metadata} retrieves meta data.
 }
 \details{
-Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
-
- Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
- \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
- abc. 
+ # Meta data contain the explanations to the variable names for the table
+ # federal election results on the county level. 
+
+ metadata <- retrieve_metadata(tablename="14111KJ002")
  }
 
 
@@ -37,6 +37,6 @@ Use \code{retrieve_datalist} to find the \code{tablename} based on the series yo
 
 }
 \seealso{
-\code{\link{retrieve_datalist}}
+\code{\link{wiebaden}}
 }
 

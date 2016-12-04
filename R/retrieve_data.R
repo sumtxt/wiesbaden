@@ -1,30 +1,32 @@
-#'  Retrieves Data from DESTATIS
+#' Retrieves Data from GENESIS Databases 
 #'
-#' \code{retrieve_data} retrieves a single data table from DESTATIS 
+#' \code{retrieve_data} retrieves a single data table.  
 #'
 #' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: 1990.
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.
-#' @param user (required) user name. 
-#' @param password (required) password. 
-#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
+#' @param user user name (see below).
+#' @param password password (see below). 
+#' @param db select database, default 'regio' (see below). 
 #' 
 #'   
 #'   
 #' @details 
-#' 	Use \code{retrieve_datalist} to find the \code{tablename} based on the series you are interested in. 
+#' Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
+#' package description (\code{\link{wiebaden}}) for details about setting the login and database. 
 #' 
-#'  Instead of setting user/password via the function, one can also set a vector with user/paswword in this form: 
-#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown. 
 #'
-#' @seealso \code{\link{retrieve_datalist}}
+#' @seealso \code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 #'
 #' @examples 
 #'  \dontrun{
-#'  abc. 
+#'  # Retrieve values for the table 14111KJ002 which contains the 
+#'  # federal election results on the county level. 
+#' 
+#'  data <- retrieve_data(tablename="14111KJ002", user="ABCDEF", password="XXXXX", db="regio")
 #'  }
 #' 
 #' 

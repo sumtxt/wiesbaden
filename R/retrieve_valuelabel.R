@@ -1,26 +1,28 @@
-#' Retrieves Value Labels from DESTATIS
+#' Retrieves Value Labels from GENESIS Databases 
 #'
 #' \code{retrieve_valuelabel} retrieves value labels for variable
 #'
 #' @param variablename name of the variable 
 #' @param valuelabel "*" (default) retrieves all value labels. 
-#' @param user (required) user name. 
-#' @param password (required) password. 
-#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
+#' @param user user name (see below).
+#' @param password password (see below). 
+#' @param db select database, default 'regio' (see below). 
 #' 
 #'   
 #'   
 #' @details  
-#'  Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
-#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+#'  See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
 #'  
 #' @return a \code{data.frame}.
 #'
-#' @seealso \code{\link{retrieve_datalist}}
+#' @seealso \code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 #'
 #' @examples 
 #'  \dontrun{
-#'  abc. 
+#'  # Value labels contain for the variable 'NAT' in the table with the 
+#'  # federal election results on the county level. 
+#' 
+#'  metadata <- retrieve_valuelabel(variablename="NAT")
 #'  }
 #' 
 #' 

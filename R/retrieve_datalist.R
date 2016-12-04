@@ -1,25 +1,27 @@
-#' Retrieves Data List from DESTATIS
+#' Retrieves List of Tables from GENESIS Databases 
 #'
-#' \code{retrieve_datalist} retrieves a list of available data tables in a series
+#' \code{retrieve_datalist} retrieves a list of available data tables in a series. 
 #'
 #' @param tableseries name of series for which tables should be retrieved. 
-#' @param user (required) user name. 
-#' @param password (required) password. 
-#' @param db select database. Default: "regio". Other options: "de", "nw", "by". 
+#' @param user user name (see below).
+#' @param password password (see below). 
+#' @param db select database, default 'regio' (see below). 
 #' 
 #'   
 #'   
 #' @details 
-#'  Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
-#'  \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+#' See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
 #'  
 #' @return a \code{data.frame}
 #'
-#' @seealso \code{\link{retrieve_data}}
+#' @seealso \code{\link{retrieve_data}} \code{\link{wiebaden}}
 #'
 #' @examples 
 #'  \dontrun{
-#'  abc. 
+#'  # Retrieves list of available tables for the table series 14111 
+#'  # which contains the federal election results. 
+#' 
+#'  d <- retrieve_datalist(tableseries="14111")
 #'  }
 #' 
 #' 

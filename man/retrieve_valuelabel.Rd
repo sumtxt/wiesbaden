@@ -2,7 +2,7 @@
 % Please edit documentation in R/retrieve_valuelabel.R
 \name{retrieve_valuelabel}
 \alias{retrieve_valuelabel}
-\title{Retrieves Value Labels from DESTATIS}
+\title{Retrieves Value Labels from GENESIS Databases}
 \usage{
 retrieve_valuelabel(variablename, valuelabel = "*", user = NULL,
   password = NULL, db = "regio")
@@ -12,11 +12,11 @@ retrieve_valuelabel(variablename, valuelabel = "*", user = NULL,
 
 \item{valuelabel}{"*" (default) retrieves all value labels.}
 
-\item{user}{(required) user name.}
+\item{user}{user name (see below).}
 
-\item{password}{(required) password.}
+\item{password}{password (see below).}
 
-\item{db}{select database. Default: regio (currently the only option).}
+\item{db}{select database, default 'regio' (see below).}
 }
 \value{
 a \code{data.frame}.
@@ -25,12 +25,14 @@ a \code{data.frame}.
 \code{retrieve_valuelabel} retrieves value labels for variable
 }
 \details{
-Instead of setting user/password via the function, one can also a vector with user/paswword in this form: 
- \code{destatis_user <- c(user="ABCDEF", password="XXXXX")}
+See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
- abc. 
+ # Value labels contain for the variable 'NAT' in the table with the 
+ # federal election results on the county level. 
+
+ metadata <- retrieve_valuelabel(variablename="NAT")
  }
 
 
@@ -38,6 +40,6 @@ Instead of setting user/password via the function, one can also a vector with us
 
 }
 \seealso{
-\code{\link{retrieve_datalist}}
+\code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 }
 
