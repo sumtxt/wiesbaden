@@ -1,4 +1,4 @@
-The package 'wiesbaden' provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden, that is data from the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). Access to [landesdatenbank.nrw.de](landesdatenbank.nrw.de) is also implemented. 
+The package 'wiesbaden' provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden, that is data from the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). Access to [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) is also implemented. 
 
 In principle any of the data can be downloaded through [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online), however the retrievable csv files come with multi-line headers that are difficult to process in R. 
 
@@ -10,12 +10,12 @@ The package is powered by the amazing [httr](https://github.com/hadley/httr) and
 
 # Setup 
 
-Unfortunately, this package can only be used if the user registered on [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and has a personal login name and password. Register here: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
+Unfortunately, this package can only be used if the user registered at the respective database website and has a personal login name and password. The register forms are available on the respective websites, for example: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
 
 
 # Howto 
 
-THE DESTATIS website allows users to retrieve tables which are group in "Statistiken" (statistics) and "Themen" (topics). The  package does not retrieve the tables, but instead the underlying raw data which are used to construct the website's tables.
+THE DESTATIS website allows users to retrieve tables which are grouped in "Statistiken" (statistics) and "Themen" (topics). The package does not retrieve the tables, but instead the underlying raw data which are used to construct the website's tables.
 
 Lets assume we want to download the federal election results on the county level. From the website we see that they are contained in the series '14111'. 
 
