@@ -4,19 +4,16 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", user = NULL,
-  password = NULL, db = "regio")
+retrieve_valuelabel(variablename, valuelabel = "*", genesis, ...)
 }
 \arguments{
 \item{variablename}{name of the variable}
 
 \item{valuelabel}{"*" (default) retrieves all value labels.}
 
-\item{user}{user name (see below).}
+\item{genesis}{to authenticate a user and set the database (see below).}
 
-\item{password}{password (see below).}
-
-\item{db}{select database, default 'regio' (see below).}
+\item{...}{other arguments send to the httr::GET request.}
 }
 \value{
 a \code{data.frame}.

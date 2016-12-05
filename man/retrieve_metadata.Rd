@@ -4,16 +4,14 @@
 \alias{retrieve_metadata}
 \title{Retrieves Meta Data from GENESIS Databases}
 \usage{
-retrieve_metadata(tablename, user = NULL, password = NULL, db = "regio")
+retrieve_metadata(tablename, genesis, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
 
-\item{user}{user name (see below).}
+\item{genesis}{to authenticate a user and set the database (see below).}
 
-\item{password}{password (see below).}
-
-\item{db}{select database, default 'regio' (see below).}
+\item{...}{other arguments send to the httr::GET request.}
 }
 \value{
 a \code{data.frame}.

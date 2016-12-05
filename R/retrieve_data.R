@@ -5,9 +5,8 @@
 #' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: 1990.
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.
-#' @param user user name (see below).
-#' @param password password (see below). 
-#' @param db select database, default 'regio' (see below). 
+#' @param genesis to authenticate a user and set the database (see below).
+#' @param ... other arguments send to the httr::GET request. 
 #' 
 #'   
 #'   
@@ -37,18 +36,14 @@ retrieve_data <- function(
 	tablename, 
 	startyear = 1900, 
 	endyear = 2016, 
-	user=NULL, 
-	password=NULL, 
-	db="regio") {
+	genesis, ... ) {
 
-	set_user(user=user, password=password)
-
-	baseurl <- paste(set_db(db=db), "ExportService_2010", sep="")
+	baseurl <- paste(set_db(db=genesis['db']), "ExportService_2010", sep="")
 
 	param <- list(
 		method  = 'DatenExport',
-		kennung  = user,
-		passwort = password,
+		kennung  = genesis['user'],
+		passwort = genesis['password'],
 		namen = tablename,
 		bereich = 'Alle',
 		format = 'csv',
@@ -70,28 +65,28 @@ retrieve_data <- function(
 		stand = '',
 		sprache = 'de')
 
-		httrdata <- GET(baseurl, query  = param, progress()); cat("\n")
-		xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")
-		sstr <- xml_text(xml_find_all(xmldata, './/quaderDaten'))
-	
-		sstr <- str_split(sstr, '\nK')
-		tabs <- lapply(sstr[[1]], readstr_csv)
+	httrdata <- GET(baseurl, query  = param, progress(), ... ); cat("\n")
+	xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")
+	sstr <- xml_text(xml_find_all(xmldata, './/quaderDaten'))
 
-		# Construct header 
+	sstr <- str_split(sstr, '\nK')
+	tabs <- lapply(sstr[[1]], readstr_csv)
 
-		DQERH  <- paste("id", tabs[[3]]$V2[2], sep="")
-		DQA <- tabs[[4]]$V2[2:nrow(tabs[[4]])]
-		DQZ <- tabs[[5]]$V2[2:nrow(tabs[[5]])]
-		DQI <- tabs[[6]]$V2[2:nrow(tabs[[6]])]
+	# Construct header 
 
-		DQIexpd <- c("val", "qual", "lock", "err")
+	DQERH  <- paste("id", tabs[[3]]$V2[2], sep="")
+	DQA <- tabs[[4]]$V2[2:nrow(tabs[[4]])]
+	DQZ <- tabs[[5]]$V2[2:nrow(tabs[[5]])]
+	DQI <- tabs[[6]]$V2[2:nrow(tabs[[6]])]
 
-		DQIcom <- unlist(lapply(DQI, function(x) paste(x, DQIexpd,sep="_")))
+	DQIexpd <- c("val", "qual", "lock", "err")
 
-		header <- c(DQERH, DQA, DQZ, DQIcom)
+	DQIcom <- unlist(lapply(DQI, function(x) paste(x, DQIexpd,sep="_")))
 
-		data <- readstr_csv(sstr[[1]][7], skip=1)
-		colnames(data) <- header
+	header <- c(DQERH, DQA, DQZ, DQIcom)
 
-		return(data)
-		}
+	data <- readstr_csv(sstr[[1]][7], skip=1)
+	colnames(data) <- header
+
+	return(data)
+	}

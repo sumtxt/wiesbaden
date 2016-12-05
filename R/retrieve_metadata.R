@@ -3,10 +3,8 @@
 #' \code{retrieve_metadata} retrieves meta data.
 #'
 #' @param tablename name of the table to retrieve.
-#' @param user user name (see below).
-#' @param password password (see below). 
-#' @param db select database, default 'regio' (see below). 
-#' 
+#' @param genesis to authenticate a user and set the database (see below).
+#' @param ... other arguments send to the httr::GET request. 
 #'   
 #'   
 #' @details 
@@ -30,24 +28,19 @@
 #' @export
 retrieve_metadata <- function(
 	tablename, 
-	user=NULL, 
-	password=NULL, 
-	db="regio") {
+	genesis, ... ) {
 
-	set_user(user=user, password=password)
-
-	baseurl <- paste(set_db(db=db), "ExportService_2010", sep="")
-
+	baseurl <- paste(set_db(db=genesis['db']), "ExportService_2010", sep="")
 
 	param <- list(
 		method  = 'DatenAufbau',
-		kennung  = user,
-		passwort = password,
+		kennung  = genesis['user'],
+		passwort = genesis['password'],
 		namen = tablename,
 		bereich = 'Alle',
 		sprache = 'de')
 
-	datenaufbau <- GET(baseurl, query  = param) 
+	datenaufbau <- GET(baseurl, query  = param, ... )  
 	datenaufbau <- content(datenaufbau, type='text/xml', encoding="UTF-8")
 
 	entries <- xml_find_all(datenaufbau, '//merkmale') 

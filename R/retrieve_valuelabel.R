@@ -4,11 +4,8 @@
 #'
 #' @param variablename name of the variable 
 #' @param valuelabel "*" (default) retrieves all value labels. 
-#' @param user user name (see below).
-#' @param password password (see below). 
-#' @param db select database, default 'regio' (see below). 
-#' 
-#'   
+#' @param genesis to authenticate a user and set the database (see below).
+#' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
 #'  See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
@@ -32,25 +29,21 @@
 retrieve_valuelabel <- function(
 	variablename, 
 	valuelabel="*", 
-	user=NULL, 
-	password=NULL, 
-	db="regio") {
+	genesis, ... ) {
 
-	set_user(user=user, password=password)
-
-	baseurl <- paste(set_db(db=db), "RechercheService_2010", sep="")
+	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',
-		kennung  = user,
-		passwort = password,
+		kennung  = genesis['user'],
+		passwort = genesis['password'],
 		namen = variablename,
 		auswahl = valuelabel, 
 		bereich = 'Alle',
 		listenLaenge = '500',
 		sprache = 'de')
 
-	datenaufbau <- GET(baseurl, query  = param) 
+	datenaufbau <- GET(baseurl, query  = param, ... ) 
 	datenaufbau <- content(datenaufbau, type='text/xml', encoding="UTF-8")
 
 	entries <- xml_find_all(datenaufbau, '//merkmalAuspraegungenKatalogEintraege') 

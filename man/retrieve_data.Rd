@@ -4,8 +4,7 @@
 \alias{retrieve_data}
 \title{Retrieves Data from GENESIS Databases}
 \usage{
-retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
-  password = NULL, db = "regio")
+retrieve_data(tablename, startyear = 1900, endyear = 2016, genesis, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
@@ -14,11 +13,9 @@ retrieve_data(tablename, startyear = 1900, endyear = 2016, user = NULL,
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.}
 
-\item{user}{user name (see below).}
+\item{genesis}{to authenticate a user and set the database (see below).}
 
-\item{password}{password (see below).}
-
-\item{db}{select database, default 'regio' (see below).}
+\item{...}{other arguments send to the httr::GET request.}
 }
 \value{
 a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 

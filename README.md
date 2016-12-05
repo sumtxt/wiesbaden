@@ -24,9 +24,9 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 	library(dplyr)
 	library(stringr)
 
-	genesis_user <- c(user="ABCDEF", password="XXXXX", db="regio")
+	genesis <- c(user="ABCDEF", password="XXXXX", db="regio")
 
-	d <- retrieve_datalist(tableseries="14111")
+	d <- retrieve_datalist(tableseries="14111", genesis=genesis)
 
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
 in their name. 
@@ -35,9 +35,9 @@ in their name.
 
 Having identified the data table we want to retrieve, we call the retrieve_data() function
 
-	data <- retrieve_data(tablename="14111KJ002")
+	data <- retrieve_data(tablename="14111KJ002", genesis=genesis)
 
 The meta data can be obtained via:
 
-	metadata <- retrieve_metadata(tablename="14111KJ002")
+	metadata <- retrieve_metadata(tablename="14111KJ002", genesis=genesis)
 

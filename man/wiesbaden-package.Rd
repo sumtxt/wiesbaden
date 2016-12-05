@@ -20,7 +20,7 @@ Feedback is very welcome!
 	License: \tab  GPL-3\cr
 	}
 
-Instead of setting user/password/db via the function, one can also set a vector with user/paswword in this form: 
+To authenticate a user and set the database, supply a vector with user/paswword and database shortcut in this form: 
 \code{destatis_user <- c(user="ABCDEF", password="XXXXX", db="GHIJK")}
 
 Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de) and "de" (www-genesis.destatis.de).

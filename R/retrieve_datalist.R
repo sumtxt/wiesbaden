@@ -3,10 +3,8 @@
 #' \code{retrieve_datalist} retrieves a list of available data tables in a series. 
 #'
 #' @param tableseries name of series for which tables should be retrieved. 
-#' @param user user name (see below).
-#' @param password password (see below). 
-#' @param db select database, default 'regio' (see below). 
-#' 
+#' @param genesis to authenticate a user and set the database (see below).
+#' @param ... other arguments send to the httr::GET request. 
 #'   
 #'   
 #' @details 
@@ -28,22 +26,21 @@
 #' 
 #' 
 #' @export
-retrieve_datalist <- function(tableseries, user=NULL, password=NULL, db="regio"){
+retrieve_datalist <- function(tableseries, 
+	genesis, ... ) {
 
-	set_user(user=user, password=password)
-
-	baseurl <- paste(set_db(db=db), "RechercheService_2010", sep="")
+	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
 	param <- list(
 		method  = 'DatenKatalog',
-		kennung  = user,
-		passwort = password,
+		kennung  = genesis['user'],
+		passwort = genesis['password'],
 		bereich = 'Alle',
 		filter = tableseries,
 		listenLaenge = '500',
 		sprache = 'de')
 
-	httrdata <- GET(baseurl, query  = param) 
+	httrdata <- GET(baseurl, query  = param, ... ) 
 	xmldata <- content(httrdata, type='text/xml', encoding="UTF-8")
 	
 	entries <- xml_find_all(xmldata, '//datenKatalogEintraege') 

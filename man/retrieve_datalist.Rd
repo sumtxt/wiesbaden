@@ -4,16 +4,14 @@
 \alias{retrieve_datalist}
 \title{Retrieves List of Tables from GENESIS Databases}
 \usage{
-retrieve_datalist(tableseries, user = NULL, password = NULL, db = "regio")
+retrieve_datalist(tableseries, genesis, ...)
 }
 \arguments{
 \item{tableseries}{name of series for which tables should be retrieved.}
 
-\item{user}{user name (see below).}
+\item{genesis}{to authenticate a user and set the database (see below).}
 
-\item{password}{password (see below).}
-
-\item{db}{select database, default 'regio' (see below).}
+\item{...}{other arguments send to the httr::GET request.}
 }
 \value{
 a \code{data.frame}
