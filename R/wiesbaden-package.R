@@ -35,5 +35,6 @@
 #' @import httr 
 #' @import xml2
 #' @import stringr
+#' @import readr
 NULL
 
