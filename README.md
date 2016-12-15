@@ -8,12 +8,12 @@ The package's approach is heavily inspired by [ReGENESIS](https://github.com/pud
 
 The package is powered by the amazing [httr](https://github.com/hadley/httr) and [xml2](https://github.com/hadley/xml2) package from [Hadley Wickham](http://hadley.nz/). 
 
-# Setup 
+# Before Using 
 
-Unfortunately, this package can only be used if the user registered at the respective database website and has a personal login name and password. The register forms are available on the respective websites, for example: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
+Unfortunately, this package can only be used if the user registered at the respective database website and has a personal login name and password. To access [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) one has to register as premium customer which costs 500 Euros (250 Euros for students). For the other database the registration is free, see for example: [https://www.regionalstatistik.de/genesis/online?Menu=Registrierung](https://www.regionalstatistik.de/genesis/online?Menu=Registrierung). 
 
 
-# Howto 
+# Directly Retrieve Data 
 
 THE DESTATIS website allows users to retrieve tables which are grouped in "Statistiken" (statistics) and "Themen" (topics). The package does not retrieve the tables, but instead the underlying raw data which are used to construct the website's tables.
 
