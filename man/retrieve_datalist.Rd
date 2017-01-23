@@ -4,7 +4,7 @@
 \alias{retrieve_datalist}
 \title{Retrieves List of Tables from GENESIS Databases}
 \usage{
-retrieve_datalist(tableseries, genesis, ...)
+retrieve_datalist(tableseries, genesis = NULL, ...)
 }
 \arguments{
 \item{tableseries}{name of series for which tables should be retrieved.}
@@ -26,8 +26,9 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
  \dontrun{
  # Retrieves list of available tables for the table series 14111 
  # which contains the federal election results. 
+ # Assumes that user/password are stored in ~/.genesis.json
 
- d <- retrieve_datalist(tableseries="14111")
+ d <- retrieve_datalist(tableseries="14111", genesis=c(db="regio") )
  }
 
 

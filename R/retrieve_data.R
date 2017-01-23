@@ -24,8 +24,9 @@
 #'  \dontrun{
 #'  # Retrieve values for the table 14111KJ002 which contains the 
 #'  # federal election results on the county level. 
+#'  # Assumes that user/password are stored in ~/.genesis.json
 #' 
-#'  data <- retrieve_data(tablename="14111KJ002", user="ABCDEF", password="XXXXX", db="regio")
+#'  data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
 #'  }
 #' 
 #' 
@@ -36,7 +37,9 @@ retrieve_data <- function(
 	tablename, 
 	startyear = 1900, 
 	endyear = 2016, 
-	genesis, ... ) {
+	genesis=NULL, ... ) {
+
+	genesis <- make_genesis(genesis)
 
 	baseurl <- paste(set_db(db=genesis['db']), "ExportService_2010", sep="")
 
@@ -67,9 +70,14 @@ retrieve_data <- function(
 
 	httrdata <- GET(baseurl, query  = param, progress(), ... ); cat("\n")
 	xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")
-	sstr <- xml_text(xml_find_all(xmldata, './/quaderDaten'))
+	entries <- xml_find_all(xmldata, './/quaderDaten')
 
-	sstr <- str_split(sstr, '\nK')
+	if ( length(entries)==0  ) return( xml_text(xmldata) )
+
+	sstr <- str_split(xml_text(entries), '\nK')
+
+	if ( sstr[[1]][1] == "" ) return("No results found.")
+
 	tabs <- lapply(sstr[[1]], readstr_csv)
 
 	# Construct header 

@@ -18,8 +18,9 @@
 #'  \dontrun{
 #'  # Retrieves list of available tables for the table series 14111 
 #'  # which contains the federal election results. 
+#'  # Assumes that user/password are stored in ~/.genesis.json
 #' 
-#'  d <- retrieve_datalist(tableseries="14111")
+#'  d <- retrieve_datalist(tableseries="14111", genesis=c(db="regio") )
 #'  }
 #' 
 #' 
@@ -27,7 +28,9 @@
 #' 
 #' @export
 retrieve_datalist <- function(tableseries, 
-	genesis, ... ) {
+	genesis=NULL, ... ) {
+
+	genesis <- make_genesis(genesis)
 
 	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
@@ -42,10 +45,14 @@ retrieve_datalist <- function(tableseries,
 
 	httrdata <- GET(baseurl, query  = param, ... ) 
 	xmldata <- content(httrdata, type='text/xml', encoding="UTF-8")
-	
 	entries <- xml_find_all(xmldata, '//datenKatalogEintraege') 
+
+	if ( length(entries)==0  ) return( xml_text(xmldata) )
+
 	entries <- lapply(entries, function(x) rev(xml_text(xml_find_all(x, './code|./beschriftungstext'))) )
 	d <- as.data.frame(do.call(rbind, entries))
+
+	if ( ncol(d)==0 ) return("No results found.")
 
 	# Cleanup 
 	colnames(d) <- c("tablename", "description")

@@ -4,7 +4,8 @@
 \alias{retrieve_data}
 \title{Retrieves Data from GENESIS Databases}
 \usage{
-retrieve_data(tablename, startyear = 1900, endyear = 2016, genesis, ...)
+retrieve_data(tablename, startyear = 1900, endyear = 2016, genesis = NULL,
+  ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
@@ -32,8 +33,9 @@ package description (\code{\link{wiebaden}}) for details about setting the login
  \dontrun{
  # Retrieve values for the table 14111KJ002 which contains the 
  # federal election results on the county level. 
+ # Assumes that user/password are stored in ~/.genesis.json
 
- data <- retrieve_data(tablename="14111KJ002", user="ABCDEF", password="XXXXX", db="regio")
+ data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
  }
 
 

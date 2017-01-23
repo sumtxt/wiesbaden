@@ -4,7 +4,7 @@
 \alias{retrieve_metadata}
 \title{Retrieves Meta Data from GENESIS Databases}
 \usage{
-retrieve_metadata(tablename, genesis, ...)
+retrieve_metadata(tablename, genesis = NULL, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
@@ -26,8 +26,9 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
  \dontrun{
  # Meta data contain the explanations to the variable names for the table
  # federal election results on the county level. 
+ # Assumes that user/password are stored in ~/.genesis.json
 
- metadata <- retrieve_metadata(tablename="14111KJ002")
+ metadata <- retrieve_metadata(tablename="14111KJ002", genesis=c(db="regio") )
  }
 
 
