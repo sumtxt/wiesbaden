@@ -9,7 +9,8 @@
 #'   
 #' @details 
 #' See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
-#'  
+#' To retrieve a list of all available data use tableseries="*". 
+#' 
 #' @return a \code{data.frame}
 #'
 #' @seealso \code{\link{retrieve_data}} \code{\link{wiebaden}}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/wiesbaden-package.R
 \docType{package}
 \name{wiesbaden-package}
-\alias{wiesbaden}
 \alias{wiesbaden-package}
+\alias{wiesbaden}
 \title{Client to access the data from the Federal Statistical Office, Germany}
 \description{
 Data retrieval client for Federal Statistical Office of Germany
@@ -27,12 +27,12 @@ Alternatively if you use Linux or Mac, place a json file named '.genesis.json' i
 \code{\link{save_credentials}} to generate this file. For now, this only works with Linux/Mac. 
 
 
-Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de) and "de" (www-genesis.destatis.de).
-}
-\author{
-Moritz Marbach \email{marbach@ipz.uzh.ch}
+Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de), 
+"de" (www-genesis.destatis.de) and "bm" (bildungsmonitoring.de).
 }
 \references{
 
 }
-
+\author{
+Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
+}

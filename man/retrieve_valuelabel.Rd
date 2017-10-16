@@ -40,4 +40,3 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
 \seealso{
 \code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 }
-

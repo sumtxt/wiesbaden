@@ -22,8 +22,8 @@
 #' \code{\link{save_credentials}} to generate this file. For now, this only works with Linux/Mac. 
 #' 
 #' 
-#' Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de) and "de" (www-genesis.destatis.de). 
-#' 
+#' Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de), 
+#' "de" (www-genesis.destatis.de) and "bm" (bildungsmonitoring.de). 
 #' 
 #' 
 #'
@@ -32,7 +32,7 @@
 #' @docType package
 #' @aliases wiesbaden
 #' @title Client to access the data from the Federal Statistical Office, Germany
-#' @author Moritz Marbach \email{marbach@ipz.uzh.ch}
+#' @author Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
 #' @references 
 #'
 #' 

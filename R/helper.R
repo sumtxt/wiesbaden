@@ -3,7 +3,7 @@ make_genesis <- function(genesis){
 	if ( is.null(genesis['db']) ) {
 		stop("genesis['db'] missing/unrecognized.")
 	}
-	if ( !(genesis['db'] %in% c("regio", "nrw")) ){
+	if ( !(genesis['db'] %in% c("regio", "nrw", "bm", "de")) ){
 		stop("genesis['db'] missing/unrecognized.")
 	}
 	if ( is.na(genesis['user']) | is.na(genesis['password']) ){
@@ -46,6 +46,7 @@ set_db <- function(db){
 	if (db=="nrw") return("https://www.landesdatenbank.nrw.de/ldbnrwws/services/")
 	if (db=="regio") return("https://www.regionalstatistik.de/genesisws/services/")
 	if (db=="de") return("https://www-genesis.destatis.de/genesisWS/web/")
+	if (db == "bm") return("https://www.bildungsmonitoring.de/bildungws/services/")
 	stop("DB: Currently not implemented.")
 	}
 

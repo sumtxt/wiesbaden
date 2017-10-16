@@ -1,4 +1,5 @@
-The package `wiesbaden` provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden, that is data from the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). Access to [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) is also implemented. 
+The package `wiesbaden` provides functions to directly retrieve data from the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden, that is data from the [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). Access to [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) as well as 
+[bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) is also implemented. 
 
 In principle any of the data can be downloaded through the respective websites as a `csv` file, however the retrievable csv files come with multi-line headers that are difficult to process in R. While the package also helps with this task, its primary function is to provide users with the ability to retrieve the data from the website's underlying database (the GENESIS database). 
 
@@ -28,6 +29,8 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 
 	d <- retrieve_datalist(tableseries="14111", genesis=genesis)
 
+To retrieve a list of all available data use retrieve_datalist(tableseries="*", genesis=genesis). 
+
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
 in their name. 
 
@@ -43,7 +46,7 @@ The meta data can be obtained via:
 
 # Read csv GENESIS Tables 
 
-In conjuction with the `readr` package, the `wiesbaden` package also helps to import `csv` tables from all three websites and construct valid column names. 
+In conjuction with the `readr` package, the `wiesbaden` package also helps to import `csv` tables from all websites and construct valid column names. 
 
 	require(readr)
 	url <- 'https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=12411-0004&format=csv'

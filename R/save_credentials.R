@@ -2,7 +2,7 @@
 #'
 #' \code{save_credentials} saves a set of database credentials to \code{'~/.genesis.json'} to ease package usage. 
 #'
-#' @param db database name, either 'nrw', 'regio' or 'de'. 
+#' @param db database name, either 'nrw', 'regio', 'de' or 'bm'. 
 #' @param user user name. 
 #' @param password password. 
 #' @param append add credentials to file (default) or overwrite entire file? 
@@ -19,7 +19,7 @@
 #' @export
 save_credentials <- function(db, user, password, append=TRUE){
 	if ( .Platform['OS.type'] != 'unix') stop("Saving credentials only works for Mac and Linux platforms.")
-	if ( !(db %in% c("nrw", "regio", "de")) ) stop(paste("Database '", db, "' unknown.",sep=""))
+	if ( !(db %in% c("nrw", "regio", "de", "bm")) ) stop(paste("Database '", db, "' unknown.",sep=""))
 	new <- data.frame(name=db, user=user, password=password)
  	if ( file.exists('~/.genesis.json') & append==TRUE ){
 		cred <- fromJSON(read_file('~/.genesis.json'))

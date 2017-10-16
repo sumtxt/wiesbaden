@@ -7,7 +7,7 @@
 save_credentials(db, user, password, append = TRUE)
 }
 \arguments{
-\item{db}{database name, either 'nrw', 'regio' or 'de'.}
+\item{db}{database name, either 'nrw', 'regio', 'de' or 'bm'.}
 
 \item{user}{user name.}
 
@@ -27,4 +27,3 @@ Attention, user/password are stored in an unencrypted file in \code{'~/.genesis.
 \seealso{
 \code{\link{wiesbaden}}
 }
-

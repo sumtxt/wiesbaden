@@ -45,4 +45,3 @@ package description (\code{\link{wiebaden}}) for details about setting the login
 \seealso{
 \code{\link{retrieve_datalist}} \code{\link{wiebaden}}
 }
-

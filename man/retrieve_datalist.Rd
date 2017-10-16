@@ -20,7 +20,8 @@ a \code{data.frame}
 \code{retrieve_datalist} retrieves a list of available data tables in a series.
 }
 \details{
-See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
+See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
+To retrieve a list of all available data use tableseries="*".
 }
 \examples{
  \dontrun{
@@ -38,4 +39,3 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
 \seealso{
 \code{\link{retrieve_data}} \code{\link{wiebaden}}
 }
-
