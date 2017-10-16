@@ -22,7 +22,7 @@
 #' \code{\link{save_credentials}} to generate this file. For now, this only works with Linux/Mac. 
 #' 
 #' 
-#' Available databases are "regio" (regionalstatistik.de), "nw" (landesdatenbank.nrw.de), 
+#' Available databases are "regio" (regionalstatistik.de), "nrw" (landesdatenbank.nrw.de), 
 #' "de" (www-genesis.destatis.de) and "bm" (bildungsmonitoring.de). 
 #' 
 #' 

@@ -34,7 +34,7 @@ retrieve_valuelabel <- function(
 
 	genesis <- make_genesis(genesis)
 
-	baseurl <- paste(set_db(db=genesis['db']), "RechercheService", sep="")
+	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',
@@ -42,6 +42,7 @@ retrieve_valuelabel <- function(
 		passwort = genesis['password'],
 		namen = variablename,
 		auswahl = valuelabel, 
+		kriterium = '',
 		bereich = 'Alle',
 		listenLaenge = '500',
 		sprache = 'de')
