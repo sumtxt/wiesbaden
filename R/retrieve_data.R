@@ -5,6 +5,7 @@
 #' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: 1990.
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.
+#' @param regionalschluessel only retrieve values for a particular regional unit. Default: "" (all).
 #' @param genesis to authenticate a user and set the database (see below).
 #' @param ... other arguments send to the httr::GET request. 
 #' 
@@ -37,6 +38,7 @@ retrieve_data <- function(
 	tablename, 
 	startyear = 1900, 
 	endyear = 2016, 
+	regionalschluessel = "", 
 	genesis=NULL, ... ) {
 
 	genesis <- make_genesis(genesis)
@@ -58,7 +60,7 @@ retrieve_data <- function(
 		zeitscheiben = '',
 		inhalte = '',
 		regionalmerkmal = '',
-		regionalschluessel = '',
+		regionalschluessel = regionalschluessel,
 		sachmerkmal = '',
 		sachschluessel = '',
 		sachmerkmal2 = '',
