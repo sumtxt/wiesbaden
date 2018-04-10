@@ -4,8 +4,8 @@
 \alias{retrieve_data}
 \title{Retrieves Data from GENESIS Databases}
 \usage{
-retrieve_data(tablename, startyear = 1900, endyear = 2016, genesis = NULL,
-  ...)
+retrieve_data(tablename, startyear = 1900, endyear = 2016,
+  regionalschluessel = "", genesis = NULL, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
@@ -13,6 +13,8 @@ retrieve_data(tablename, startyear = 1900, endyear = 2016, genesis = NULL,
 \item{startyear}{only retrieve values for years equal or larger to \code{startyear}. Default: 1990.}
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: 2016.}
+
+\item{regionalschluessel}{only retrieve values for a particular regional unit. Default: "" (all).}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
 
