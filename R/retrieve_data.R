@@ -99,7 +99,6 @@ retrieve_data <- function(
 
 	data <- readr::read_delim(sstr[[1]][7], skip = 1, col_names = header, 
                               delim = ';')
-	colnames(data) <- header
 
 	return(data)
 	}
