@@ -1,6 +1,8 @@
 #' Retrieves Data from GENESIS Databases 
 #'
 #' \code{retrieve_data} retrieves a single data table.  
+#' 
+#' @import readr
 #'
 #' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: 1990.
@@ -95,8 +97,8 @@ retrieve_data <- function(
 
 	header <- c(DQERH, DQA, DQZ, DQIcom)
 
-	data <- readstr_csv(sstr[[1]][7], skip=1)
-	colnames(data) <- header
+	data <- readr::read_delim(sstr[[1]][7], skip = 1, col_names = header, 
+                              delim = ';')
 
 	return(data)
 	}
