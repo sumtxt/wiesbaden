@@ -98,5 +98,5 @@ retrieve_data <- function(
 
 	data <- read_delim(sstr[[1]][7], skip = 1, col_names = header, delim = ';')
 
-	return(data)
+	return(as.data.frame(data))
 	}
