@@ -40,6 +40,7 @@
 #' @import xml2
 #' @import stringr
 #' @import readr
+#' @import dplyr
 #' @importFrom jsonlite fromJSON 
 NULL
 
