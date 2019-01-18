@@ -21,7 +21,13 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 	library(dplyr)
 	library(stringr)
 
-	genesis <- c(user="ABCDEF", password="XXXXX", db="regio")
+	genesis <- c(user="ABCDEF", password="XXXXX", db="regio") 
+
+The genesis functions allows currently to access four databases: 
+- `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
+- `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
+- `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
+- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
 
 	d <- retrieve_datalist(tableseries="14111", genesis=genesis)
 
@@ -40,6 +46,7 @@ The meta data can be obtained via:
 
 	metadata <- retrieve_metadata(tablename="14111KJ002", genesis=genesis)
 
+# 
 
 # Read DESTATIS files 
 
