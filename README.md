@@ -56,7 +56,7 @@ The `wiesbaden` package also helps to import `csv` tables exported from the GENE
 	url <- genesis_url(tablename="12411-0004.csv")
 	download.file(url, '12411-0004.csv')
 
-	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
+	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"), clean_letters = F)
 	data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-")
 	colnames(data) <- d
 
