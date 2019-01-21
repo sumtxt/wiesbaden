@@ -53,7 +53,7 @@ The meta data can be obtained via:
 The `wiesbaden` package also helps to import `csv` tables exported from the GENESIS via their web interfaces and construct valid column names. 
 
 	require(readr)
-	url <- 'https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=12411-0004&format=csv'
+	url <- genesis_url(tablename="12411-0004.csv")
 	download.file(url, '12411-0004.csv')
 
 	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
