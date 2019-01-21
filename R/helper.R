@@ -66,6 +66,14 @@ to_plain <- function(s) {
 get_character_vec <- function(x){ 
 	x <- paste(unlist(na.omit(x), use.names=FALSE), collapse="_")
 	x <- to_plain(x)
+	
+genesis_url <- function(tabelle) {
+  return(
+    paste0("https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=",
+           tabelle,
+           "&format=csv")
+  )
+}
 	x <- str_replace_all(x, " *", "")
 	x <- str_replace_all(x, "[^a-zA-Z0-9_]", "")
 	return(x)
