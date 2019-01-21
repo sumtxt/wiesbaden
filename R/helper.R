@@ -71,10 +71,10 @@ get_character_vec <- function(x){
 	return(x)
 	}
 
-genesis_url <- function(tabelle) {
+genesis_url <- function(tablename) {
   return(
     paste0("https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=",
-           tabelle,
+           tablename,
            "&format=csv")
   )
 }
