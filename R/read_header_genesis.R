@@ -35,9 +35,14 @@
 #' 
 #' 
 #' @export
-read_header_genesis <- function(..., start, lines=2, readr_locale=locale(encoding="windows-1252"), replacer=NULL){
+read_header_genesis <- function(..., start, lines=2, readr_locale=locale(encoding="windows-1252"), replacer=NULL, 
+				clean_letters=T){
 	h <- read_csv2(..., col_names=FALSE, skip=start-1, n_max=lines, col_types=cols( .default = col_character() ), locale=readr_locale )
-	h <- apply(h, 2, function(x) get_character_vec(x) )
+	if(clean_letters==T){
+		h <- apply(h, 2, function(x) get_character_vec(x) )
+		} else{
+		h <- apply(h, 2, function(x) paste(unlist(na.omit(x), use.names=FALSE), collapse=" "))
+		}
 	if( !is.null(replacer) ) h[1:length(replacer)] <- replacer
 	return(h)
 	}
