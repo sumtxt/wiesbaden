@@ -23,15 +23,15 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 
 	genesis <- c(user="ABCDEF", password="XXXXX", db="regio") 
 
-The genesis functions allows currently to access four databases: 
+The genesis function allows currently to access four databases: 
 - `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
 - `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
 - `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
-- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
+- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) 
 
-	d <- retrieve_datalist(tableseries="14111", genesis=genesis)
+To retrieve a list of all available data use `retrieve_datalist(tableseries="*", genesis=genesis)`: 
 
-To retrieve a list of all available data use retrieve_datalist(tableseries="*", genesis=genesis). 
+	d <- retrieve_datalist(tableseries="14111", genesis=genesis) 
 
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
 in their name. 
