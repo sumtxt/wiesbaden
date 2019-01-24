@@ -23,11 +23,12 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 
 	genesis <- c(user="ABCDEF", password="XXXXX", db="regio") 
 
-The genesis function allows currently to access four databases: 
+Four databases are currently supported: 
+
 - `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
 - `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
 - `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
-- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) (only with registered premium account)
+- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) (only with registered premium account from DESTATIS)
 
 To retrieve a list of all available data use `retrieve_datalist(tableseries="*", genesis=genesis)`: 
 
