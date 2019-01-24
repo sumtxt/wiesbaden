@@ -42,7 +42,5 @@
 #' @import readr
 #' @import dplyr
 #' @importFrom jsonlite fromJSON 
-#' @importFrom ags get_bundesland
-#' @importFrom ags code_bundesland
 NULL
 
