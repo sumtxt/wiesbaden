@@ -5,7 +5,7 @@
 \title{Read Header of a GENESIS csv}
 \usage{
 read_header_genesis(..., start, lines = 2, readr_locale = locale(encoding =
-  "windows-1252"), replacer = NULL)
+  "windows-1252"), replacer = NULL, clean_letters = TRUE)
 }
 \arguments{
 \item{...}{arguments to \code{read_csv2}}
@@ -15,6 +15,8 @@ read_header_genesis(..., start, lines = 2, readr_locale = locale(encoding =
 \item{lines}{number of header lines}
 
 \item{replacer}{a vector that is used as the first K column-names}
+
+\item{clean_letters}{make proper variable names? (default: TRUE)}
 
 \item{locale}{default encoding is 'windows-1252'}
 }
@@ -33,8 +35,7 @@ and removes whitespaces. Multi-line headers are joined but separated with a '_'.
   
  require(readr)
  
- url <- 'https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=12411-0004&format=csv'
- download.file(url, '12411-0004.csv')
+	 download_csv(tablename="12411-0004")
  
  d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
  data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-", locale=locale(encoding="windows-1252") )

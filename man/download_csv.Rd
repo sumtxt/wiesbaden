@@ -21,7 +21,7 @@ This is an alternative approach to the retrieve_*() functions.
 \examples{
  \dontrun{
 
- data <- download_csv("12411-0004.csv")
+ download_csv("12411-0004.csv")
 
  }
 
@@ -30,5 +30,5 @@ This is an alternative approach to the retrieve_*() functions.
 
 }
 \seealso{
-\code{\link{read_header_genesis}} \code{\link{wiebaden}}.
+\code{\link{read_header_genesis}}.
 }
