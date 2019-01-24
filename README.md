@@ -21,11 +21,17 @@ Using the retrieve_datalist() function we download a dataframe of all data table
 	library(dplyr)
 	library(stringr)
 
-	genesis <- c(user="ABCDEF", password="XXXXX", db="regio")
+	genesis <- c(user="ABCDEF", password="XXXXX", db="regio") 
 
-	d <- retrieve_datalist(tableseries="14111", genesis=genesis)
+The genesis function allows currently to access four databases: 
+- `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
+- `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
+- `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
+- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) 
 
-To retrieve a list of all available data use retrieve_datalist(tableseries="*", genesis=genesis). 
+To retrieve a list of all available data use `retrieve_datalist(tableseries="*", genesis=genesis)`: 
+
+	d <- retrieve_datalist(tableseries="14111", genesis=genesis) 
 
 We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
 in their name. 
@@ -40,16 +46,17 @@ The meta data can be obtained via:
 
 	metadata <- retrieve_metadata(tablename="14111KJ002", genesis=genesis)
 
+# 
 
 # Read DESTATIS files 
 
 The `wiesbaden` package also helps to import `csv` tables exported from the GENESIS via their web interfaces and construct valid column names. 
 
 	require(readr)
-	url <- 'https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=12411-0004&format=csv'
+	url <- genesis_url(tablename="12411-0004.csv")
 	download.file(url, '12411-0004.csv')
 
-	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
+	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"), clean_letters = F)
 	data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-")
 	colnames(data) <- d
 

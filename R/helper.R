@@ -70,3 +70,11 @@ get_character_vec <- function(x){
 	x <- str_replace_all(x, "[^a-zA-Z0-9_]", "")
 	return(x)
 	}
+
+genesis_url <- function(tablename) {
+  return(
+    paste0("https://www-genesis.destatis.de/genesis/online?sequenz=tabelleDownload&selectionname=",
+           tablename,
+           "&format=csv")
+  )
+}
