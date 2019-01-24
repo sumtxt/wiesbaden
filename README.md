@@ -27,7 +27,7 @@ The genesis function allows currently to access four databases:
 - `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
 - `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
 - `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
-- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) 
+- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) (only with registered premium account)
 
 To retrieve a list of all available data use `retrieve_datalist(tableseries="*", genesis=genesis)`: 
 
@@ -46,19 +46,20 @@ The meta data can be obtained via:
 
 	metadata <- retrieve_metadata(tablename="14111KJ002", genesis=genesis)
 
-# 
+
 
 # Read DESTATIS files 
 
 The `wiesbaden` package also helps to import `csv` tables exported from the GENESIS via their web interfaces and construct valid column names. 
 
 	require(readr)
-	url <- genesis_url(tablename="12411-0004.csv")
-	download.file(url, '12411-0004.csv')
+	download_csv(tablename="12411-0004")
 
 	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"), clean_letters = F)
 	data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-")
 	colnames(data) <- d
+
+Note: The package `destatiscleanr`  [cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanr) provides more functions to help importing such csv files.
 
 Furthermore, the function  `read_gv100()` allows to parse the GV100 files of the German municipality register available [here](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html): 
 
