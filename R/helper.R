@@ -51,6 +51,13 @@ set_db <- function(db){
 	}
 
 
+set_db2 <- function(db){
+	if (db=="de") return("https://www-genesis.destatis.de/genesis/online")
+	if (db == "by") return("https://www.statistikdaten.bayern.de/genesis/online")
+	stop("DB: Currently not implemented.")
+	}
+
+
 # Source: https://stackoverflow.com/questions/17517319/r-replacing-foreign-characters-in-a-string
 to_plain <- function(s) {
    old1 <- "šžþàáâãäåçèéêëìíîïðñòóôõöùúûüýŠŽÞÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝ"

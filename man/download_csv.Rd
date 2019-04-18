@@ -4,18 +4,27 @@
 \alias{download_csv}
 \title{Download the csv-file of a table}
 \usage{
-download_csv(tablename, genesis_db = "de")
+download_csv(tablename, startyear = "", endyear = "", ...,
+  genesis_db = "de", save = TRUE)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
 
+\item{startyear}{only retrieve values for years equal or larger to \code{startyear}. Default: "".}
+
+\item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: "".}
+
+\item{...}{further parameters supplied as URL parameter in the GENESIS database call}
+
 \item{genesis_db}{name of the database (default: 'de').}
+
+\item{save}{write string to a text file (default: TRUE)}
 }
 \description{
 \code{download_csv()} downloads the csv for a table
 }
 \details{
-Downloads the csv file to the working directory \code{getwd()}. 
+Downloads the csv file either to the working directory \code{getwd()} or outputs it as a string 
 This is an alternative approach to the retrieve_*() functions.
 }
 \examples{
