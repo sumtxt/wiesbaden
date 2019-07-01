@@ -8,11 +8,11 @@
 #'   
 #'   
 #' @details 
-#'  See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
+#'  See the package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 #'  
 #' @return a \code{data.frame}.
 #'
-#' @seealso \code{\link{wiebaden}}
+#' @seealso \code{\link{wiesbaden}}
 #'
 #' @examples 
 #'  \dontrun{

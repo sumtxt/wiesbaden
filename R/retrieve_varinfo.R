@@ -7,11 +7,11 @@
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
-#'  See the package description (\code{\link{wiebaden}}) for details about setting the login and database. 
+#'  See the package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 #'  
 #' @return a \code{data.frame}.
 #'
-#' @seealso \code{\link{retrieve_datalist}} \code{\link{wiebaden}}
+#' @seealso \code{\link{retrieve_datalist}} \code{\link{wiesbaden}}
 #'
 #' @examples 
 #'  \dontrun{

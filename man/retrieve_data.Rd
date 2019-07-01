@@ -30,7 +30,7 @@ valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typica
 }
 \details{
 Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
-package description (\code{\link{wiebaden}}) for details about setting the login and database.
+package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
@@ -46,5 +46,5 @@ package description (\code{\link{wiebaden}}) for details about setting the login
 
 }
 \seealso{
-\code{\link{retrieve_datalist}} \code{\link{wiebaden}}
+\code{\link{retrieve_datalist}} \code{\link{wiesbaden}}
 }

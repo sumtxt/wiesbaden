@@ -22,7 +22,7 @@ a \code{data.frame}.
 \code{retrieve_valuelabel} retrieves value labels for variable
 }
 \details{
-See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
+See the package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
@@ -38,5 +38,5 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
 
 }
 \seealso{
-\code{\link{retrieve_datalist}} \code{\link{wiebaden}}
+\code{\link{retrieve_datalist}} \code{\link{wiesbaden}}
 }

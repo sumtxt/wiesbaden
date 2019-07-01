@@ -20,7 +20,7 @@ a \code{data.frame}.
 \code{retrieve_metadata} retrieves meta data.
 }
 \details{
-See the package description (\code{\link{wiebaden}}) for details about setting the login and database.
+See the package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
  \dontrun{
@@ -36,5 +36,5 @@ See the package description (\code{\link{wiebaden}}) for details about setting t
 
 }
 \seealso{
-\code{\link{wiebaden}}
+\code{\link{wiesbaden}}
 }
