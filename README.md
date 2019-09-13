@@ -8,6 +8,12 @@ The package uses the SOAP XML web service from DESTATIS. A very rough [documenta
 
 The package's approach is heavily inspired by [ReGENESIS](https://github.com/pudo/regenesis) - an (unmaintained) Python library to bulk download all available data on [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online). 
 
+# Installation 
+
+The package has to be installed directly from the Github repository: 
+	
+	library(devtools)
+	install_github("sumtxt/wiesbaden")
 
 
 # Retrieve Data from the Database 
