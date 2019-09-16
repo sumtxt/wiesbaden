@@ -15,6 +15,11 @@ The package has to be installed directly from the Github repository:
 	library(devtools)
 	install_github("sumtxt/wiesbaden")
 
+Alternatively, you can also download the package as a zip file, unzip it on your computer and run:
+	
+	library(devtools)
+	install_local(PATH/TO/PACKAGE/FOLDER)
+
 
 # Retrieve Data from the Database 
 
