@@ -46,10 +46,6 @@
 #' \code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}
 #' 
 #' 
-#' @examples 
-#'  \dontrun{
-#'  }
-#' 
 #' 
 #' 
 #' @export

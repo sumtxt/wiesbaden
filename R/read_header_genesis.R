@@ -8,7 +8,7 @@
 #' @param locale default encoding is 'windows-1252'
 #' @param replacer a vector that is used as the first K column-names
 #' @param clean_letters make proper variable names? (default: TRUE)
-#' 
+#' @param readr_locale definition of locale() to be passed to read_csv2()
 #'   
 #' @details 
 #' To generate valid column names, the function replaces all special characters (e.g. German öüä) with ASCII letters 
@@ -27,7 +27,8 @@
 #'	 download_csv(tablename="12411-0004")
 #'	 
 #'	 d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
-#'	 data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-", locale=locale(encoding="windows-1252") )
+#'	 data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, 
+#' 		na="-", locale=locale(encoding="windows-1252") )
 #'	 colnames(data) <- d
 #'   }
 #' 

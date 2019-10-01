@@ -19,7 +19,7 @@
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
-#' valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typically zero shoud/might be set to NA. 
+#' valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typically zero should/might be set to NA. 
 #'  
 #' 
 #' 

@@ -4,7 +4,8 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL, ...)
+retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL,
+  ...)
 }
 \arguments{
 \item{variablename}{name of the variable}

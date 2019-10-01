@@ -30,9 +30,6 @@ Alternatively if you use Linux or Mac, place a json file named '.genesis.json' i
 Available databases are "regio" (regionalstatistik.de), "nrw" (landesdatenbank.nrw.de), 
 "de" (www-genesis.destatis.de) and "bm" (bildungsmonitoring.de).
 }
-\references{
-
-}
 \author{
 Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
 }

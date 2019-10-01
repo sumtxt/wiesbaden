@@ -4,8 +4,9 @@
 \alias{read_header_genesis}
 \title{Read Header of a GENESIS csv}
 \usage{
-read_header_genesis(..., start, lines = 2, readr_locale = locale(encoding =
-  "windows-1252"), replacer = NULL, clean_letters = TRUE)
+read_header_genesis(..., start, lines = 2,
+  readr_locale = locale(encoding = "windows-1252"), replacer = NULL,
+  clean_letters = TRUE)
 }
 \arguments{
 \item{...}{arguments to \code{read_csv2}}
@@ -13,6 +14,8 @@ read_header_genesis(..., start, lines = 2, readr_locale = locale(encoding =
 \item{start}{number of the first line of the header}
 
 \item{lines}{number of header lines}
+
+\item{readr_locale}{definition of locale() to be passed to read_csv2()}
 
 \item{replacer}{a vector that is used as the first K column-names}
 

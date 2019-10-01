@@ -33,7 +33,6 @@
 #' @aliases wiesbaden
 #' @title Client to access the data from the Federal Statistical Office, Germany
 #' @author Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
-#' @references 
 #'
 #' 
 #' @import httr 
@@ -41,6 +40,9 @@
 #' @import stringr
 #' @import readr
 #' @import dplyr
-#' @importFrom jsonlite fromJSON 
+#' @importFrom utils read.csv2
+#' @importFrom stats na.omit
+#' @importFrom jsonlite fromJSON toJSON
+#' @importFrom magrittr "%>%"
 NULL
 

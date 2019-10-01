@@ -49,13 +49,6 @@ For the NAD version only:
 	41 - Kreise (counties)
  61 - Gemeinden (municipalities)
 }
-\examples{
- \dontrun{
- }
-
-
-
-}
 \seealso{
 \url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
 \code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}

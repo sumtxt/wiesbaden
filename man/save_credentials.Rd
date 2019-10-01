@@ -15,9 +15,6 @@ save_credentials(db, user, password, append = TRUE)
 
 \item{append}{add credentials to file (default) or overwrite entire file?}
 }
-\value{
-
-}
 \description{
 \code{save_credentials} saves a set of database credentials to \code{'~/.genesis.json'} to ease package usage.
 }

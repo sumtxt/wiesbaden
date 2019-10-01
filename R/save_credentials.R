@@ -10,8 +10,7 @@
 #' @details  
 #'  Attention, user/password are stored in an unencrypted file in \code{'~/.genesis.json'}. 
 #'  
-#' @return 
-#'
+
 #' @seealso \code{\link{wiesbaden}} 
 #'
 #' 
