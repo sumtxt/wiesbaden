@@ -1,0 +1,116 @@
+---
+title: "Retrieve Data from DESTATIS via R"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Data from DESTATIS from R}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. 
+
+Access to the following databases is implemented: 
+
+* [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) 
+* [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
+* [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
+* [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
+
+To access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) you need to register as a premium user ("Premium Nutzer", 500 Euro per year). For all other databases, the standard, free user account is sufficient. 
+
+To authenticate, supply a vector with your user name, password, and database shortcut ("regio", "de", "nrw", "bm") as an argument for the `genesis` parameter whenever you call a `retrieve_*` function:
+
+	c(user="your-username", password="your-password", db="database-shortname")
+
+Alternatively, if you use Linux or Mac, you can use `save_credentials()` to generate a file named '.genesis.json' in your root directory that includes your login and password. Please note that this file is unencrypted. If this file exists, the argument `genesis` only needs to include the database shortname. 
+
+Use the function `test_login()` to check if your login/password combination allows you to access the respective database (and if the server is functioning properly). 
+
+
+```{r,eval = FALSE}
+library(wiesbaden)
+
+test_login(genesis=c(db='regio'))
+#> [1] "Sie wurden erfolgreich an- und abgemeldet."
+```
+
+The available data are organized by themes ("Themen") and subthemes. To get a list of all available themes go to the respective database website (links above) and click on "Themen". Each theme typically comes with multiple subthemes. 
+
+Suppose we want to download the federal election results on the county level from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online). This data is available in the theme "Wahlen" which has the code `14`. The federal election results are available in subtheme `141`.
+
+Using `retrieve_datalist()`, download a `data.frame` of all available data cubes in theme `141`: 
+
+```{r,eval = FALSE}
+d <- retrieve_datalist(tableseries="141*", genesis=c(db='regio')) 
+```
+
+Use `str_detect()` to filter cubes with a description that contains the word "Kreise" (county): 
+
+```{r,eval = FALSE}
+filter(d, str_detect(description, "Kreise") ) 
+#>    tablename
+#> 1 14111KJ001
+#> 2 14111KJ002
+#>                                                                                      description
+#> 1 Wahlberechtigte, Wahlbeteiligung, Gültige Zweitstimmen, Kreise und kreisfreie Städte, Stichtag
+#> 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag
+```
+Having identified the correct data cube, call `retrieve_data()` to download the data: 
+
+```{r,eval = FALSE}
+data <- retrieve_data(tablename="14111KJ002", genesis=c(db='regio')) 
+```
+
+```{r,eval = FALSE}
+head(data)
+#>   id14111 KREISE     PART04       STAG WAHL09_val WAHL09_qual WAHL09_lock
+#> 1       D  01001        AFD 22.09.2013       1855           e          NA
+#> 2       D  01001        AFD 24.09.2017       3702           e          NA
+#> 3       D  01001 B90-GRUENE 16.10.1994       4651           e          NA
+#> 4       D  01001 B90-GRUENE 27.09.1998       3815           e          NA
+#> 5       D  01001 B90-GRUENE 22.09.2002       5556           e          NA
+#> 6       D  01001 B90-GRUENE 18.09.2005       5028           e          NA
+#>   WAHL09_err
+#> 1          0
+#> 2          0
+#> 3          0
+#> 4          0
+#> 5          0
+#> 6          0
+```
+
+The data are organized in long format: For each combination of `KREIS` (county), `PART04` (political party) and `STAG` (election date) there is a vote count (`WAHL09_value`). Please see help file for the information on the additional variables (\*\_qual, \*\_lock, \*\_err).  
+
+To get the metadata for each variable, call `retrieve_metadata()`:
+
+```{r,eval = FALSE}
+retrieve_metadata(tablename="14111KJ002", genesis=c(db='regio'))
+#>     name                  description   unit
+#> 1 WAHL09         Gültige Zweitstimmen Anzahl
+#> 2   STAG                     Stichtag       
+#> 3 PART04                     Parteien       
+#> 4 KREISE Kreise und kreisfreie Städte
+```
+To get the value labels for the variable `PART04`, call `retrieve_valuelabel()`:
+
+```{r,eval = FALSE}
+retrieve_valuelabel("PART04", genesis=c(db='regio'))
+#>       PART04       description
+#> 1        AFD               AfD
+#> 2 B90-GRUENE             GRÜNE
+#> 3        CDU           CDU/CSU
+#> 4   DIELINKE         DIE LINKE
+#> 5        FDP               FDP
+#> 6   SONSTIGE Sonstige Parteien
+#> 7        SPD               SPD
+```
+
+This function also works with the other variables (e.g., `KREIS`).
+

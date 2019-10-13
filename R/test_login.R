@@ -12,6 +12,7 @@
 #' 
 #'
 #' @examples 
+#' 
 #'  \dontrun{
 #' 
 #'  test_login(genesis=c(db="regio") )

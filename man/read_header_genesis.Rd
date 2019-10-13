@@ -36,12 +36,13 @@ and removes whitespaces. Multi-line headers are joined but separated with a '_'.
 \examples{
  \dontrun{
   
- require(readr)
+ library(readr)
  
  download_csv(tablename="12411-0004")
  
  d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"))
- data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-", locale=locale(encoding="windows-1252") )
+ data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, 
+		na="-", locale=locale(encoding="windows-1252") )
  colnames(data) <- d
   }
 

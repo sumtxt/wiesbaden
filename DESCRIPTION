@@ -1,10 +1,10 @@
 Package: wiesbaden
-Title: Client to Access the Data from the Federal Statistical Office (DESTATIS), Germany
-Version: 1.0.0
-Date: 2019-10-01
-Author: Moritz Marbach" <moritz.marbach@gess.ethz.ch> [aut, cre]
+Title: Client to Access Databases from the Federal Statistical Office, Germany
+Version: 1.0.1
+Date: 2019-10-13
+Author: Moritz Marbach <moritz.marbach@gess.ethz.ch> [aut, cre]
 Maintainer: Moritz Marbach <moritz.marbach@gess.ethz.ch>
-Description: Access XML web service to retrieve GENESIS data tables.
+Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany using their SOAP XML web service. 
 Depends:
     R (>= 3.3.1)
 License: GPL-3
@@ -14,8 +14,12 @@ Imports:
     httr (>= 1.2.1),
     xml2 (>= 1.0.0),
     stringr (>= 1.1.0),
+    stringi (>= 1.4.0),
     readr (>= 1.0.0),
-    dplyr (>= 0.8.0), 
-    jsonlite (>= 1.6.0),
-    magrittr (>= 1.5.0)
+    jsonlite (>= 1.6.0)
 RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    tidyverse
+VignetteBuilder: knitr

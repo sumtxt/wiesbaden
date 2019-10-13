@@ -33,6 +33,7 @@ Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the ta
 package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
+
  \dontrun{
  # Retrieve values for the table 14111KJ002 which contains the 
  # federal election results on the county level. 

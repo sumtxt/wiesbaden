@@ -23,6 +23,7 @@ a \code{data.frame}.
 See the package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
+
  \dontrun{
  # Meta data contain the explanations to the variable names for the table
  # federal election results on the county level. 

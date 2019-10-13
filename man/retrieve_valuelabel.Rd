@@ -26,6 +26,7 @@ a \code{data.frame}.
 See the package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
+
  \dontrun{
  # Value labels contain for the variable 'PART04' in the table with the 
  # federal election results on the county level. 

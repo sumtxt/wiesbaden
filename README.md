@@ -1,12 +1,11 @@
-The package `wiesbaden` provides `R` functions to directly retrieve data from the the databases [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. Access to [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) as well as [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) is also implemented. 
+The R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. 
 
-This package can only be used after a registration on the respective website to obtain a personal login name and password. The registration is free for all databases except [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online). 
+Access to the following databases is implemented: 
 
-Data from these database can also be retrieved via the webinterface, however the retrievable `csv` files come with multi-line headers that are difficult to process in R. While the package also helps with this task, its primary function is to provide users with the ability to retrieve the data from the website's underlying GENESIS database. 
-
-The package uses the SOAP XML web service from DESTATIS. A very rough [documentation](https://www-genesis.destatis.de/genesis/online?Menu=Webservice) is available on the DESTATIS website.
-
-The package's approach is heavily inspired by [ReGENESIS](https://github.com/pudo/regenesis) - an (unmaintained) Python library to bulk download all available data on [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online). 
+* [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) 
+* [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
+* [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
+* [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
 
 # Installation 
 
@@ -18,70 +17,34 @@ The package has to be installed directly from the Github repository:
 Alternatively, you can also download the package as a zip file, unzip it on your computer and run:
 	
 	library(devtools)
-	install_local(PATH/TO/PACKAGE/FOLDER)
+	install_local("PATH/TO/PACKAGE/FOLDER")
 
 
-# Retrieve Data from the Database 
+# Usage 
 
-Users can retrieve data tables that are grouped in "Statistiken" (statistics) and "Themen" (topics). The package does not retrieve the tables, but instead the underlying raw data which are used to construct the website's tables.
+The package helps with retrieving the data cubes which are used to construct the data tables available as `csv` files via the web application of each database. The data cubes are long format data tables that are much easier to process as compared to the `csv` files. For details on how to use the package, see the vignette. 
 
-Lets assume we want to download the federal election results on the county level. From the website we see that they are contained in the series '14111'. 
+The package also helps with importing the [German municipality register files](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html) via the function `read_gv100()`. For more information see the help file of this function. 
 
-Using the retrieve_datalist() function we download a dataframe of all data tables in this series: 
-
-	library(dplyr)
-	library(stringr)
-
-	genesis <- c(user="ABCDEF", password="XXXXX", db="regio") 
-
-Four databases are currently supported: 
-
-- `db="regio"` for data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online),    
-- `db="nrw"` for data from [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de),
-- `db="bm"` for data from [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), 
-- `db="de"` for data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) (only with registered premium account from DESTATIS)
-
-To retrieve a list of all available data use `retrieve_datalist(tableseries="*", genesis=genesis)`: 
-
-	d <- retrieve_datalist(tableseries="14111", genesis=genesis) 
-
-We then use the str_detect function to filter all data tables that contain the word "Kreise" (county)
-in their name. 
-
-	d %>% filter( str_detect(description, "Kreise") ) 
-
-Having identified the data table we want to retrieve, we call the retrieve_data() function
-
-	data <- retrieve_data(tablename="14111KJ002", genesis=genesis)
-
-The meta data can be obtained via:
-
-	metadata <- retrieve_metadata(tablename="14111KJ002", genesis=genesis)
+Users that wish to work with the `csv` files might find the `download_csv()` and `read_header_genesis()` in this package helpful. The former can be used to automate downloads and the latter facilitates importing downloaded files. Users might also wish to check the R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanwebir).
 
 
 
-# Read DESTATIS files 
+# Technical Notes
 
-The `wiesbaden` package also helps to import `csv` tables exported from the GENESIS via their web interfaces and construct valid column names. 
-
-	require(readr)
-	download_csv(tablename="12411-0004")
-
-	d <- read_header_genesis('12411-0004.csv', start=6, replacer=c("STAG"), clean_letters = F)
-	data <- read_csv2('12411-0004.csv', skip=6, n_max=30-6+1, na="-")
-	colnames(data) <- d
-
-Note: The package `destatiscleanr`  [cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanr) provides more functions to help importing such csv files.
-
-Furthermore, the function  `read_gv100()` allows to parse the GV100 files of the German municipality register available [here](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html): 
-
-	d <- read_gv100("GV100NAD31122016.asc", stzrt=60)
-
-Similar functions for reading the GV100 format exist for Python [github.com/WZBSocialScienceCenter/gemeindeverzeichnis](https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis) and node.js/JSON [https://github.com/yetzt/node-gv100json](https://github.com/yetzt/node-gv100json). But see also this Python code from 2011: [rohablog.wordpress.com/2011/11/22/gv100-parser-python/](https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/). 
+The package uses the SOAP XML web service from DESTATIS [(PDF Documentation)](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
 
 
-# Notes
+# Similar and Complementary Packages 
 
-The functions `get_bundesland()`, `code_bundesland()` have been migrate to the package `ags` available at [github.com/sumtxt/ags](https://github.com/sumtxt/ags) which provides functions to work with the Amtlicher Gemeindeschlüssel (AGS). 
+* The R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanwebir) provides functions to help importing `csv` files downloaded via the web application. 
+
+* The R package `AGS` [github.com/sumtxt/ags](https://github.com/sumtxt/ags) provides functions to work with the [Amtlicher Gemeindeschlüssel (AGS)](https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel), e.g. to extract the Bundesland using `get_bundesland()`. 
+
+* The Python packages [github.com/WZBSocialScienceCenter/gemeindeverzeichnis](https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis) and [rohablog.wordpress.com/2011/11/22/gv100-parser-python/](https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/) provide functions to read the GV100 format. 
+
+* The node.js package [https://github.com/yetzt/node-gv100json](https://github.com/yetzt/node-gv100json) provides functions to read the GV100 format. 
+
+* The Python package [github.com/pudo/regenesis](https://github.com/pudo/regenesis) provides a function to bulk download data from [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online). 
 
 

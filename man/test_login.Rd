@@ -18,6 +18,7 @@ a \code{string} with the server return message.
 \code{test_login} tests if the login works.
 }
 \examples{
+
  \dontrun{
 
  test_login(genesis=c(db="regio") )

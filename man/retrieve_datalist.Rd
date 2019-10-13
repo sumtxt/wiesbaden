@@ -24,6 +24,7 @@ See the package description (\code{\link{wiesbaden}}) for details about setting 
 To retrieve a list of all available data use tableseries="*".
 }
 \examples{
+
  \dontrun{
  # Retrieves list of available tables for the table series 14111 
  # which contains the federal election results. 

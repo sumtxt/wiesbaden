@@ -1,6 +1,9 @@
 ^data-raw
 ^README\.md$
 ^cran-comments\.md$
-^NEWS\.md$
 ^\.DS_Store
 \.git
+^CRAN-RELEASE$
+^DS_Store$
+^doc$
+^Meta$

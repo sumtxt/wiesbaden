@@ -27,6 +27,7 @@
 #' @seealso \code{\link{retrieve_datalist}} \code{\link{wiesbaden}}
 #'
 #' @examples 
+#' 
 #'  \dontrun{
 #'  # Retrieve values for the table 14111KJ002 which contains the 
 #'  # federal election results on the county level. 

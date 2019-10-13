@@ -22,7 +22,7 @@
 #' @examples 
 #'  \dontrun{
 #'   
-#'	 require(readr)
+#'	 library(readr)
 #'	 
 #'	 download_csv(tablename="12411-0004")
 #'	 

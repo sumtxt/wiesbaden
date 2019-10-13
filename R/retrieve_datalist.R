@@ -16,6 +16,7 @@
 #' @seealso \code{\link{retrieve_data}} \code{\link{wiesbaden}}
 #'
 #' @examples 
+#' 
 #'  \dontrun{
 #'  # Retrieves list of available tables for the table series 14111 
 #'  # which contains the federal election results. 

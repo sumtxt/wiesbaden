@@ -15,6 +15,7 @@
 #' @seealso \code{\link{wiesbaden}}
 #'
 #' @examples 
+#' 
 #'  \dontrun{
 #'  # Meta data contain the explanations to the variable names for the table
 #'  # federal election results on the county level. 

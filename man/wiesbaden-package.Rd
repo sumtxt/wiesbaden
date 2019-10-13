@@ -9,26 +9,14 @@
 Data retrieval client for Federal Statistical Office of Germany
 }
 \details{
-Feedback is very welcome!
-
-
-\tabular{ll}{
-	Package: \tab wiesbaden\cr
-	Type: \tab Package\cr
-	Version: \tab 0.0.1.0\cr
-	Date: \tab 2017-01-20\cr
-	License: \tab  GPL-3\cr
-	}
-
-To authenticate a user and set the database, supply a vector with user/paswword and database shortcut in this form: 
-\code{destatis_user <- c(user="ABCDEF", password="XXXXX", db="GHIJK")}
+To authenticate a user and set the database, supply a vector with user/password and database shortname in this form: 
+\code{destatis_user <- c(user="your-username", password="your-password", db="database-shortname")}
 
 Alternatively if you use Linux or Mac, place a json file named '.genesis.json' in your root directory (~). Use the 
-\code{\link{save_credentials}} to generate this file. For now, this only works with Linux/Mac. 
+\code{\link{save_credentials}} to generate this file. This only works with Linux/Mac!
 
-
-Available databases are "regio" (regionalstatistik.de), "nrw" (landesdatenbank.nrw.de), 
-"de" (www-genesis.destatis.de) and "bm" (bildungsmonitoring.de).
+Available databases are regionalstatistik.de (shortname: "regio"), landesdatenbank.nrw.de ("nrw"), 
+www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm").
 }
 \author{
 Moritz Marbach \email{moritz.marbach@gess.ethz.ch}

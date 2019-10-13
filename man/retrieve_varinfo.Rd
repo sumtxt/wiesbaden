@@ -23,6 +23,7 @@ a \code{data.frame}.
 See the package description (\code{\link{wiesbaden}}) for details about setting the login and database.
 }
 \examples{
+
  \dontrun{
  # Variable information 'AI2105' (Anteil der Empfänger von Arbeitslosengeld II im Alter 
  # von 15 bis 24 Jahren an der Bevölkerung gleichen Alters)

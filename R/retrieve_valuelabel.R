@@ -15,6 +15,7 @@
 #' @seealso \code{\link{retrieve_datalist}} \code{\link{wiesbaden}}
 #'
 #' @examples 
+#' 
 #'  \dontrun{
 #'  # Value labels contain for the variable 'PART04' in the table with the 
 #'  # federal election results on the county level. 

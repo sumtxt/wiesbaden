@@ -26,7 +26,7 @@ The GV100 format is used by DESTATIS to publish the German municipality register
 The Gemeindeverzeichnis (municipality register) is published 
  in a fixed width file refered to as "GV1000 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
- higher order administrative units. 
+ higher order administrative units.  
 
 There are two types of files: One feature the administrative 
 information (\code{version="AD"}) and one with non-administrative 
@@ -48,6 +48,16 @@ For the NAD version only:
 
 	41 - Kreise (counties)
  61 - Gemeinden (municipalities)
+}
+\examples{
+ \dontrun{
+  
+		d <- read_gv100("GV100NAD31122016.asc", stzrt=60)
+
+  }
+
+
+
 }
 \seealso{
 \url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
