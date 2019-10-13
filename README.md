@@ -1,4 +1,5 @@
-The R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. 
+The R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. The package uses the SOAP XML web service from DESTATIS [(PDF Documentation)](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
+
 
 Access to the following databases is implemented: 
 
@@ -22,17 +23,13 @@ Alternatively, you can also download the package as a zip file, unzip it on your
 
 # Usage 
 
-The package helps with retrieving the data cubes which are used to construct the data tables available as `csv` files via the web application of each database. The data cubes are long format data tables that are much easier to process as compared to the `csv` files. For details on how to use the package, see the vignette. 
+The package helps with retrieving the data cubes which are used to construct the data tables available as `csv` files via the web application of each database. The data cubes are long format data tables that are much easier to process as compared to the `csv` files. For details on how to use the package, see the [vignette](https://github.com/sumtxt/wiesbaden/blob/master/vignettes/using-wiesbaden.Rmd). 
 
 The package also helps with importing the [German municipality register files](https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html) via the function `read_gv100()`. For more information see the help file of this function. 
 
 Users that wish to work with the `csv` files might find the `download_csv()` and `read_header_genesis()` in this package helpful. The former can be used to automate downloads and the latter facilitates importing downloaded files. Users might also wish to check the R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanwebir).
 
 
-
-# Technical Notes
-
-The package uses the SOAP XML web service from DESTATIS [(PDF Documentation)](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
 
 
 # Similar and Complementary Packages 
