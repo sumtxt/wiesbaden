@@ -14,7 +14,7 @@
 #' The Gemeindeverzeichnis (municipality register) is published 
 #'  in a fixed width file refered to as "GV1000 ASCII Format" by 
 #'  DESTATIS. The register features the list of municipality and 
-#'  higher order administrative units. 
+#'  higher order administrative units.  
 #' 
 #' There are two types of files: One feature the administrative 
 #' information (\code{version="AD"}) and one with non-administrative 
@@ -45,6 +45,14 @@
 #' \url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
 #' \code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}
 #' 
+#' 	
+#'
+#' @examples 
+#'  \dontrun{
+#'   
+#' 		d <- read_gv100("GV100NAD31122016.asc", stzrt=60)
+#' 
+#'   }
 #' 
 #' 
 #' 
@@ -56,19 +64,21 @@ read_gv100 <- function(file, stzrt, version=NULL,
 
 	if (version=="AD"){
 		spec <- gv100$ad 
-		d <- withCallingHandlers(read_fwf(file, filter(spec$fwf, satzart %in% stzrt),
+		spec_fwf <- spec$fwf[spec$fwf$satzart==stzrt,]
+		d <- withCallingHandlers(read_fwf(file, spec_fwf,
 			locale=lcl, col_types=spec$col), warning = h)
 		if (stzrt %in% c(40,50,60)){
-			d <- d %>% left_join(spec$key, by="schluessel") %>% 
-				mutate(schluessel=typ) %>% select(-typ)
+			d <- merge(d, spec$key, by="schluessel", all.y=FALSE, all.x=TRUE)
+			d$schluessel <- d$typ
+			d$typ <- NULL
 		}
-	} 
-	else { 
+	} else { 
 		spec <- gv100$nad 
-		d <- withCallingHandlers(read_fwf(file, filter(spec$fwf, satzart %in% stzrt),
+		spec_fwf <- spec$fwf[spec$fwf$satzart==stzrt,]
+		d <- withCallingHandlers(read_fwf(file, spec_fwf,
 			locale=lcl, col_types=spec$col), warning = h)
 		}
-	as.data.frame(filter(d, satzart %in% stzrt) )
+	as.data.frame(d[d$satzart==stzrt,]) 
 	}
 
 # Suppress expected specific warning 

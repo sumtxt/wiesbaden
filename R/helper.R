@@ -1,4 +1,3 @@
-
 make_genesis <- function(genesis){
 	if ( is.null(genesis['db']) ) {
 		stop("genesis['db'] missing/unrecognized.")
@@ -10,7 +9,7 @@ make_genesis <- function(genesis){
 		if ( .Platform['OS.type'] == 'unix' & 
 			file.exists('~/.genesis.json') ){
 				cred <- fromJSON(read_file('~/.genesis.json'))
-				cred <- subset(cred, name==genesis['db'])
+				cred <- cred[cred$name==genesis['db'],]
 				if ( nrow(cred)!= 1 ) stop("Error in retrieving credentials from ~/.genesis.json")
 				genesis["user"] <- as.character(cred['user'])
 				genesis["password"] <- as.character(cred['password'])
@@ -59,21 +58,9 @@ set_db2 <- function(db){
 	}
 
 
-# Source: https://stackoverflow.com/questions/17517319/r-replacing-foreign-characters-in-a-string
-to_plain <- function(s) {
-   old1 <- "šžþàáâãäåçèéêëìíîïðñòóôõöùúûüýŠŽÞÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖÙÚÛÜÝ"
-   new1 <- "szyaaaaaaceeeeiiiidnooooouuuuySZYAAAAAACEEEEIIIIDNOOOOOUUUUY"
-   s1 <- chartr(old1, new1, s)
-   old2 <- c("œ", "ß", "æ", "ø")
-   new2 <- c("oe", "ss", "ae", "oe")
-   s2 <- s1
-   for(i in seq_along(old2)) s2 <- gsub(old2[i], new2[i], s2, fixed = TRUE)
-   return(s2)
-   }
-
 get_character_vec <- function(x){ 
 	x <- paste(unlist(na.omit(x), use.names=FALSE), collapse="_")
-	x <- to_plain(x)
+	x <- stri_trans_general(x, "Latin-ASCII")
 	x <- str_replace_all(x, " *", "")
 	x <- str_replace_all(x, "[^a-zA-Z0-9_]", "")
 	return(x)
