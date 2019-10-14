@@ -1,9 +1,12 @@
 # wiesbaden
 
+# Version 1.2.0 (2019-10-14)
+
+* Database usernames and passwords are now stored securely via keyring package instead of a file in the root directory. 
+
 # Version 1.1.1 (2019-10-14)
 
 * Allow to retrieve 2500 value labels when using `retrieve_valuelabel()` (instead of only 500)
-
 
 # Version 1.1.0 (2019-10-13)
 

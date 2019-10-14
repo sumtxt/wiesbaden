@@ -1,10 +1,10 @@
 Package: wiesbaden
-Title: Client to Access Databases from the Federal Statistical Office, Germany
-Version: 1.1.1
+Title: Access Databases from the Federal Statistical Office of Germany
+Version: 1.2.0
 Date: 2019-10-13
 Author: Moritz Marbach <moritz.marbach@gess.ethz.ch> [aut, cre]
 Maintainer: Moritz Marbach <moritz.marbach@gess.ethz.ch>
-Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany using their SOAP XML web service. 
+Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany (DESTATIS) using their SOAP XML web service. 
 Depends:
     R (>= 3.3.1)
 License: GPL-3

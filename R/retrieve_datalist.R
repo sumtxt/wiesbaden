@@ -61,7 +61,6 @@ retrieve_datalist <- function(tableseries,
 	d$description <- unlist(lapply(str_split(d$description, pattern=",", n=2), function(x) x[2] ))
 	d$description <- str_trim(str_replace_all(d$description, "\n", " "))
 
-	if ( nrow(d) > 500 ) cat("Warning: The selected series might contain more data, 
-		but maximum number of results (N=500) was hit.\n")
+	if ( nrow(d) == 500 ) warning("The selected series might contain more data. The maximum number of results was retrieved (N=500).\n")
 	return(d)
 	}

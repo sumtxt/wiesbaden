@@ -76,7 +76,7 @@ retrieve_data <- function(
 		stand = '',
 		sprache = 'de')
 
-	httrdata <- GET(baseurl, query  = param, progress(), ... ); cat("\n")
+	httrdata <- GET(baseurl, query  = param, progress(), ... )
 	xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")
 	entries <- xml_find_all(xmldata, './/quaderDaten')
 
