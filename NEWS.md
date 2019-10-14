@@ -1,5 +1,10 @@
 # wiesbaden
 
+# Version 1.1.1 (2019-10-14)
+
+* Allow to retrieve more than 500 value labels when using `retrieve_valuelabel()`
+
+
 # Version 1.1.0 (2019-10-13)
 
 * Added a vignette and revised documentation for some functions.

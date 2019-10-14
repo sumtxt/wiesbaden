@@ -1,6 +1,6 @@
 Package: wiesbaden
 Title: Client to Access Databases from the Federal Statistical Office, Germany
-Version: 1.1.0
+Version: 1.1.1
 Date: 2019-10-13
 Author: Moritz Marbach <moritz.marbach@gess.ethz.ch> [aut, cre]
 Maintainer: Moritz Marbach <moritz.marbach@gess.ethz.ch>

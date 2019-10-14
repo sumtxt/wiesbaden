@@ -4,13 +4,15 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL,
-  ...)
+retrieve_valuelabel(variablename, valuelabel = "*", listenLaenge = 500,
+  genesis = NULL, ...)
 }
 \arguments{
 \item{variablename}{name of the variable}
 
 \item{valuelabel}{"*" (default) retrieves all value labels.}
+
+\item{listenLaenge}{maximal number of labels to retrieve (default is 500).}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
 

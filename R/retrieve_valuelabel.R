@@ -5,6 +5,7 @@
 #' @param variablename name of the variable 
 #' @param valuelabel "*" (default) retrieves all value labels. 
 #' @param genesis to authenticate a user and set the database (see below).
+#' @param listenLaenge maximal number of labels to retrieve (default is 500).
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
@@ -31,6 +32,7 @@
 retrieve_valuelabel <- function(
 	variablename, 
 	valuelabel="*", 
+	listenLaenge=500, 
 	genesis=NULL, ... ) {
 
 	genesis <- make_genesis(genesis)
@@ -45,7 +47,7 @@ retrieve_valuelabel <- function(
 		auswahl = valuelabel, 
 		kriterium = '',
 		bereich = 'Alle',
-		listenLaenge = '500',
+		listenLaenge = as.character(listenLaenge),
 		sprache = 'de')
 
 	datenaufbau <- GET(baseurl, query  = param, ... ) 
