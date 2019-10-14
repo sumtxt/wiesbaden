@@ -16,7 +16,8 @@ Imports:
     stringr (>= 1.1.0),
     stringi (>= 1.4.0),
     readr (>= 1.0.0),
-    jsonlite (>= 1.6.0)
+    jsonlite (>= 1.6.0),
+    keyring (>= 1.1.0)
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,

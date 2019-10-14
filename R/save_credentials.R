@@ -1,36 +1,34 @@
-#' Saves database credentials in home folder (only for Linux/Mac)
+#' Saves database credentials 
 #'
-#' \code{save_credentials} saves a set of database credentials to \code{'~/.genesis.json'} to ease package usage. 
+#' \code{save_credentials} saves a set of database credentials using the \code{keyring} package. 
 #'
 #' @param db database name, either 'nrw', 'regio', 'de' or 'bm'. 
-#' @param user user name. 
-#' @param password password. 
-#' @param append add credentials to file (default) or overwrite entire file? 
+#' @param user your user name. 
+#' @param password your password. 
 #'   
 #' @details  
-#'  Attention, user/password are stored in an unencrypted file in \code{'~/.genesis.json'}. 
-#'  
-
-#' @seealso \code{\link{wiesbaden}} 
+#'  User/password are stored in Keychain on macOS, Credential Store on Windows or Secret Service API on Linux. 
+#'  If a user/password pair for a database already exists, it is silently replaced with the new pair.  
+#' 
+#' @seealso \code{\link{wiesbaden}}, \code{\link{keyring}} 
 #'
 #' 
 #' 
 #' @export
-save_credentials <- function(db, user, password, append=TRUE){
-	if ( .Platform['OS.type'] != 'unix') stop("Saving credentials only works for Mac and Linux platforms.")
+save_credentials <- function(db, user, password){
 	if ( !(db %in% c("nrw", "regio", "de", "bm")) ) stop(paste("Database '", db, "' unknown.",sep=""))
-	new <- data.frame(name=db, user=user, password=password)
- 	if ( file.exists('~/.genesis.json') & append==TRUE ){
-		cred <- fromJSON(read_file('~/.genesis.json'))
-		if ( nrow(cred)== 0 ) stop("Error in retrieving credentials from ~/.genesis.json")
-		if ( db %in% cred$name ) stop(paste("Credentials for '", db, "' already saved.",sep=""))
-		cred <- rbind(cred,new)
-		cred <- toJSON(cred)
-	} else {
-		cred <- toJSON(new)
-	}
-	write(cred, "~/.genesis.json")
-	if (append==TRUE) { cat("Successfully added credentials.\n") } 
-	else { cat("Successfully saved credentials.\n") } 
+	if (db=='regio'){
+		key_set_with_value("regionalstatistik", username=user, password=password)
+		message("Successfully added credentials.")
+	} else if (db=='nrw'){
+		key_set_with_value("landesdatenbank-nrw", username=user, password=password)
+		message("Successfully added credentials.")
+	} else if (db=='bm'){
+		key_set_with_value("bildungsmonitoring", username=user, password=password)
+		message("Successfully added credentials.")
+	}	else if (db=='de'){
+		key_set_with_value("destatis", username=user, password=password)
+		message("Successfully saved credentials.")
+	}	
 	}
 

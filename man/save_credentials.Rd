@@ -2,25 +2,24 @@
 % Please edit documentation in R/save_credentials.R
 \name{save_credentials}
 \alias{save_credentials}
-\title{Saves database credentials in home folder (only for Linux/Mac)}
+\title{Saves database credentials}
 \usage{
-save_credentials(db, user, password, append = TRUE)
+save_credentials(db, user, password)
 }
 \arguments{
 \item{db}{database name, either 'nrw', 'regio', 'de' or 'bm'.}
 
-\item{user}{user name.}
+\item{user}{your user name.}
 
-\item{password}{password.}
-
-\item{append}{add credentials to file (default) or overwrite entire file?}
+\item{password}{your password.}
 }
 \description{
-\code{save_credentials} saves a set of database credentials to \code{'~/.genesis.json'} to ease package usage.
+\code{save_credentials} saves a set of database credentials using the \code{keyring} package.
 }
 \details{
-Attention, user/password are stored in an unencrypted file in \code{'~/.genesis.json'}.
+User/password are stored in Keychain on macOS, Credential Store on Windows or Secret Service API on Linux. 
+ If a user/password pair for a database already exists, it is silently replaced with the new pair.
 }
 \seealso{
-\code{\link{wiesbaden}}
+\code{\link{wiesbaden}}, \code{\link{keyring}}
 }

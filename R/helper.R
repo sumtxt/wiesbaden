@@ -6,21 +6,30 @@ make_genesis <- function(genesis){
 		stop("genesis['db'] missing/unrecognized.")
 	}
 	if ( is.na(genesis['user']) | is.na(genesis['password']) ){
-		if ( .Platform['OS.type'] == 'unix' & 
-			file.exists('~/.genesis.json') ){
-				cred <- fromJSON(read_file('~/.genesis.json'))
-				cred <- cred[cred$name==genesis['db'],]
-				if ( nrow(cred)!= 1 ) stop("Error in retrieving credentials from ~/.genesis.json")
-				genesis["user"] <- as.character(cred['user'])
-				genesis["password"] <- as.character(cred['password'])
-		} else {
+		if (genesis['db']=='regio'){
+			genesis <- key_user_pw(genesis,"regionalstatistik")
+		}
+		else if (genesis['db']=='nrw'){
+			genesis <- key_user_pw(genesis,"landesdatenbank-nrw")
+		}
+		else if (genesis['db']=='bm'){
+			genesis <- key_user_pw(genesis,"bildungsmonitoring")
+		}	
+		else if (genesis['db']=='de'){
+			genesis <- key_user_pw(genesis,"destatis")
+		}	else {
 			stop("genesis['user']/genesis['password'] is missing.")
 		}
 	}
 	return(genesis)
 	}
 
-	
+key_user_pw <- function(genesis,service){
+	genesis["user"] <- as.character(key_list(service)['username'])
+	genesis["password"] <- as.character(key_get(service))
+	return(genesis)
+	}
+
 # genesis_error_check <- function(xml){
 # 	
 # 	if ( length(xml)==0 ) {

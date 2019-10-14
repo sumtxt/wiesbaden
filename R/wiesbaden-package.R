@@ -24,6 +24,7 @@
 #' 
 #' @import httr 
 #' @import xml2
+#' @importFrom keyring key_set_with_value key_list key_get
 #' @importFrom stringr str_detect str_split str_replace_all str_trim
 #' @importFrom readr read_csv read_csv2 read_fwf read_delim read_file locale cols col_character
 #' @importFrom stringi stri_trans_general
