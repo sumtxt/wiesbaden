@@ -5,7 +5,6 @@
 #' @param variablename name of the variable 
 #' @param valuelabel "*" (default) retrieves all value labels. 
 #' @param genesis to authenticate a user and set the database (see below).
-#' @param listenLaenge maximal number of labels to retrieve (default is 500).
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
@@ -32,13 +31,13 @@
 retrieve_valuelabel <- function(
 	variablename, 
 	valuelabel="*", 
-	listenLaenge=500, 
 	genesis=NULL, ... ) {
 
 	genesis <- make_genesis(genesis)
 
 	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
+	# listenLaenge: 2500 is the max for this API
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',
 		kennung  = genesis['user'],
@@ -47,7 +46,7 @@ retrieve_valuelabel <- function(
 		auswahl = valuelabel, 
 		kriterium = '',
 		bereich = 'Alle',
-		listenLaenge = as.character(listenLaenge),
+		listenLaenge = '2500',
 		sprache = 'de')
 
 	datenaufbau <- GET(baseurl, query  = param, ... ) 

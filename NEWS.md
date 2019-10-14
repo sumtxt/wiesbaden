@@ -2,7 +2,7 @@
 
 # Version 1.1.1 (2019-10-14)
 
-* Allow to retrieve more than 500 value labels when using `retrieve_valuelabel()`
+* Allow to retrieve 2500 value labels when using `retrieve_valuelabel()` (instead of only 500)
 
 
 # Version 1.1.0 (2019-10-13)
