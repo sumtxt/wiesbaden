@@ -8,7 +8,7 @@ Access to the following databases is implemented:
 * [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
 * [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
 
-Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user (Premium Nutzer, 500 Euro per year). For all other databases, the standard, free user account is sufficient.
+Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user ([Premium Nutzer, 500 Euro per year](https://www-genesis.destatis.de/genesis/online?Menu=Hilfe)). For all other databases, the standard, free user account is sufficient. 
 
 
 # Installation 
@@ -39,7 +39,7 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 		set_config(use_proxy("your.proxy", port = 1234, auth = "basic"))
 		data <- retrieve_data(...)      
 
-* When I try to access the data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) I get an error message. What can I do? _Different from the other databases, you need to get a premium acccount (see above)._ 
+* When I try to access the data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) I get an error message. What can I do? _Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader)._ 
 
 
 # Similar and Complementary Packages 
