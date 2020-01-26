@@ -15,12 +15,12 @@ Note, to access any of the databases using this package, you need to register on
 
 The package has to be installed directly from the Github repository: 
 	
-	library(devtools)
+	library(remotes)
 	install_github("sumtxt/wiesbaden")
 
 Alternatively, you can also download the package as a zip file, unzip it on your computer and run:
 	
-	library(devtools)
+	library(remotes)
 	install_local("PATH/TO/PACKAGE/FOLDER")
 
 
