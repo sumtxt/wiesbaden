@@ -25,8 +25,9 @@ make_genesis <- function(genesis){
 	}
 
 key_user_pw <- function(genesis,service){
-	genesis["user"] <- as.character(key_list(service)['username'])
-	genesis["password"] <- as.character(key_get(service))
+	genesis["user"] <- as.character(key_list(service=service)['username'])
+	genesis["password"] <- as.character(key_get(service=service, 
+		username=genesis["user"]))
 	return(genesis)
 	}
 
