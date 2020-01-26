@@ -9,11 +9,13 @@
 Data retrieval client for Federal Statistical Office of Germany
 }
 \details{
-To authenticate a user and set the database, supply a vector with user/password and database shortname in this form: 
-\code{destatis_user <- c(user="your-username", password="your-password", db="database-shortname")}
+To authenticate, supply a vector with your user name, password, and database 
+shortcut ("regio", "de", "nrw", "bm") as an argument for the \code{genesis} 
+parameter whenever you call a \code{retrieve_*} function:
+\code{c(user="your-username", password="your-password", db="database-shortname")}
 
-Alternatively if you use Linux or Mac, place a json file named '.genesis.json' in your root directory (~). Use the 
-\code{\link{save_credentials}} to generate this file. This only works with Linux/Mac!
+Alternatively, store the credentials on your computer using the \code{\link{save_credentials}} function. This function 
+relies on the \code{\link{keyring}} package. 
 
 Available databases are regionalstatistik.de (shortname: "regio"), landesdatenbank.nrw.de ("nrw"), 
 www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm").

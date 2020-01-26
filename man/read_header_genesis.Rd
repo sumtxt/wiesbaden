@@ -4,9 +4,14 @@
 \alias{read_header_genesis}
 \title{Read Header of a GENESIS csv}
 \usage{
-read_header_genesis(..., start, lines = 2,
-  readr_locale = locale(encoding = "windows-1252"), replacer = NULL,
-  clean_letters = TRUE)
+read_header_genesis(
+  ...,
+  start,
+  lines = 2,
+  readr_locale = locale(encoding = "windows-1252"),
+  replacer = NULL,
+  clean_letters = TRUE
+)
 }
 \arguments{
 \item{...}{arguments to \code{read_csv2}}

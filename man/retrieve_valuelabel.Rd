@@ -4,8 +4,7 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL,
-  ...)
+retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL, ...)
 }
 \arguments{
 \item{variablename}{name of the variable}
@@ -30,7 +29,7 @@ See the package description (\code{\link{wiesbaden}}) for details about setting 
  \dontrun{
  # Value labels contain for the variable 'PART04' in the table with the 
  # federal election results on the county level. 
- # Assumes that user/password are stored in ~/.genesis.json
+ # Assumes that user/password are stored via save_credentials()
  
  metadata <- retrieve_valuelabel(variablename="PART04", genesis=c(db="regio") )
  }

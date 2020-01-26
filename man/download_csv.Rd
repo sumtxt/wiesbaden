@@ -4,8 +4,14 @@
 \alias{download_csv}
 \title{Download the csv-file of a table}
 \usage{
-download_csv(tablename, startyear = "", endyear = "", ...,
-  genesis_db = "de", save = TRUE)
+download_csv(
+  tablename,
+  startyear = "",
+  endyear = "",
+  ...,
+  genesis_db = "de",
+  save = TRUE
+)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}

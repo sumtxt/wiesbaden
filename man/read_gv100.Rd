@@ -4,8 +4,7 @@
 \alias{read_gv100}
 \title{Reads the DESTATIS GV100 Format}
 \usage{
-read_gv100(file, stzrt, version = NULL, lcl = locale(encoding =
-  "iso-8859-1"))
+read_gv100(file, stzrt, version = NULL, lcl = locale(encoding = "iso-8859-1"))
 }
 \arguments{
 \item{file}{path to file}

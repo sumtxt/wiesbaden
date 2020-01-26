@@ -4,8 +4,14 @@
 \alias{retrieve_data}
 \title{Retrieves Data from GENESIS Databases}
 \usage{
-retrieve_data(tablename, startyear = "", endyear = "",
-  regionalschluessel = "", genesis = NULL, ...)
+retrieve_data(
+  tablename,
+  startyear = "",
+  endyear = "",
+  regionalschluessel = "",
+  genesis = NULL,
+  ...
+)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
@@ -37,7 +43,7 @@ package description (\code{\link{wiesbaden}}) for details about setting the logi
  \dontrun{
  # Retrieve values for the table 14111KJ002 which contains the 
  # federal election results on the county level. 
- # Assumes that user/password are stored in ~/.genesis.json
+ # Assumes that user/password are stored via save_credentials()
 
  data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
  }
