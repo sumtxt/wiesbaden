@@ -19,7 +19,7 @@
 #'  \dontrun{
 #'  # Meta data contain the explanations to the variable names for the table
 #'  # federal election results on the county level. 
-#'  # Assumes that user/password are stored in ~/.genesis.json
+#'  # Assumes that user/password are stored via save_credentials()
 #' 
 #'  metadata <- retrieve_metadata(tablename="14111KJ002", genesis=c(db="regio") )
 #'  }

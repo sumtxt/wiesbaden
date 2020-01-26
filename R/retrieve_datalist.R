@@ -20,7 +20,7 @@
 #'  \dontrun{
 #'  # Retrieves list of available tables for the table series 14111 
 #'  # which contains the federal election results. 
-#'  # Assumes that user/password are stored in ~/.genesis.json
+#'  # Assumes that user/password are stored via save_credentials()
 #' 
 #'  d <- retrieve_datalist(tableseries="14111", genesis=c(db="regio") )
 #'  }

@@ -29,7 +29,7 @@ To authenticate, supply a vector with your user name, password, and database sho
 
 	c(user="your-username", password="your-password", db="database-shortname")
 
-Alternatively, if you use Linux or Mac, you can use `save_credentials()` to generate a file named '.genesis.json' in your root directory that includes your login and password. Please note that this file is unencrypted. If this file exists, the argument `genesis` only needs to include the database shortname. 
+Alternatively, you can use `save_credentials()` to store the credentials on your computer. This function relies on the [keyring package](https://github.com/r-lib/keyring). For more details about how credentials are stored by this package, see the keyring package documentation.  
 
 Use the function `test_login()` to check if your login/password combination allows you to access the respective database (and if the server is functioning properly). 
 

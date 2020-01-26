@@ -18,7 +18,7 @@
 #'  \dontrun{
 #'  # Variable information 'AI2105' (Anteil der Empfänger von Arbeitslosengeld II im Alter 
 #'  # von 15 bis 24 Jahren an der Bevölkerung gleichen Alters)
-#'  # Assumes that user/password are stored in ~/.genesis.json
+#'  # Assumes that user/password are stored via save_credentials()
 #'  
 #'  metadata <- retrieve_varinfo(variablename="AI2105", genesis=c(db="regio") )
 #'  }

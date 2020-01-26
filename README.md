@@ -32,6 +32,7 @@ The package also helps with importing the [German municipality register files](h
 
 Users that wish to work with the `csv` files might find the `download_csv()` and `read_header_genesis()` in this package helpful. The former can be used to automate downloads and the latter facilitates importing downloaded files. Users might also wish to check the R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanwebir).
 
+
 # FAQ 
 
 * Does this package work with a proxy? _Yes. Set the proxy globally before calling any package command, e.g.:_ 

@@ -1,5 +1,11 @@
 # wiesbaden
 
+# Version 1.2.1 (2020-01-26)
+
+* Fixed a bug that leads `keyring` to fail when trying to retrieve the credentials on a Windows machine.
+* Fixed some bugs in the package documentation/vignette.
+* Anticipating DESTATIS API changes in February, increase the default value to 25000 for the number of retrievable value labels via `retrieve_valuelabel()`.
+
 # Version 1.2.0 (2019-10-14)
 
 * Database usernames and passwords are now stored securely via keyring package instead of a file in the root directory. 

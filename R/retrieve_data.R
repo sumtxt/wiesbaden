@@ -31,7 +31,7 @@
 #'  \dontrun{
 #'  # Retrieve values for the table 14111KJ002 which contains the 
 #'  # federal election results on the county level. 
-#'  # Assumes that user/password are stored in ~/.genesis.json
+#'  # Assumes that user/password are stored via save_credentials()
 #' 
 #'  data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
 #'  }

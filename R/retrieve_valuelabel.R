@@ -19,7 +19,7 @@
 #'  \dontrun{
 #'  # Value labels contain for the variable 'PART04' in the table with the 
 #'  # federal election results on the county level. 
-#'  # Assumes that user/password are stored in ~/.genesis.json
+#'  # Assumes that user/password are stored via save_credentials()
 #'  
 #'  metadata <- retrieve_valuelabel(variablename="PART04", genesis=c(db="regio") )
 #'  }
@@ -37,7 +37,7 @@ retrieve_valuelabel <- function(
 
 	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
-	# listenLaenge: 2500 is the max for this API
+	# listenLaenge: 25000 is the max for this API
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',
 		kennung  = genesis['user'],
@@ -46,7 +46,7 @@ retrieve_valuelabel <- function(
 		auswahl = valuelabel, 
 		kriterium = '',
 		bereich = 'Alle',
-		listenLaenge = '2500',
+		listenLaenge = '25000',
 		sprache = 'de')
 
 	datenaufbau <- GET(baseurl, query  = param, ... ) 
