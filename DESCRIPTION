@@ -8,6 +8,8 @@ Description: Retrieve and import data from different databases of the Federal St
 Depends:
     R (>= 3.3.1)
 License: GPL-3
+URL: https://github.com/sumtxt/wiesbaden/
+BugReports: https://github.com/sumtxt/wiesbaden/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
