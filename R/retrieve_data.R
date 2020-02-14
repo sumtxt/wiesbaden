@@ -41,7 +41,8 @@
 #' 
 #'  # ... only the values for the AfD. 
 #'
-#'  data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", sachschluessel="AFD", genesis=c(db="regio") )
+#'  data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", 
+#'    sachschluessel="AFD", genesis=c(db="regio") )
 #'  }
 #' 
 #' 
