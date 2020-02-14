@@ -4,6 +4,7 @@
 #'
 #' @param tableseries name of series for which tables should be retrieved. 
 #' @param genesis to authenticate a user and set the database (see below).
+#' @param language retrieve information in German "de" (default) or in English "en" if available. 
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #'   
@@ -30,7 +31,7 @@
 #' 
 #' @export
 retrieve_datalist <- function(tableseries, 
-	genesis=NULL, ... ) {
+	genesis=NULL, language='de', ... ) {
 
 	genesis <- make_genesis(genesis)
 
@@ -43,7 +44,7 @@ retrieve_datalist <- function(tableseries,
 		bereich = 'Alle',
 		filter = tableseries,
 		listenLaenge = '500',
-		sprache = 'de')
+		sprache = language)
 
 	httrdata <- GET(baseurl, query  = param, ... ) 
 	xmldata <- content(httrdata, type='text/xml', encoding="UTF-8")

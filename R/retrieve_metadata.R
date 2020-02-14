@@ -4,6 +4,7 @@
 #'
 #' @param tablename name of the table to retrieve.
 #' @param genesis to authenticate a user and set the database (see below).
+#' @param language retrieve information in German "de" (default) or in English "en" if available. 
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #'   
@@ -29,7 +30,7 @@
 #' 
 #' @export
 retrieve_metadata <- function(
-	tablename, 
+	tablename, language='de',
 	genesis=NULL, ... ) {
 
 	genesis <- make_genesis(genesis)
@@ -42,7 +43,7 @@ retrieve_metadata <- function(
 		passwort = genesis['password'],
 		namen = tablename,
 		bereich = 'Alle',
-		sprache = 'de')
+		sprache = language)
 
 	datenaufbau <- GET(baseurl, query  = param, ... )  
 	datenaufbau <- content(datenaufbau, type='text/xml', encoding="UTF-8")

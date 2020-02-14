@@ -4,7 +4,13 @@
 \alias{retrieve_valuelabel}
 \title{Retrieves Value Labels from GENESIS Databases}
 \usage{
-retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL, ...)
+retrieve_valuelabel(
+  variablename,
+  valuelabel = "*",
+  genesis = NULL,
+  language = "de",
+  ...
+)
 }
 \arguments{
 \item{variablename}{name of the variable}
@@ -12,6 +18,8 @@ retrieve_valuelabel(variablename, valuelabel = "*", genesis = NULL, ...)
 \item{valuelabel}{"*" (default) retrieves all value labels.}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{...}{other arguments send to the httr::GET request.}
 }

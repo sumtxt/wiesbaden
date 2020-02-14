@@ -4,10 +4,12 @@
 \alias{retrieve_metadata}
 \title{Retrieves Meta Data from GENESIS Databases}
 \usage{
-retrieve_metadata(tablename, genesis = NULL, ...)
+retrieve_metadata(tablename, language = "de", genesis = NULL, ...)
 }
 \arguments{
 \item{tablename}{name of the table to retrieve.}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
 

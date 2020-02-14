@@ -4,6 +4,7 @@
 #'
 #' @param variablename name of the variable 
 #' @param genesis to authenticate a user and set the database (see below).
+#' @param language retrieve information in German "de" (default) or in English "en" if available. 
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
@@ -29,7 +30,7 @@
 #' @export
 retrieve_varinfo <- function(
 	variablename, 
-	genesis=NULL, ... ) {
+	genesis=NULL, language='de', ... ) {
 
 	genesis <- make_genesis(genesis)
 
@@ -41,7 +42,7 @@ retrieve_varinfo <- function(
 		passwort = genesis['password'],
 		name = variablename,
 		bereich = 'Alle',
-		sprache = 'de')
+		sprache = language)
 
 	datenaufbau <- GET(baseurl, query  = param, ... ) 
 	datenaufbau <- content(datenaufbau, type='text/xml', encoding="UTF-8")

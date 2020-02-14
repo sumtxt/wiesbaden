@@ -9,7 +9,14 @@ retrieve_data(
   startyear = "",
   endyear = "",
   regionalschluessel = "",
+  sachmerkmal = "",
+  sachschluessel = "",
+  sachmerkmal2 = "",
+  sachschluessel2 = "",
+  sachmerkmal3 = "",
+  sachschluessel3 = "",
   genesis = NULL,
+  language = "de",
   ...
 )
 }
@@ -20,9 +27,15 @@ retrieve_data(
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: "".}
 
-\item{regionalschluessel}{only retrieve values for a particular regional unit. Default: "".}
+\item{regionalschluessel}{only retrieve values for a particular regional unit. See details for more information. Default: "".}
+
+\item{sachmerkmal, sachmerkmal2, sachmerkmal3}{key for Sachklassifikation. Default: "".}
+
+\item{sachschluessel, sachschluessel2, sachschluessel3}{value for Sachklassifikation. Default: "".}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{...}{other arguments send to the httr::GET request.}
 }
@@ -36,7 +49,9 @@ valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typica
 }
 \details{
 Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
-package description (\code{\link{wiesbaden}}) for details about setting the login and database.
+package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
+
+The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed.
 }
 \examples{
 
@@ -46,6 +61,10 @@ package description (\code{\link{wiesbaden}}) for details about setting the logi
  # Assumes that user/password are stored via save_credentials()
 
  data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
+
+ # ... only the values for the AfD. 
+
+ data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", sachschluessel="AFD", genesis=c(db="regio") )
  }
 
 

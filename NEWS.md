@@ -1,5 +1,12 @@
 # wiesbaden
 
+# Version 1.2.2 (2020-02-14)
+
+* Allow to switch language between German and English. 
+* Allow to supply sachmerkmal and sachschluessel as parameter 
+* Revised the help files.
+
+
 # Version 1.2.1 (2020-01-26)
 
 * Fixed a bug that leads `keyring` to fail when trying to retrieve the credentials on a Windows machine.

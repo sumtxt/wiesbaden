@@ -6,8 +6,11 @@
 #' @param tablename name of the table to retrieve.
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: "".
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: "".
-#' @param regionalschluessel only retrieve values for a particular regional unit. Default: "".
+#' @param regionalschluessel only retrieve values for a particular regional unit. See details for more information. Default: "".
+#' @param sachmerkmal,sachmerkmal2,sachmerkmal3 key for Sachklassifikation. Default: "".
+#' @param sachschluessel,sachschluessel2,sachschluessel3 value for Sachklassifikation. Default: "". 
 #' @param genesis to authenticate a user and set the database (see below).
+#' @param language retrieve information in German "de" (default) or in English "en" if available. 
 #' @param ... other arguments send to the httr::GET request. 
 #' 
 #'   
@@ -16,6 +19,7 @@
 #' Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
 #' package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 #' 
+#' The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed.
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
@@ -34,6 +38,10 @@
 #'  # Assumes that user/password are stored via save_credentials()
 #' 
 #'  data <- retrieve_data(tablename="14111KJ002", genesis=c(db="regio") )
+#' 
+#'  # ... only the values for the AfD. 
+#'
+#'  data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", sachschluessel="AFD", genesis=c(db="regio") )
 #'  }
 #' 
 #' 
@@ -45,7 +53,13 @@ retrieve_data <- function(
 	startyear = "", 
 	endyear = "", 
 	regionalschluessel = "", 
-	genesis=NULL, ... ) {
+	sachmerkmal = "",
+	sachschluessel = "",
+	sachmerkmal2 = "",
+	sachschluessel2 = "",
+	sachmerkmal3 = "",
+	sachschluessel3 = "",
+	genesis=NULL, language='de', ... ) {
 
 	genesis <- make_genesis(genesis)
 
@@ -67,14 +81,14 @@ retrieve_data <- function(
 		inhalte = '',
 		regionalmerkmal = '',
 		regionalschluessel = regionalschluessel,
-		sachmerkmal = '',
-		sachschluessel = '',
-		sachmerkmal2 = '',
-		sachschluessel2 = '',
-		sachmerkmal3 = '',
-		sachschluessel3 = '',
+		sachmerkmal = sachmerkmal,
+		sachschluessel = sachschluessel,
+		sachmerkmal2 = sachmerkmal2,
+		sachschluessel2 = sachschluessel2,
+		sachmerkmal3 = sachmerkmal3,
+		sachschluessel3 = sachschluessel3,
 		stand = '',
-		sprache = 'de')
+		sprache = language)
 
 	httrdata <- GET(baseurl, query  = param, progress(), ... )
 	xmldata <- content(httrdata, type='text/xml', options="HUGE", encoding="UTF-8")

@@ -4,12 +4,14 @@
 \alias{retrieve_varinfo}
 \title{Retrieves further information on a variable from GENESIS Databases}
 \usage{
-retrieve_varinfo(variablename, genesis = NULL, ...)
+retrieve_varinfo(variablename, genesis = NULL, language = "de", ...)
 }
 \arguments{
 \item{variablename}{name of the variable}
 
 \item{genesis}{to authenticate a user and set the database (see below).}
+
+\item{language}{retrieve information in German "de" (default) or in English "en" if available.}
 
 \item{...}{other arguments send to the httr::GET request.}
 }
