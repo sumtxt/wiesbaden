@@ -38,7 +38,7 @@ retrieve_valuelabel <- function(
 
 	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
-	# listenLaenge: 25000 is the max for this API
+	# listenLaenge: 2500 is the max for this API
 	param <- list(
 		method  = 'MerkmalAuspraegungenKatalog',
 		kennung  = genesis['user'],
@@ -47,7 +47,7 @@ retrieve_valuelabel <- function(
 		auswahl = valuelabel, 
 		kriterium = '',
 		bereich = 'Alle',
-		listenLaenge = '25000',
+		listenLaenge = 2500,
 		sprache = language)
 
 	datenaufbau <- GET(baseurl, query  = param, ... ) 
