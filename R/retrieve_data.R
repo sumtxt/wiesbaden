@@ -7,6 +7,7 @@
 #' @param startyear only retrieve values for years equal or larger to \code{startyear}. Default: "".
 #' @param endyear only retrieve values for years smaller or equal to \code{endyear}. Default: "".
 #' @param regionalschluessel only retrieve values for a particular regional unit. See details for more information. Default: "".
+#' @param regionalmerkmal key for Regionalklassifikation. See details for more information. Default: "".
 #' @param sachmerkmal,sachmerkmal2,sachmerkmal3 key for Sachklassifikation. Default: "".
 #' @param sachschluessel,sachschluessel2,sachschluessel3 value for Sachklassifikation. Default: "". 
 #' @param genesis to authenticate a user and set the database (see below).
@@ -19,7 +20,7 @@
 #' Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
 #' package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 #' 
-#' The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed.
+#' The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND.
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
@@ -43,16 +44,21 @@
 #'
 #'  data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", 
 #'    sachschluessel="AFD", genesis=c(db="regio") )
-#'  }
+#
 #' 
+#' # ... or only values from Saxony
 #' 
+#'  data <- retrieve_data(tablename="14111KJ002", regionalmerkmal="KREISE", 
+#'    regionalschluessel="16*", genesis=c(db="regio") )
 #' 
+#' } 
 #' 
 #' @export
 retrieve_data <- function(
 	tablename, 
 	startyear = "", 
 	endyear = "", 
+	regionalmerkmal = "",
 	regionalschluessel = "", 
 	sachmerkmal = "",
 	sachschluessel = "",
@@ -80,7 +86,7 @@ retrieve_data <- function(
 		endjahr = as.character(endyear),
 		zeitscheiben = '',
 		inhalte = '',
-		regionalmerkmal = '',
+		regionalmerkmal = regionalmerkmal,
 		regionalschluessel = regionalschluessel,
 		sachmerkmal = sachmerkmal,
 		sachschluessel = sachschluessel,

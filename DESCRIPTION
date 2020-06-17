@@ -1,6 +1,6 @@
 Package: wiesbaden
 Title: Access Databases from the Federal Statistical Office of Germany
-Version: 1.2.2
+Version: 1.2.3
 Date: 2020-02-14
 Author: Moritz Marbach <moritz.marbach@gess.ethz.ch> [aut, cre]
 Maintainer: Moritz Marbach <moritz.marbach@gess.ethz.ch>
@@ -20,7 +20,7 @@ Imports:
     readr (>= 1.0.0),
     jsonlite (>= 1.6.0),
     keyring (>= 1.1.0)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown,

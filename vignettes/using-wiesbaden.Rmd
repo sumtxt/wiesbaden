@@ -37,7 +37,12 @@ Use the function `test_login()` to check if your login/password combination allo
 ```{r,eval = FALSE}
 library(wiesbaden)
 
+# Assuming credentials are stored via save_credentials()
 test_login(genesis=c(db='regio'))
+#> [1] "Sie wurden erfolgreich an- und abgemeldet."
+
+# ... or supply password/username 
+test_login(genesis=c(db='regio', user="your-username", password="your-password"))
 #> [1] "Sie wurden erfolgreich an- und abgemeldet."
 ```
 
@@ -50,6 +55,8 @@ Using `retrieve_datalist()`, download a `data.frame` of all available data cubes
 ```{r,eval = FALSE}
 d <- retrieve_datalist(tableseries="141*", genesis=c(db='regio')) 
 ```
+
+Note, we are assuming that credentials are stored via `save_credentials()`.
 
 Use `str_detect()` to filter cubes with a description that contains the word "Kreise" (county): 
 

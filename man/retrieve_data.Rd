@@ -8,6 +8,7 @@ retrieve_data(
   tablename,
   startyear = "",
   endyear = "",
+  regionalmerkmal = "",
   regionalschluessel = "",
   sachmerkmal = "",
   sachschluessel = "",
@@ -26,6 +27,8 @@ retrieve_data(
 \item{startyear}{only retrieve values for years equal or larger to \code{startyear}. Default: "".}
 
 \item{endyear}{only retrieve values for years smaller or equal to \code{endyear}. Default: "".}
+
+\item{regionalmerkmal}{key for Regionalklassifikation. See details for more information. Default: "".}
 
 \item{regionalschluessel}{only retrieve values for a particular regional unit. See details for more information. Default: "".}
 
@@ -51,7 +54,7 @@ valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typica
 Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
 package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 
-The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed.
+The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND.
 }
 \examples{
 
@@ -66,10 +69,13 @@ The parameter \code{regionalschluessel} can either be a single value (a single A
 
  data <- retrieve_data(tablename="14111KJ002", sachmerkmal="PART04", 
    sachschluessel="AFD", genesis=c(db="regio") )
- }
 
+# ... or only values from Saxony
 
+ data <- retrieve_data(tablename="14111KJ002", regionalmerkmal="KREISE", 
+   regionalschluessel="16*", genesis=c(db="regio") )
 
+} 
 
 }
 \seealso{
