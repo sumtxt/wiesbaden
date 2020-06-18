@@ -73,7 +73,7 @@ The parameter \code{regionalschluessel} can either be a single value (a single A
 # ... or only values from Saxony
 
  data <- retrieve_data(tablename="14111KJ002", regionalmerkmal="KREISE", 
-   regionalschluessel="16*", genesis=c(db="regio") )
+   regionalschluessel="14*", genesis=c(db="regio") )
 
 } 
 
