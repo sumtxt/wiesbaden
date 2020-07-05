@@ -10,8 +10,8 @@
 #' @param save write string to a text file (default: TRUE)
 #'  
 #' @details
-#' Downloads the csv file either to the working directory \code{getwd()} or outputs it as a string 
-#' This is an alternative approach to the retrieve_*() functions. 
+#' Downloads the csv file either to the working directory \code{getwd()} or outputs it as a string. 
+#' This is an alternative approach to the retrieve_*() functions. This is designed for \url{www-genesis.destatis.de} as it does not require a login. It might not work as expected for the other databases.
 #' 
 #' 
 #' @seealso \code{\link{read_header_genesis}}.
