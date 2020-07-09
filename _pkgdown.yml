@@ -1,0 +1,23 @@
+home:
+  title: wiesbaden - Access Databases from the Federal Statistical Office of Germany
+
+authors:
+  Moritz Marbach: 
+    href: "http://moritz-marbach.com/"
+
+reference:
+- title: "Main functions"
+- contents: 
+    - retrieve_datalist
+    - retrieve_data 
+    - retrieve_metadata
+    - retrieve_valuelabel
+    - retrieve_varinfo
+- title: "Utilities"
+- contents: 
+    - save_credentials
+    - test_login
+    - download_csv
+    - read_gv100
+    - read_header_genesis
+
