@@ -27,7 +27,7 @@ test_login <- function(genesis=NULL, ... ) {
 
 	genesis <- make_genesis(genesis)
 
-	baseurl <- paste(set_db(db=genesis['db']), "TestService", sep="")
+	baseurl <- paste(set_db(db=genesis['db']), "TestService_2010", sep="")
 
 	param <- list(
 		method  = 'logonoff',
