@@ -10,7 +10,7 @@
 #'   
 #' @details 
 #' See the package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
-#' To retrieve a list of all available data use tableseries="*". 
+#' To retrieve a list of all available data use tableseries="*" or combine the wildcard character * with a prefix (see below for an example).
 #' 
 #' @return a \code{data.frame}
 #'
@@ -23,7 +23,7 @@
 #'  # which contains the federal election results. 
 #'  # Assumes that user/password are stored via save_credentials()
 #' 
-#'  d <- retrieve_datalist(tableseries="14111", genesis=c(db="regio") )
+#'  d <- retrieve_datalist(tableseries="14111*", genesis=c(db="regio") )
 #'  }
 #' 
 #' 

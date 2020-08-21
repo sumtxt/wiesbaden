@@ -17,13 +17,13 @@ Note, to access any of the databases using this package, you need to register on
 You can install the package directly from CRAN: 
 
 ```R
-install.packages("ivdesc")
+install.packages("wiesbaden")
 ```
 
 Or install the latest version from Github using:  
 
 ```R	
-remotes::install_github("sumtxt/wiesbaden")
+remotes::install_github("sumtxt/wiesbaden", force=TRUE)
 ```
 
 
