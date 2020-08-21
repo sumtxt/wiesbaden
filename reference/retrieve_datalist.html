@@ -152,7 +152,7 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>See the package description (<code><a href='wiesbaden-package.html'>wiesbaden</a></code>) for details about setting the login and database. 
-To retrieve a list of all available data use tableseries="*".</p>
+To retrieve a list of all available data use tableseries="*" or combine the wildcard character * with a prefix (see below for an example).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='retrieve_data.html'>retrieve_data</a></code> <code><a href='wiesbaden-package.html'>wiesbaden</a></code></p></div>
@@ -164,7 +164,7 @@ To retrieve a list of all available data use tableseries="*".</p>
  <span class='co'># which contains the federal election results. </span>
  <span class='co'># Assumes that user/password are stored via save_credentials()</span>
 
- <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_datalist</span>(<span class='kw'>tableseries</span><span class='kw'>=</span><span class='st'>"14111"</span>, <span class='kw'>genesis</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>db</span><span class='kw'>=</span><span class='st'>"regio"</span>) )
+ <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'>retrieve_datalist</span>(<span class='kw'>tableseries</span><span class='kw'>=</span><span class='st'>"14111*"</span>, <span class='kw'>genesis</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='kw'>db</span><span class='kw'>=</span><span class='st'>"regio"</span>) )
  }</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
