@@ -1,5 +1,11 @@
 # wiesbaden
 
+# Version 1.2.4 (2021-03-15)
+
+* Change to TestService_2010
+* More options to supply sachmerkmal 
+* Fixed bugs 
+
 # Version 1.2.3 (2020-06-17)
 
 * Fixed bug when using the regionalschluessel parameter in retrieve_data()
