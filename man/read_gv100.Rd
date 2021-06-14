@@ -4,7 +4,7 @@
 \alias{read_gv100}
 \title{Reads the DESTATIS GV100 Format}
 \usage{
-read_gv100(file, stzrt, version = NULL, lcl = locale(encoding = "iso-8859-1"))
+read_gv100(file, stzrt, version = NULL, encoding = "iso-8859-1", ...)
 }
 \arguments{
 \item{file}{path to file}
@@ -13,7 +13,9 @@ read_gv100(file, stzrt, version = NULL, lcl = locale(encoding = "iso-8859-1"))
 
 \item{version}{which GV100 version. If NULL the version is guessed based on the file name.}
 
-\item{lcl}{a \code{readr::locale()} specifying the encoding of the file.}
+\item{encoding}{encoding of the file}
+
+\item{...}{other parameters passed to \code{read_fwf}}
 }
 \value{
 a \code{data.frame}.
@@ -25,7 +27,8 @@ The GV100 format is used by DESTATIS to publish the German municipality register
 The Gemeindeverzeichnis (municipality register) is published 
  in a fixed width file refered to as "GV1000 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
- higher order administrative units.  
+ higher order administrative units. \code{read_gv100()} is a 
+ wrapper around [readr::read_fwf()].
 
 There are two types of files: One feature the administrative 
 information (\code{version="AD"}) and one with non-administrative 
@@ -59,6 +62,6 @@ For the NAD version only:
 
 }
 \seealso{
-\url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
-\code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}
+\url{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html}
+[readr::read_fwf()]
 }

@@ -6,15 +6,16 @@
 #' @param file path to file 
 #' @param stzrt integer to select the administrative level (see details)
 #' @param version which GV100 version. If NULL the version is guessed based on the file name. 
-#' @param lcl a \code{readr::locale()} specifying the encoding of the file. 
+#' @param encoding encoding of the file
+#' @param ... other parameters passed to \code{read_fwf} 
 #' 
-#'   
 #'   
 #' @details 
 #' The Gemeindeverzeichnis (municipality register) is published 
 #'  in a fixed width file refered to as "GV1000 ASCII Format" by 
 #'  DESTATIS. The register features the list of municipality and 
-#'  higher order administrative units.  
+#'  higher order administrative units. The function is a wrapper  
+#'  around [readr::read_fwf()].
 #' 
 #' There are two types of files: One feature the administrative 
 #' information (\code{version="AD"}) and one with non-administrative 
@@ -36,14 +37,14 @@
 #' 
 #' 	41 - Kreise (counties)
 #'  61 - Gemeinden (municipalities)
-#'  
 #' 
+#'  
 #' @return a \code{data.frame}. 
 #'   
 #' 
 #' @seealso 
-#' \url{https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html}
-#' \code{\link[readr]{read_fwf}} and \code{\link[readr]{locale}}
+#' \url{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html}
+#' [readr::read_fwf()]
 #' 
 #' 	
 #'
@@ -57,28 +58,69 @@
 #' 
 #' 
 #' @export
-read_gv100 <- function(file, stzrt, version=NULL, 
-		lcl=locale(encoding="iso-8859-1")){
+read_gv100 <- function(file, stzrt, 
+		version=NULL, 
+		encoding="iso-8859-1", 
+		...){
 
-	if ( str_detect(file, "NAD") ) version = "NAD" else version = "AD"
+	if ( is.null(version) ) {
+		version <- ifelse(str_detect(file, "NAD"), "NAD", "AD")
+	} 
 
 	if (version=="AD"){
+		
 		spec <- gv100$ad 
 		spec_fwf <- spec$fwf[spec$fwf$satzart==stzrt,]
-		d <- withCallingHandlers(read_fwf(file, spec_fwf,
-			locale=lcl, col_types=spec$col), warning = h)
-		if (stzrt %in% c(40,50,60)){
-			d <- merge(d, spec$key, by="schluessel", all.y=FALSE, all.x=TRUE)
-			d$schluessel <- d$typ
-			d$typ <- NULL
-		}
-	} else { 
+
+	} else {
+		
 		spec <- gv100$nad 
-		spec_fwf <- spec$fwf[spec$fwf$satzart==stzrt,]
-		d <- withCallingHandlers(read_fwf(file, spec_fwf,
-			locale=lcl, col_types=spec$col), warning = h)
+		spec_fwf <- spec$fwf[spec$fwf$satzart==stzrt,]		
+
 		}
-	as.data.frame(d[d$satzart==stzrt,]) 
+
+	if(str_to_lower(encoding)=="utf-8"){
+
+		# Workaround: https://github.com/sumtxt/wiesbaden/issues/13
+		# "Durch die Aufname der sorbischen Schreibweise in den 
+		# amtlichen Gemeindenamen ist es notwendig geworden, die 
+		# Daten mit UTF-8 zu kodieren." Latin-2 (ISO8859-2) can 
+		# accomodate Sorbian (Latin-1 can not!)
+		x <- read_lines(file=file, 
+			locale = locale(encoding = "UTF-8"), ...)
+		x <- iconv(x, from = "UTF-8", to = "ISO8859-2")
+
+		d <- withCallingHandlers(
+				read_fwf(
+					file=x, 
+					col_positions=spec_fwf,
+					col_types=spec$col, 
+					locale = locale(encoding = "iso-8859-2"),
+					...), 
+			warning = h)
+
+	} else {
+
+		d <- withCallingHandlers(
+			read_fwf(
+				file=file, 
+				col_positions=spec_fwf,
+				col_types=spec$col, 
+				locale = locale(encoding = encoding),
+				...), 
+			warning = h)
+
+		}
+	
+	if (stzrt %in% c(40,50,60) & version=="AD"){
+		d <- merge(d, spec$key, by="schluessel", all.y=FALSE, all.x=TRUE)
+		d$schluessel <- d$typ
+		d$typ <- NULL
+		}
+	
+	d <- d[d$satzart==stzrt,]
+
+	return(as.data.frame(d))
 	}
 
 # Suppress expected specific warning 
