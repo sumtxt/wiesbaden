@@ -31,7 +31,7 @@ download_csv(
 }
 \details{
 Downloads the csv file either to the working directory \code{getwd()} or outputs it as a string. 
-This is an alternative approach to the retrieve_*() functions. This is designed for \url{www-genesis.destatis.de} as it does not require a login. It might not work as expected for the other databases.
+This is an alternative approach to the retrieve_*() functions. This is designed for \url{https://www-genesis.destatis.de/genesis/online} as it does not require a login. It might not work as expected for the other databases.
 }
 \examples{
  \dontrun{

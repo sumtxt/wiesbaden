@@ -1,4 +1,5 @@
 ^data-raw
+^docs
 ^README\.md$
 ^cran-comments\.md$
 ^\.DS_Store
