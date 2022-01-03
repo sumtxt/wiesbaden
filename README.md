@@ -6,8 +6,10 @@ Access to the following databases is implemented:
 
 * [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) 
 * [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
-* [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
 * [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
+* [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
+* [statistikdaten.bayern.de](https://www.statistikdaten.bayern.de/genesis/online/)
+* [genesis.sachsen-anhalt.de](https://genesis.sachsen-anhalt.de/genesis/online)
 
 Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user ([Premium Nutzer, 500 Euro per year](https://www-genesis.destatis.de/genesis/online?Menu=Hilfe)). For all other databases, the standard, free user account is sufficient. 
 

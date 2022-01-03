@@ -2,7 +2,7 @@ make_genesis <- function(genesis){
 	if ( is.null(genesis['db']) ) {
 		stop("genesis['db'] missing/unrecognized.")
 	}
-	if ( !(genesis['db'] %in% c("regio", "nrw", "bm", "de")) ){
+	if ( !(genesis['db'] %in% c("regio", "nrw", "bm", "de", "by", "st")) ){
 		stop("genesis['db'] missing/unrecognized.")
 	}
 	if ( is.na(genesis['user']) | is.na(genesis['password']) ){
@@ -14,6 +14,12 @@ make_genesis <- function(genesis){
 		}
 		else if (genesis['db']=='bm'){
 			genesis <- key_user_pw(genesis,"bildungsmonitoring")
+		}	
+		else if (genesis['db']=='st'){
+			genesis <- key_user_pw(genesis,"landesdatenbank-st")
+		}	
+		else if (genesis['db']=='by'){
+			genesis <- key_user_pw(genesis,"landesdatenbank-by")
 		}	
 		else if (genesis['db']=='de'){
 			genesis <- key_user_pw(genesis,"destatis")
@@ -55,15 +61,9 @@ set_db <- function(db){
 	if (db=="nrw") return("https://www.landesdatenbank.nrw.de/ldbnrwws/services/")
 	if (db=="regio") return("https://www.regionalstatistik.de/genesisws/services/")
 	if (db=="de") return("https://www-genesis.destatis.de/genesisWS/web/")
-	if (db == "bm") return("https://www.bildungsmonitoring.de/bildungws/services/")
-	stop("DB: Currently not implemented.")
-	}
-
-
-set_db2 <- function(db){
-	if (db=="de") return("https://www-genesis.destatis.de/genesis/online")
-	if (db == "by") return("https://www.statistikdaten.bayern.de/genesis/online")
-   if (db == "regio") return("https://www.regionalstatistik.de/genesis/online/")	
+	if (db=="bm") return("https://www.bildungsmonitoring.de/bildungws/services/")
+	if (db=="st") return("https://genesis.sachsen-anhalt.de/webservice/services/")
+	if (db=="by") return("https://www.statistikdaten.bayern.de/genesisWS/services/")
 	stop("DB: Currently not implemented.")
 	}
 
