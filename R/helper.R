@@ -67,6 +67,13 @@ set_db <- function(db){
 	stop("DB: Currently not implemented.")
 	}
 
+set_db2 <- function(db){
+	if (db=="de") return("https://www-genesis.destatis.de/genesis/online")
+	if (db=="by") return("https://www.statistikdaten.bayern.de/genesis/online")
+	if (db=="regio") return("https://www.regionalstatistik.de/genesis/online/")	
+	stop("DB: Currently not implemented.")
+	}
+
 
 get_character_vec <- function(x){ 
 	x <- paste(unlist(na.omit(x), use.names=FALSE), collapse="_")
