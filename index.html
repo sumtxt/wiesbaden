@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wiesbaden</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/wiesbaden.html">Get started</a>
 </li>
@@ -55,8 +51,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/sumtxt/wiesbaden/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/sumtxt/wiesbaden/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -72,57 +68,62 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="wiesbaden" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#wiesbaden" class="anchor"></a>wiesbaden</h1></div>
-<p>The R package <code>wiesbaden</code> provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. The package uses the SOAP XML web service from DESTATIS <a href="https://www-genesis.destatis.de/genesis/online?Menu=Webservice">(PDF Documentation)</a>.</p>
+<div class="section level1">
+<div class="page-header"><h1 id="wiesbaden">wiesbaden<a class="anchor" aria-label="anchor" href="#wiesbaden"></a>
+</h1></div>
+<p>The R package <code>wiesbaden</code> provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. The package uses the SOAP XML web service from DESTATIS <a href="https://www-genesis.destatis.de/genesis/online?Menu=Webservice" class="external-link">(PDF Documentation)</a>.</p>
 <p>Access to the following databases is implemented:</p>
 <ul>
-<li><a href="https://www.regionalstatistik.de/genesis/online">regionalstatistik.de</a></li>
-<li><a href="https://www-genesis.destatis.de/genesis/online">genesis.destatis.de</a></li>
-<li><a href="https://www.landesdatenbank.nrw.de">landesdatenbank.nrw.de</a></li>
-<li><a href="https://www.bildungsmonitoring.de/bildung/online/logon">bildungsmonitoring.de</a></li>
+<li><a href="https://www.regionalstatistik.de/genesis/online" class="external-link">regionalstatistik.de</a></li>
+<li><a href="https://www-genesis.destatis.de/genesis/online" class="external-link">genesis.destatis.de</a></li>
+<li><a href="https://www.bildungsmonitoring.de/bildung/online/logon" class="external-link">bildungsmonitoring.de</a></li>
+<li><a href="https://www.landesdatenbank.nrw.de" class="external-link">landesdatenbank.nrw.de</a></li>
+<li><a href="https://www.statistikdaten.bayern.de/genesis/online/" class="external-link">statistikdaten.bayern.de</a></li>
+<li><a href="https://genesis.sachsen-anhalt.de/genesis/online" class="external-link">genesis.sachsen-anhalt.de</a></li>
 </ul>
-<p>Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user (<a href="https://www-genesis.destatis.de/genesis/online?Menu=Hilfe">Premium Nutzer, 500 Euro per year</a>). For all other databases, the standard, free user account is sufficient.</p>
-<div id="installation" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h3>
+<p>Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user (<a href="https://www-genesis.destatis.de/genesis/online?Menu=Hilfe" class="external-link">Premium Nutzer, 500 Euro per year</a>). For all other databases, the standard, free user account is sufficient.</p>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
 <p>You can install the package directly from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"wiesbaden"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"wiesbaden"</span><span class="op">)</span></code></pre></div>
 <p>Or install the latest version from Github using:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"sumtxt/wiesbaden"</span>, <span class="kw">force</span><span class="kw">=</span><span class="fl">TRUE</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sumtxt/wiesbaden"</span>, force<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level3">
-<h3 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h3>
-<p>The package helps with retrieving the data cubes which are used to construct the data tables available as <code>csv</code> files via the web application of each database. The data cubes are long format data tables that are much easier to process as compared to the <code>csv</code> files. For details on how to use the package: <a href="https://sumtxt.github.io/wiesbaden/articles/wiesbaden.html">Getting Started with wiesbaden</a>.</p>
-<p>The package also helps with importing the <a href="https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html">German municipality register files</a> via the function <code><a href="reference/read_gv100.html">read_gv100()</a></code>. For more information see the help file of this function.</p>
-<p>Users that wish to work with the <code>csv</code> files might find the <code><a href="reference/download_csv.html">download_csv()</a></code> and <code><a href="reference/read_header_genesis.html">read_header_genesis()</a></code> in this package helpful. The former can be used to automate downloads and the latter facilitates importing downloaded files. Users might also wish to check the R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanr">github.com/cutterkom/destatiscleanr</a>.</p>
+<div class="section level3">
+<h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
+</h3>
+<p>The package helps with retrieving the data cubes which are used to construct the data tables available as <code>csv</code> files via the web application of each database. The data cubes are long format data tables that are much easier to process as compared to the <code>csv</code> files. For details on how to use the package: <a href="https://sumtxt.github.io/wiesbaden/articles/wiesbaden.html" class="external-link">Getting Started with wiesbaden</a>.</p>
+<p>The package also helps with importing the <a href="https://www.destatis.de/DE/ZahlenFakten/LaenderRegionen/Regionales/Gemeindeverzeichnis/Gemeindeverzeichnis.html" class="external-link">German municipality register files</a> via the function <code><a href="reference/read_gv100.html">read_gv100()</a></code>. For more information see the help file of this function.</p>
+<p>Users that wish to work with the <code>csv</code> files might find the <code><a href="reference/download_csv.html">download_csv()</a></code> and <code><a href="reference/read_header_genesis.html">read_header_genesis()</a></code> in this package helpful. The former can be used to automate downloads and the latter facilitates importing downloaded files. Users might also wish to check the R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanr" class="external-link">github.com/cutterkom/destatiscleanr</a>.</p>
 </div>
-<div id="faq" class="section level3">
-<h3 class="hasAnchor">
-<a href="#faq" class="anchor"></a>FAQ</h3>
+<div class="section level3">
+<h3 id="faq">FAQ<a class="anchor" aria-label="anchor" href="#faq"></a>
+</h3>
 <ul>
 <li>
 <p>Does this package work with a proxy? <em>Yes. Set the proxy globally before calling any package command, e.g.:</em></p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="kw pkg">httr</span><span class="kw ns">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/set_config.html">set_config</a></span>(<span class="kw pkg">httr</span><span class="kw ns">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/use_proxy.html">use_proxy</a></span>(
-        <span class="st">"your.proxy"</span>, <span class="kw">port</span> <span class="kw">=</span> <span class="fl">1234</span>, <span class="kw">auth</span> <span class="kw">=</span> <span class="st">"basic"</span>))
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/set_config.html" class="external-link">set_config</a></span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/use_proxy.html" class="external-link">use_proxy</a></span><span class="op">(</span>
+        <span class="st">"your.proxy"</span>, port <span class="op">=</span> <span class="fl">1234</span>, auth <span class="op">=</span> <span class="st">"basic"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/retrieve_data.html">retrieve_data</a></span>(<span class="kw">tablename</span><span class="kw">=</span><span class="st">"14111KJ002"</span>,
-        <span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">"regio"</span>))</pre></div>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/retrieve_data.html">retrieve_data</a></span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, 
+        genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </li>
-<li><p>When I try to access the data from <a href="https://www-genesis.destatis.de/genesis/online">genesis.destatis.de</a> I get an error message. What can I do? <em>Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader).</em></p></li>
+<li><p>When I try to access the data from <a href="https://www-genesis.destatis.de/genesis/online" class="external-link">genesis.destatis.de</a> I get an error message. What can I do? <em>Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader).</em></p></li>
 </ul>
 </div>
-<div id="similar-and-complementary-packages" class="section level3">
-<h3 class="hasAnchor">
-<a href="#similar-and-complementary-packages" class="anchor"></a>Similar and Complementary Packages</h3>
+<div class="section level3">
+<h3 id="similar-and-complementary-packages">Similar and Complementary Packages<a class="anchor" aria-label="anchor" href="#similar-and-complementary-packages"></a>
+</h3>
 <ul>
-<li><p>The R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanwebir">github.com/cutterkom/destatiscleanr</a> provides functions to help importing <code>csv</code> files downloaded via the web application.</p></li>
-<li><p>The R package <code>AGS</code> <a href="https://github.com/sumtxt/ags">github.com/sumtxt/ags</a> provides functions to work with the <a href="https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel">Amtlicher Gemeindeschlüssel (AGS)</a>, e.g. to extract the Bundesland using <code>get_bundesland()</code>.</p></li>
-<li><p>The Python packages <a href="https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis">github.com/WZBSocialScienceCenter/gemeindeverzeichnis</a> and <a href="https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/">rohablog.wordpress.com/2011/11/22/gv100-parser-python/</a> provide functions to read the GV100 format.</p></li>
-<li><p>The node.js package <a href="https://github.com/yetzt/node-gv100json">https://github.com/yetzt/node-gv100json</a> provides functions to read the GV100 format.</p></li>
-<li><p>The Python package <a href="https://github.com/pudo/regenesis">github.com/pudo/regenesis</a> provides a function to bulk download data from <a href="https://www.regionalstatistik.de/genesis/online">regionalstatistik.de</a>.</p></li>
+<li><p>The R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanwebir" class="external-link">github.com/cutterkom/destatiscleanr</a> provides functions to help importing <code>csv</code> files downloaded via the web application.</p></li>
+<li><p>The R package <code>AGS</code> <a href="https://github.com/sumtxt/ags" class="external-link">github.com/sumtxt/ags</a> provides functions to work with the <a href="https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel" class="external-link">Amtlicher Gemeindeschlüssel (AGS)</a>, e.g. to extract the Bundesland using <code>get_bundesland()</code>.</p></li>
+<li><p>The Python packages <a href="https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis" class="external-link">github.com/WZBSocialScienceCenter/gemeindeverzeichnis</a> and <a href="https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/" class="external-link">rohablog.wordpress.com/2011/11/22/gv100-parser-python/</a> provide functions to read the GV100 format.</p></li>
+<li><p>The node.js package <a href="https://github.com/yetzt/node-gv100json" class="external-link">https://github.com/yetzt/node-gv100json</a> provides functions to read the GV100 format.</p></li>
+<li><p>The Python package <a href="https://github.com/pudo/regenesis" class="external-link">github.com/pudo/regenesis</a> provides a function to bulk download data from <a href="https://www.regionalstatistik.de/genesis/online" class="external-link">regionalstatistik.de</a>.</p></li>
 </ul>
 </div>
 </div>
@@ -130,40 +131,51 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=wiesbaden">https://​cloud.r-project.org/​package=wiesbaden</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/sumtxt/wiesbaden/">https://​github.com/​sumtxt/​wiesbaden/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/sumtxt/wiesbaden/issues">https://​github.com/​sumtxt/​wiesbaden/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=wiesbaden" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/sumtxt/wiesbaden/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/sumtxt/wiesbaden/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing wiesbaden</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="http://moritz-marbach.com/">Moritz Marbach</a> <br><small class="roles"> Maintainer </small>  </li>
+<a href="http://moritz-marbach.com/" class="external-link">Moritz Marbach</a> <br><small class="roles"> Maintainer </small>  </li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://moritz-marbach.com/">Moritz Marbach</a>.</p>
+  <p></p>
+<p>Developed by <a href="http://moritz-marbach.com/" class="external-link">Moritz Marbach</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -171,6 +183,8 @@
 
   
 
+
+  
 
   </body>
 </html>

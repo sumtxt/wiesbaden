@@ -1,7 +1,7 @@
-pandoc: 2.9.2.1
-pkgdown: 1.5.1
+pandoc: 2.16.2
+pkgdown: 2.0.1
 pkgdown_sha: ~
 articles:
   wiesbaden: wiesbaden.html
-last_built: 2020-08-21T11:29Z
+last_built: 2022-01-03T10:18Z
 

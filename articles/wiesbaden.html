@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wiesbaden</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/wiesbaden.html">Get started</a>
 </li>
@@ -55,8 +51,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/sumtxt/wiesbaden/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/sumtxt/wiesbaden/" class="external-link">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -70,13 +66,13 @@
 
       
 
-      </header><script src="wiesbaden_files/header-attrs-2.1/header-attrs.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Retrieve Data from DESTATIS via R</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/sumtxt/wiesbaden/blob/master/vignettes/wiesbaden.Rmd"><code>vignettes/wiesbaden.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/sumtxt/wiesbaden/blob/HEAD/vignettes/wiesbaden.Rmd" class="external-link"><code>vignettes/wiesbaden.Rmd</code></a></small>
       <div class="hidden name"><code>wiesbaden.Rmd</code></div>
 
     </div>
@@ -86,41 +82,46 @@
 <p>The R package <code>wiesbaden</code> provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden.</p>
 <p>Access to the following databases is implemented:</p>
 <ul>
-<li><a href="https://www.regionalstatistik.de/genesis/online">regionalstatistik.de</a></li>
-<li><a href="https://www-genesis.destatis.de/genesis/online">genesis.destatis.de</a></li>
-<li><a href="https://www.landesdatenbank.nrw.de">landesdatenbank.nrw.de</a></li>
-<li><a href="https://www.bildungsmonitoring.de/bildung/online/logon">bildungsmonitoring.de</a></li>
+<li><a href="https://www.regionalstatistik.de/genesis/online" class="external-link">regionalstatistik.de</a></li>
+<li><a href="https://www-genesis.destatis.de/genesis/online" class="external-link">genesis.destatis.de</a></li>
+<li><a href="https://www.landesdatenbank.nrw.de" class="external-link">landesdatenbank.nrw.de</a></li>
+<li><a href="https://www.bildungsmonitoring.de/bildung/online/logon" class="external-link">bildungsmonitoring.de</a></li>
 </ul>
-<p>To access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database <a href="https://www-genesis.destatis.de/genesis/online">genesis.destatis.de</a> you need to register as a premium user (“Premium Nutzer”, 500 Euro per year). For all other databases, the standard, free user account is sufficient.</p>
+<p>To access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database <a href="https://www-genesis.destatis.de/genesis/online" class="external-link">genesis.destatis.de</a> you need to register as a premium user (“Premium Nutzer”, 500 Euro per year). For all other databases, the standard, free user account is sufficient.</p>
 <p>To authenticate, supply a vector with your user name, password, and database shortcut (“regio”, “de”, “nrw”, “bm”) as an argument for the <code>genesis</code> parameter whenever you call a <code>retrieve_*</code> function:</p>
-<pre><code><a href="https://rdrr.io/r/base/c.html">c(user="your-username", password="your-password", db="database-shortname")</a></code></pre>
-<p>Alternatively, you can use <code><a href="../reference/save_credentials.html">save_credentials()</a></code> to store the credentials on your computer. This function relies on the <a href="https://github.com/r-lib/keyring">keyring package</a>. For more details about how credentials are stored by this package, see the keyring package documentation.</p>
+<pre><code><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>user<span class="op">=</span><span class="st">"your-username"</span>, password<span class="op">=</span><span class="st">"your-password"</span>, db<span class="op">=</span><span class="st">"database-shortname"</span><span class="op">)</span></code></pre>
+<p>Alternatively, you can use <code><a href="../reference/save_credentials.html">save_credentials()</a></code> to store the credentials on your computer. This function relies on the <a href="https://github.com/r-lib/keyring" class="external-link">keyring package</a>. For more details about how credentials are stored by this package, see the keyring package documentation.</p>
 <p>Use the function <code><a href="../reference/test_login.html">test_login()</a></code> to check if your login/password combination allows you to access the respective database (and if the server is functioning properly).</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">wiesbaden</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sumtxt/wiesbaden/" class="external-link">wiesbaden</a></span><span class="op">)</span>
 
 <span class="co"># Assuming credentials are stored via save_credentials()</span>
-<span class="fu"><a href="../reference/test_login.html">test_login</a></span>(<span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>))
+<span class="fu"><a href="../reference/test_login.html">test_login</a></span><span class="op">(</span>genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Sie wurden erfolgreich an- und abgemeldet."</span>
 
 <span class="co"># ... or supply password/username </span>
-<span class="fu"><a href="../reference/test_login.html">test_login</a></span>(<span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>, <span class="kw">user</span><span class="kw">=</span><span class="st">"your-username"</span>, <span class="kw">password</span><span class="kw">=</span><span class="st">"your-password"</span>))
-<span class="co">#&gt; [1] "Sie wurden erfolgreich an- und abgemeldet."</span></pre></body></html></div>
+<span class="fu"><a href="../reference/test_login.html">test_login</a></span><span class="op">(</span>genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span>, user<span class="op">=</span><span class="st">"your-username"</span>, password<span class="op">=</span><span class="st">"your-password"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Sie wurden erfolgreich an- und abgemeldet."</span></code></pre></div>
 <p>The available data are organized by themes (“Themen”) and subthemes. To get a list of all available themes go to the respective database website (links above) and click on “Themen”. Each theme typically comes with multiple subthemes.</p>
-<p>Suppose we want to download the federal election results on the county level from <a href="https://www.regionalstatistik.de/genesis/online">regionalstatistik.de</a>. This data is available in the theme “Wahlen” which has the code <code>14</code>. The federal election results are available in subtheme <code>141</code>.</p>
+<p>Suppose we want to download the federal election results on the county level from <a href="https://www.regionalstatistik.de/genesis/online" class="external-link">regionalstatistik.de</a>. This data is available in the theme “Wahlen” which has the code <code>14</code>. The federal election results are available in subtheme <code>141</code>.</p>
 <p>Using <code><a href="../reference/retrieve_datalist.html">retrieve_datalist()</a></code>, download a <code>data.frame</code> of all available data cubes in theme <code>141</code>:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">d</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/retrieve_datalist.html">retrieve_datalist</a></span>(<span class="kw">tableseries</span><span class="kw">=</span><span class="st">"141*"</span>, <span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/retrieve_datalist.html">retrieve_datalist</a></span><span class="op">(</span>tableseries<span class="op">=</span><span class="st">"141*"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <p>Note, we are assuming that credentials are stored via <code><a href="../reference/save_credentials.html">save_credentials()</a></code>.</p>
 <p>Use <code>str_detect()</code> to filter cubes with a description that contains the word “Kreise” (county):</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(<span class="no">d</span>, <span class="fu">str_detect</span>(<span class="no">description</span>, <span class="st">"Kreise"</span>) )
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">d</span>, <span class="fu">str_detect</span><span class="op">(</span><span class="va">description</span>, <span class="st">"Kreise"</span><span class="op">)</span> <span class="op">)</span> 
 <span class="co">#&gt;    tablename</span>
 <span class="co">#&gt; 1 14111KJ001</span>
 <span class="co">#&gt; 2 14111KJ002</span>
 <span class="co">#&gt;                                                                                      description</span>
 <span class="co">#&gt; 1 Wahlberechtigte, Wahlbeteiligung, Gültige Zweitstimmen, Kreise und kreisfreie Städte, Stichtag</span>
-<span class="co">#&gt; 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag</span></pre></body></html></div>
+<span class="co">#&gt; 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag</span></code></pre></div>
 <p>Having identified the correct data cube, call <code><a href="../reference/retrieve_data.html">retrieve_data()</a></code> to download the data:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/retrieve_data.html">retrieve_data</a></span>(<span class="kw">tablename</span><span class="kw">=</span><span class="st">"14111KJ002"</span>, <span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>))</pre></body></html></div>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">data</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/retrieve_data.html">retrieve_data</a></span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">#&gt;   id14111 KREISE     PART04       STAG WAHL09_val WAHL09_qual WAHL09_lock</span>
 <span class="co">#&gt; 1       D  01001        AFD 22.09.2013       1855           e          NA</span>
 <span class="co">#&gt; 2       D  01001        AFD 24.09.2017       3702           e          NA</span>
@@ -134,17 +135,19 @@
 <span class="co">#&gt; 3          0</span>
 <span class="co">#&gt; 4          0</span>
 <span class="co">#&gt; 5          0</span>
-<span class="co">#&gt; 6          0</span></pre></body></html></div>
+<span class="co">#&gt; 6          0</span></code></pre></div>
 <p>The data are organized in long format: For each combination of <code>KREIS</code> (county), <code>PART04</code> (political party) and <code>STAG</code> (election date) there is a vote count (<code>WAHL09_value</code>). Please see help file for the information on the additional variables (*_qual, *_lock, *_err).</p>
 <p>To get the metadata for each variable, call <code><a href="../reference/retrieve_metadata.html">retrieve_metadata()</a></code>:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="fu"><a href="../reference/retrieve_metadata.html">retrieve_metadata</a></span>(<span class="kw">tablename</span><span class="kw">=</span><span class="st">"14111KJ002"</span>, <span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>))
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/retrieve_metadata.html">retrieve_metadata</a></span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;     name                  description   unit</span>
 <span class="co">#&gt; 1 WAHL09         Gültige Zweitstimmen Anzahl</span>
 <span class="co">#&gt; 2   STAG                     Stichtag       </span>
 <span class="co">#&gt; 3 PART04                     Parteien       </span>
-<span class="co">#&gt; 4 KREISE Kreise und kreisfreie Städte</span></pre></body></html></div>
+<span class="co">#&gt; 4 KREISE Kreise und kreisfreie Städte</span></code></pre></div>
 <p>To get the value labels for the variable <code>PART04</code>, call <code><a href="../reference/retrieve_valuelabel.html">retrieve_valuelabel()</a></code>:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/retrieve_valuelabel.html">retrieve_valuelabel</a></span>(<span class="st">"PART04"</span>, <span class="kw">genesis</span><span class="kw">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">db</span><span class="kw">=</span><span class="st">'regio'</span>))
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/retrieve_valuelabel.html">retrieve_valuelabel</a></span><span class="op">(</span><span class="st">"PART04"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">'regio'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;       PART04       description</span>
 <span class="co">#&gt; 1        AFD               AfD</span>
 <span class="co">#&gt; 2 B90-GRUENE             GRÜNE</span>
@@ -152,7 +155,7 @@
 <span class="co">#&gt; 4   DIELINKE         DIE LINKE</span>
 <span class="co">#&gt; 5        FDP               FDP</span>
 <span class="co">#&gt; 6   SONSTIGE Sonstige Parteien</span>
-<span class="co">#&gt; 7        SPD               SPD</span></pre></body></html></div>
+<span class="co">#&gt; 7        SPD               SPD</span></code></pre></div>
 <p>This function also works with the other variables (e.g., <code>KREIS</code>).</p>
   </div>
 
@@ -165,11 +168,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://moritz-marbach.com/">Moritz Marbach</a>.</p>
+  <p></p>
+<p>Developed by <a href="http://moritz-marbach.com/" class="external-link">Moritz Marbach</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -177,6 +182,8 @@
 
   
 
+
+  
 
   </body>
 </html>
