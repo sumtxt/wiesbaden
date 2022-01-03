@@ -22,7 +22,7 @@
 #' @docType package
 #' @aliases wiesbaden
 #' @title Client to access the data from the Federal Statistical Office, Germany
-#' @author Moritz Marbach \email{moritz.marbach@gess.ethz.ch}
+#' @author Moritz Marbach \email{moritz.marbach@tamu.edu}
 #'
 #' 
 #' @import httr 

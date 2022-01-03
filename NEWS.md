@@ -2,7 +2,7 @@
 
 # Version 1.2.5 (2022-01-03)
 
-* Add connection to databases from state of Bavaria and Saxony-Anhalt
+* Add connection to databases from Bavaria and Saxony-Anhalt
 
 # Version 1.2.4 (2021-03-15)
 
