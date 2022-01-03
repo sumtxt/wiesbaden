@@ -27,8 +27,8 @@ The GV100 format is used by DESTATIS to publish the German municipality register
 The Gemeindeverzeichnis (municipality register) is published 
  in a fixed width file refered to as "GV1000 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
- higher order administrative units. \code{read_gv100()} is a 
- wrapper around [readr::read_fwf()].
+ higher order administrative units. The function is a wrapper  
+ around [readr::read_fwf()].
 
 There are two types of files: One feature the administrative 
 information (\code{version="AD"}) and one with non-administrative 
