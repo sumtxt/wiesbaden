@@ -58,6 +58,8 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 
 * The R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanwebir) provides functions to help importing `csv` files downloaded via the web application. 
 
+* The R package `bonn` [github.com/sumtxt/bonn](https://github.com/sumtxt/bonn) provides functions to retrieve data from the [INKAR](https://www.inkar.de/) database maintained by the Federal Office for Building and Regional Planning (BBSR) in Bonn.
+
 * The R package `AGS` [github.com/sumtxt/ags](https://github.com/sumtxt/ags) provides functions to work with the [Amtlicher Gemeindeschlüssel (AGS)](https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel), e.g. to extract the Bundesland using `get_bundesland()`. 
 
 * The Python packages [github.com/WZBSocialScienceCenter/gemeindeverzeichnis](https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis) and [rohablog.wordpress.com/2011/11/22/gv100-parser-python/](https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/) provide functions to read the GV100 format. 
