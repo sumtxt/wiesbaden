@@ -17,7 +17,7 @@
 #' 
 #' @export
 save_credentials <- function(db, user, password){
-	if ( !(db %in% c("nrw", "regio", "de", "bm")) ) stop(paste("Database '", db, "' unknown.",sep=""))
+	if ( !(db %in% c("nrw", "regio", "de", "bm", "by", "st")) ) stop(paste("Database '", db, "' unknown.",sep=""))
 	if (db=='regio'){
 		key_set_with_value("regionalstatistik", username=user, password=password)
 		message("Successfully added credentials.")
@@ -29,6 +29,12 @@ save_credentials <- function(db, user, password){
 		message("Successfully added credentials.")
 	}	else if (db=='de'){
 		key_set_with_value("destatis", username=user, password=password)
+		message("Successfully saved credentials.")
+	}	else if (db=='by'){
+		key_set_with_value("landesdatenbank-by", username=user, password=password)
+		message("Successfully saved credentials.")
+	}	else if (db=='st'){
+		key_set_with_value("landesdatenbank-st", username=user, password=password)
 		message("Successfully saved credentials.")
 	}	
 	}

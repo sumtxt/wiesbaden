@@ -38,6 +38,8 @@
 #' 	41 - Kreise (counties)
 #'  61 - Gemeinden (municipalities)
 #' 
+#' Since about 2019, the Gemeindeverzeichnis is using UTF-8 encoding rather 
+#' than ISO-8859-1. 
 #'  
 #' @return a \code{data.frame}. 
 #'   
@@ -85,14 +87,14 @@ read_gv100 <- function(file, stzrt,
 		# "Durch die Aufname der sorbischen Schreibweise in den 
 		# amtlichen Gemeindenamen ist es notwendig geworden, die 
 		# Daten mit UTF-8 zu kodieren." Latin-2 (ISO8859-2) can 
-		# accomodate Sorbian (Latin-1 can not!)
+		# accomodate Sorbian (Latin-1 can not). 
 		x <- read_lines(file=file, 
 			locale = locale(encoding = "UTF-8"), ...)
 		x <- iconv(x, from = "UTF-8", to = "ISO8859-2")
 
 		d <- withCallingHandlers(
 				read_fwf(
-					file=x, 
+					file=I(x), 
 					col_positions=spec_fwf,
 					col_types=spec$col, 
 					locale = locale(encoding = "iso-8859-2"),
@@ -102,7 +104,7 @@ read_gv100 <- function(file, stzrt,
 	} else {
 
 		d <- withCallingHandlers(
-			read_fwf(
+				read_fwf(
 				file=file, 
 				col_positions=spec_fwf,
 				col_types=spec$col, 

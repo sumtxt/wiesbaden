@@ -1,6 +1,6 @@
 Package: wiesbaden
 Title: Access Databases from the Federal Statistical Office of Germany
-Version: 1.2.5
+Version: 1.2.6
 Date: 2022-01-03
 Author: Moritz Marbach <moritz.marbach@tamu.edu> [aut, cre]
 Maintainer: Moritz Marbach <moritz.marbach@tamu.edu>
