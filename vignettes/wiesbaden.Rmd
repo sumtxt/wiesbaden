@@ -23,7 +23,7 @@ Access to the following databases is implemented:
 * [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
 * [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
 
-To access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) you need to register as a premium user ("Premium Nutzer", 500 Euro per year). For all other databases, the standard, free user account is sufficient. 
+To access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free. 
 
 To authenticate, supply a vector with your user name, password, and database shortcut ("regio", "de", "nrw", "bm") as an argument for the `genesis` parameter whenever you call a `retrieve_*` function:
 
