@@ -50,6 +50,9 @@ For the NAD version only:
 
 	41 - Kreise (counties)
  61 - Gemeinden (municipalities)
+
+Since about 2019, the Gemeindeverzeichnis is using UTF-8 encoding rather 
+than ISO-8859-1.
 }
 \examples{
  \dontrun{

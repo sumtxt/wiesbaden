@@ -8,8 +8,9 @@ Access to the following databases is implemented:
 * [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online)
 * [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon) 
 * [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de) 
-* [statistikdaten.bayern.de](https://www.statistikdaten.bayern.de/genesis/online/)
-* [genesis.sachsen-anhalt.de](https://genesis.sachsen-anhalt.de/genesis/online)
+* ~~statistikdaten.bayern.de~~ (data retrieval API disabled)
+* ~~genesis.sachsen-anhalt.de~~ (data retrieval API disabled)
+* ~~statistik.sachsen.de~~ (API disabled)
 
 Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free.
 
@@ -51,6 +52,7 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 	```	
 
 * When I try to access the data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) I get an error message. What can I do? _Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader)._ 
+
 
 
 ### Similar and Complementary Packages 

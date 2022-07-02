@@ -12,8 +12,7 @@
 #' relies on the \code{\link{keyring}} package. 
 #' 
 #' Available databases are regionalstatistik.de (shortname: "regio"), landesdatenbank.nrw.de ("nrw"), 
-#' www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm"), genesis.sachsen-anhalt.de ("st") and
-#' statistikdaten.bayern.de ("by").
+#' www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm").
 #' 
 #' 
 #'
@@ -24,7 +23,8 @@
 #' @title Client to access the data from the Federal Statistical Office, Germany
 #' @author Moritz Marbach \email{moritz.marbach@tamu.edu}
 #'
-#' 
+#' @keywords internal 
+#'
 #' @import httr 
 #' @import xml2
 #' @importFrom keyring key_set_with_value key_list key_get
