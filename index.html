@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">wiesbaden</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.6</span>
       </span>
     </div>
 
@@ -81,16 +81,16 @@
 <li><a href="https://www.statistikdaten.bayern.de/genesis/online/" class="external-link">statistikdaten.bayern.de</a></li>
 <li><a href="https://genesis.sachsen-anhalt.de/genesis/online" class="external-link">genesis.sachsen-anhalt.de</a></li>
 </ul>
-<p>Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free but to access the database genesis.destatis.de you need to register as a premium user (<a href="https://www-genesis.destatis.de/genesis/online?Menu=Hilfe" class="external-link">Premium Nutzer, 500 Euro per year</a>). For all other databases, the standard, free user account is sufficient.</p>
+<p>Note, to access any of the databases using this package, you need to register on the respective website to get a personal login name and password. The registration is free.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
 <p>You can install the package directly from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"wiesbaden"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"wiesbaden"</span><span class="op">)</span></span></code></pre></div>
 <p>Or install the latest version from Github using:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sumtxt/wiesbaden"</span>, force<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sumtxt/wiesbaden"</span>, force<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
@@ -106,11 +106,11 @@
 <li>
 <p>Does this package work with a proxy? <em>Yes. Set the proxy globally before calling any package command, e.g.:</em></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/set_config.html" class="external-link">set_config</a></span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/use_proxy.html" class="external-link">use_proxy</a></span><span class="op">(</span>
-        <span class="st">"your.proxy"</span>, port <span class="op">=</span> <span class="fl">1234</span>, auth <span class="op">=</span> <span class="st">"basic"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/retrieve_data.html">retrieve_data</a></span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, 
-        genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/set_config.html" class="external-link">set_config</a></span><span class="op">(</span><span class="fu">httr</span><span class="fu">::</span><span class="fu"><a href="https://httr.r-lib.org/reference/use_proxy.html" class="external-link">use_proxy</a></span><span class="op">(</span></span>
+<span>        <span class="st">"your.proxy"</span>, port <span class="op">=</span> <span class="fl">1234</span>, auth <span class="op">=</span> <span class="st">"basic"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/retrieve_data.html">retrieve_data</a></span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, </span>
+<span>        genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </li>
 <li><p>When I try to access the data from <a href="https://www-genesis.destatis.de/genesis/online" class="external-link">genesis.destatis.de</a> I get an error message. What can I do? <em>Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader).</em></p></li>
 </ul>
@@ -119,7 +119,8 @@
 <h3 id="similar-and-complementary-packages">Similar and Complementary Packages<a class="anchor" aria-label="anchor" href="#similar-and-complementary-packages"></a>
 </h3>
 <ul>
-<li><p>The R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanwebir" class="external-link">github.com/cutterkom/destatiscleanr</a> provides functions to help importing <code>csv</code> files downloaded via the web application.</p></li>
+<li><p>The R package <code>destatiscleanr</code> <a href="https://github.com/cutterkom/destatiscleanr" class="external-link">github.com/cutterkom/destatiscleanr</a> provides functions to help importing <code>csv</code> files downloaded via the web application.</p></li>
+<li><p>The R package <code>bonn</code> <a href="https://github.com/sumtxt/bonn" class="external-link">github.com/sumtxt/bonn</a> provides functions to retrieve data from the <a href="https://www.inkar.de/" class="external-link">INKAR</a> database maintained by the Federal Office for Building and Regional Planning (BBSR) in Bonn.</p></li>
 <li><p>The R package <code>AGS</code> <a href="https://github.com/sumtxt/ags" class="external-link">github.com/sumtxt/ags</a> provides functions to work with the <a href="https://de.wikipedia.org/wiki/Amtlicher_Gemeindeschl%C3%BCssel" class="external-link">Amtlicher Gemeindeschlüssel (AGS)</a>, e.g. to extract the Bundesland using <code>get_bundesland()</code>.</p></li>
 <li><p>The Python packages <a href="https://github.com/WZBSocialScienceCenter/gemeindeverzeichnis" class="external-link">github.com/WZBSocialScienceCenter/gemeindeverzeichnis</a> and <a href="https://rohablog.wordpress.com/2011/11/22/gv100-parser-python/" class="external-link">rohablog.wordpress.com/2011/11/22/gv100-parser-python/</a> provide functions to read the GV100 format.</p></li>
 <li><p>The node.js package <a href="https://github.com/yetzt/node-gv100json" class="external-link">https://github.com/yetzt/node-gv100json</a> provides functions to read the GV100 format.</p></li>
@@ -175,7 +176,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

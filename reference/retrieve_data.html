@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">wiesbaden</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.5</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.2.6</span>
       </span>
     </div>
 
@@ -56,50 +56,71 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">retrieve_data</span><span class="op">(</span>
-  <span class="va">tablename</span>,
-  startyear <span class="op">=</span> <span class="st">""</span>,
-  endyear <span class="op">=</span> <span class="st">""</span>,
-  regionalmerkmal <span class="op">=</span> <span class="st">""</span>,
-  regionalschluessel <span class="op">=</span> <span class="st">""</span>,
-  sachmerkmal <span class="op">=</span> <span class="st">""</span>,
-  sachschluessel <span class="op">=</span> <span class="st">""</span>,
-  sachmerkmal2 <span class="op">=</span> <span class="st">""</span>,
-  sachschluessel2 <span class="op">=</span> <span class="st">""</span>,
-  sachmerkmal3 <span class="op">=</span> <span class="st">""</span>,
-  sachschluessel3 <span class="op">=</span> <span class="st">""</span>,
-  genesis <span class="op">=</span> <span class="cn">NULL</span>,
-  language <span class="op">=</span> <span class="st">"de"</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">retrieve_data</span><span class="op">(</span></span>
+<span>  <span class="va">tablename</span>,</span>
+<span>  startyear <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  endyear <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  regionalmerkmal <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  regionalschluessel <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachmerkmal <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachschluessel <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachmerkmal2 <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachschluessel2 <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachmerkmal3 <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  sachschluessel3 <span class="op">=</span> <span class="st">""</span>,</span>
+<span>  genesis <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  language <span class="op">=</span> <span class="st">"de"</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tablename</dt>
 <dd><p>name of the table to retrieve.</p></dd>
+
+
 <dt>startyear</dt>
 <dd><p>only retrieve values for years equal or larger to <code>startyear</code>. Default: "".</p></dd>
+
+
 <dt>endyear</dt>
 <dd><p>only retrieve values for years smaller or equal to <code>endyear</code>. Default: "".</p></dd>
+
+
 <dt>regionalmerkmal</dt>
 <dd><p>key for Regionalklassifikation. See details for more information. Default: "".</p></dd>
+
+
 <dt>regionalschluessel</dt>
 <dd><p>only retrieve values for a particular regional unit. See details for more information. Default: "".</p></dd>
+
+
 <dt>sachmerkmal, sachmerkmal2, sachmerkmal3</dt>
 <dd><p>key for Sachklassifikation. Default: "".</p></dd>
+
+
 <dt>sachschluessel, sachschluessel2, sachschluessel3</dt>
 <dd><p>value for Sachklassifikation. Default: "".</p></dd>
+
+
 <dt>genesis</dt>
 <dd><p>to authenticate a user and set the database (see below).</p></dd>
+
+
 <dt>language</dt>
 <dd><p>retrieve information in German "de" (default) or in English "en" if available.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>other arguments send to the httr::GET request.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a <code>data.frame</code>. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
+    
+
+<p>a <code>data.frame</code>. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
 valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typically zero should/might be set to NA.</p>
     </div>
@@ -116,26 +137,26 @@ package description (<code><a href="wiesbaden-package.html">wiesbaden</a></code>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"> <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"> <span class="co"># Retrieve values for the table 14111KJ002 which contains the </span></span>
-<span class="r-in"> <span class="co"># federal election results on the county level. </span></span>
-<span class="r-in"> <span class="co"># Assumes that user/password are stored via save_credentials()</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co"># ... only the values for the AfD. </span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, sachmerkmal<span class="op">=</span><span class="st">"PART04"</span>, </span>
-<span class="r-in">   sachschluessel<span class="op">=</span><span class="st">"AFD"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># ... or only values from Saxony</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, regionalmerkmal<span class="op">=</span><span class="st">"KREISE"</span>, </span>
-<span class="r-in">   regionalschluessel<span class="op">=</span><span class="st">"14*"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="op">}</span> </span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span> <span class="co"># Retrieve values for the table 14111KJ002 which contains the </span></span></span>
+<span class="r-in"><span> <span class="co"># federal election results on the county level. </span></span></span>
+<span class="r-in"><span> <span class="co"># Assumes that user/password are stored via save_credentials()</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co"># ... only the values for the AfD. </span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, sachmerkmal<span class="op">=</span><span class="st">"PART04"</span>, </span></span>
+<span class="r-in"><span>   sachschluessel<span class="op">=</span><span class="st">"AFD"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># ... or only values from Saxony</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">retrieve_data</span><span class="op">(</span>tablename<span class="op">=</span><span class="st">"14111KJ002"</span>, regionalmerkmal<span class="op">=</span><span class="st">"KREISE"</span>, </span></span>
+<span class="r-in"><span>   regionalschluessel<span class="op">=</span><span class="st">"14*"</span>, genesis<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>db<span class="op">=</span><span class="st">"regio"</span><span class="op">)</span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span> </span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -150,7 +171,7 @@ package description (<code><a href="wiesbaden-package.html">wiesbaden</a></code>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer></div>
