@@ -122,6 +122,9 @@ retrieve_data <- function(
 
 	header <- c(DQERH, DQA, DQZ, DQIcom)
 
+	if ( is.na(sstr[[1]][7]) ) stop("The API has returned a response without data. 
+		Please report: github.com/sumtxt/wiesbaden/issues.")
+
 	data <- read_delim(sstr[[1]][7], skip = 1, col_names = header, delim = ';')
 
 	return(as.data.frame(data))
