@@ -51,9 +51,6 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 			genesis=c(db="regio"))
 	```	
 
-* When I try to access the data from [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) I get an error message. What can I do? _Different from the other databases, you need to get a premium acccount (see above) to access the raw data (Datenquader)._ 
-
-
 
 ### Similar and Complementary Packages 
 
