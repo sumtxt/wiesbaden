@@ -21,3 +21,8 @@ reference:
     - read_gv100
     - read_header_genesis
 
+url: https://sumtxt.github.io/wiesbaden/
+
+template:
+  bootstrap: 5
+
