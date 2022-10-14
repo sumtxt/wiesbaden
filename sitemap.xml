@@ -1,57 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/404.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/wiesbaden.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/articles/wiesbaden.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/download_csv.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/download_csv.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/read_gv100.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/read_gv100.html</loc>
   </url>
   <url>
-    <loc>/reference/read_header_genesis.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/read_header_genesis.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_data.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/retrieve_data.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_datalist.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/retrieve_datalist.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_metadata.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/retrieve_metadata.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_valuelabel.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/retrieve_valuelabel.html</loc>
   </url>
   <url>
-    <loc>/reference/retrieve_varinfo.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/retrieve_varinfo.html</loc>
   </url>
   <url>
-    <loc>/reference/save_credentials.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/save_credentials.html</loc>
   </url>
   <url>
-    <loc>/reference/test_login.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/test_login.html</loc>
   </url>
   <url>
-    <loc>/reference/wiesbaden-package.html</loc>
+    <loc>https://sumtxt.github.io/wiesbaden/reference/wiesbaden-package.html</loc>
   </url>
 </urlset>
