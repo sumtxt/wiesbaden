@@ -30,7 +30,7 @@ retrieve_data(
 
 \item{regionalmerkmal}{key for Regionalklassifikation. See details for more information. Default: "".}
 
-\item{regionalschluessel}{only retrieve values for a particular regional unit. See details for more information. Default: "".}
+\item{regionalschluessel}{only retrieve values for particular regional units. See details for more information. Default: "".}
 
 \item{sachmerkmal, sachmerkmal2, sachmerkmal3}{key for Sachklassifikation. Default: "".}
 
@@ -54,7 +54,13 @@ valid while if _qual!="e" (then _qual = ("-","/", ".", "x", ... ) ) it is typica
 Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the table series you are interested in. See the 
 package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 
-The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND.
+The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a 
+comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, 
+the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND. The same logic applies to the 
+parameter combination \code{sachmerkmal} and \code{sachschluessel*}. 
+
+Limiting the data request to particular years (via the \code{*year} parameters), geographical units (via the \code{regional*} parameters) 
+and attributes (via the \code{sach*} parameters) is necessary if the API request fails to return any data. See also example below.
 }
 \examples{
 
@@ -74,6 +80,17 @@ The parameter \code{regionalschluessel} can either be a single value (a single A
 
  data <- retrieve_data(tablename="14111KJ002", regionalmerkmal="KREISE", 
    regionalschluessel="14*", genesis=c(db="regio") )
+
+# Limiting the number of data points is in particular important for 
+# large tables. For example, this data request fails: 
+
+data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'))
+
+# but after limiting the request to one year, the data is returned
+
+data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'), startyear=2019, endyear=2019)
+
+
 
 } 
 
