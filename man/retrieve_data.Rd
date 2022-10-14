@@ -86,7 +86,7 @@ and attributes (via the \code{sach*} parameters) is necessary if the API request
 
 data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'))
 
-# but after limiting the request to one year, the data is returned
+# But after limiting the request to one year, the data is returned:
 
 data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'), startyear=2019, endyear=2019)
 
