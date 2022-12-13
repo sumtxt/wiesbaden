@@ -12,6 +12,7 @@
 #' @param sachschluessel,sachschluessel2,sachschluessel3 value for Sachklassifikation. Default: "". 
 #' @param genesis to authenticate a user and set the database (see below).
 #' @param language retrieve information in German "de" (default) or in English "en" if available. 
+#' @param contents retrieve information only for specific variables (see below).
 #' @param ... other arguments send to the httr::GET request. 
 #' 
 #'   
@@ -27,6 +28,11 @@
 #' 
 #' Limiting the data request to particular years (via the \code{*year} parameters), geographical units (via the \code{regional*} parameters) 
 #' and attributes (via the \code{sach*} parameters) is necessary if the API request fails to return any data. See also example below. 
+#'  
+#' The parameter \code{contents} needs to be set to the 1-6 character long name of the variable. 
+#' If choosing multiple variables, delimit by ",", e.g. "STNW01,STNW02" (no space!).
+#' If you are not able to download the table because of size, try retrieving metadata first and then selecting only one or two
+#' variables. 
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
@@ -83,6 +89,7 @@ retrieve_data <- function(
 	sachschluessel2 = "",
 	sachmerkmal3 = "",
 	sachschluessel3 = "",
+	contents = "",
 	genesis=NULL, language='de', ... ) {
 
 	genesis <- make_genesis(genesis)
@@ -102,7 +109,7 @@ retrieve_data <- function(
 		startjahr = as.character(startyear),
 		endjahr = as.character(endyear),
 		zeitscheiben = '',
-		inhalte = '',
+		inhalte = contents,
 		regionalmerkmal = regionalmerkmal,
 		regionalschluessel = regionalschluessel,
 		sachmerkmal = sachmerkmal,
