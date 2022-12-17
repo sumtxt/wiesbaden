@@ -1,7 +1,7 @@
 Package: wiesbaden
 Title: Access Databases from the Federal Statistical Office of Germany
-Version: 1.2.7
-Date: 2022-01-03
+Version: 1.2.8
+Date: 2022-12-17
 Author: Moritz Marbach <m.marbach@ucl.ac.uk> [aut, cre]
 Maintainer: Moritz Marbach <m.marbach@ucl.ac.uk>
 Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany (DESTATIS) using their SOAP XML web service <https://www-genesis.destatis.de/>.
