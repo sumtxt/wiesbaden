@@ -16,6 +16,7 @@ retrieve_data(
   sachschluessel2 = "",
   sachmerkmal3 = "",
   sachschluessel3 = "",
+  inhalte = "",
   genesis = NULL,
   language = "de",
   ...
@@ -36,6 +37,8 @@ retrieve_data(
 
 \item{sachschluessel, sachschluessel2, sachschluessel3}{value for Sachklassifikation. Default: "".}
 
+\item{inhalte}{retrieve only selected variables. Default is to retrieve all.}
+
 \item{genesis}{to authenticate a user and set the database (see below).}
 
 \item{language}{retrieve information in German "de" (default) or in English "en" if available.}
@@ -55,12 +58,16 @@ Use \code{\link{retrieve_datalist}} to find the \code{tablename} based on the ta
 package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 
 The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a 
-comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, 
-the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND. The same logic applies to the 
-parameter combination \code{sachmerkmal} and \code{sachschluessel*}. 
+comma-separated list of values supplied as string (no whitespaces). Wildcard character "*" is allowed. 
+If \code{regionalschluessel} is set, the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, 
+REGBEZ, or DLAND. The same logic applies to the parameter combination \code{sachmerkmal} and \code{sachschluessel*}. 
+The parameter \code{inhalte} takes a 1-6 character long name of a variable in the table. If choosing multiple variables, 
+delimit by ",", e.g. "STNW01,STNW02" (no whitespaces).
 
 Limiting the data request to particular years (via the \code{*year} parameters), geographical units (via the \code{regional*} parameters) 
-and attributes (via the \code{sach*} parameters) is necessary if the API request fails to return any data. See also example below.
+attributes (via the \code{sach*} parameters) or selected variables (via the \code{inhalte} parameter) is necessary if the API request 
+fails to return any data. If you are not able to download the table because of size, inspect the metadata first 
+(using \link{retrieve_metadata} or \link{retrieve_valuelabel}) and then limit the data request accordingly. See also examples below.
 }
 \examples{
 
@@ -89,6 +96,15 @@ data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'))
 # But after limiting the request to one year, the data is returned:
 
 data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'), startyear=2019, endyear=2019)
+
+# An alternative strategy is to only request a subset of the variables. 
+# For example, this data request fails: 
+
+data <- retrieve_data("12711GJ002", genesis=c(db="regio"))
+
+# But when requesting only one instead of all variables, the data is returned: 
+
+data <- retrieve_data("12711GJ002", inhalte="BEV081", genesis=c(db="regio"))
 
 
 

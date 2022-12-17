@@ -10,9 +10,9 @@
 #' @param regionalmerkmal key for Regionalklassifikation. See details for more information. Default: "".
 #' @param sachmerkmal,sachmerkmal2,sachmerkmal3 key for Sachklassifikation. Default: "".
 #' @param sachschluessel,sachschluessel2,sachschluessel3 value for Sachklassifikation. Default: "". 
+#' @param inhalte retrieve only selected variables. Default is to retrieve all. 
 #' @param genesis to authenticate a user and set the database (see below).
 #' @param language retrieve information in German "de" (default) or in English "en" if available. 
-#' @param contents retrieve information only for specific variables (see below).
 #' @param ... other arguments send to the httr::GET request. 
 #' 
 #'   
@@ -22,17 +22,16 @@
 #' package description (\code{\link{wiesbaden}}) for details about setting the login and database. 
 #' 
 #' The parameter \code{regionalschluessel} can either be a single value (a single Amtlicher Gemeindeschlüssel) or a 
-#' comma-separated list of values supplied as string. Wildcard character "*" is allowed. If \code{regionalschluessel} is set, 
-#' the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, REGBEZ, or DLAND. The same logic applies to the 
-#' parameter combination \code{sachmerkmal} and \code{sachschluessel*}. 
+#' comma-separated list of values supplied as string (no whitespaces). Wildcard character "*" is allowed. 
+#' If \code{regionalschluessel} is set, the parameter \code{regionalmerkmal} must also be set to GEMEIN, KREISE, 
+#' REGBEZ, or DLAND. The same logic applies to the parameter combination \code{sachmerkmal} and \code{sachschluessel*}. 
+#' The parameter \code{inhalte} takes a 1-6 character long name of a variable in the table. If choosing multiple variables, 
+#' delimit by ",", e.g. "STNW01,STNW02" (no whitespaces).
 #' 
 #' Limiting the data request to particular years (via the \code{*year} parameters), geographical units (via the \code{regional*} parameters) 
-#' and attributes (via the \code{sach*} parameters) is necessary if the API request fails to return any data. See also example below. 
-#'  
-#' The parameter \code{contents} needs to be set to the 1-6 character long name of the variable. 
-#' If choosing multiple variables, delimit by ",", e.g. "STNW01,STNW02" (no space!).
-#' If you are not able to download the table because of size, try retrieving metadata first and then selecting only one or two
-#' variables. 
+#' attributes (via the \code{sach*} parameters) or selected variables (via the \code{inhalte} parameter) is necessary if the API request 
+#' fails to return any data. If you are not able to download the table because of size, inspect the metadata first 
+#' (using \link{retrieve_metadata} or \link{retrieve_valuelabel}) and then limit the data request accordingly. See also examples below. 
 #'  
 #' @return a \code{data.frame}. Value variables (_val) come with three additional variables (_qual, _lock, _err). The exact nature 
 #' of these variables is unknown, but _qual appears to indicate if _val is a valid value. If _qual=="e" the value in _val is 
@@ -72,6 +71,15 @@
 #' 
 #' data <- retrieve_data(tablename="33111GJ005", genesis=c(db='regio'), startyear=2019, endyear=2019)
 #' 
+#' # An alternative strategy is to only request a subset of the variables. 
+#' # For example, this data request fails: 
+#' 
+#' data <- retrieve_data("12711GJ002", genesis=c(db="regio"))
+#' 
+#' # But when requesting only one instead of all variables, the data is returned: 
+#'
+#' data <- retrieve_data("12711GJ002", inhalte="BEV081", genesis=c(db="regio"))
+#' 
 #' 
 #' 
 #' } 
@@ -89,7 +97,7 @@ retrieve_data <- function(
 	sachschluessel2 = "",
 	sachmerkmal3 = "",
 	sachschluessel3 = "",
-	contents = "",
+	inhalte = "",
 	genesis=NULL, language='de', ... ) {
 
 	genesis <- make_genesis(genesis)
@@ -109,7 +117,7 @@ retrieve_data <- function(
 		startjahr = as.character(startyear),
 		endjahr = as.character(endyear),
 		zeitscheiben = '',
-		inhalte = contents,
+		inhalte = inhalte,
 		regionalmerkmal = regionalmerkmal,
 		regionalschluessel = regionalschluessel,
 		sachmerkmal = sachmerkmal,
@@ -147,8 +155,8 @@ retrieve_data <- function(
 	header <- c(DQERH, DQA, DQZ, DQIcom)
 
 	if ( is.na(sstr[[1]][7]) ) stop("The API has returned a response without data. 
-		This might indicate that you requested too much data. Consider limiting 
-		request. See package documentation for guidance.")
+		This might indicate that you requested too much data. Consider only  
+		requesting a subset of the data. See package documentation for guidance.")
 
 	data <- read_delim(sstr[[1]][7], skip = 1, col_names = header, delim = ';')
 
