@@ -12,3 +12,5 @@
 ^pkgdown$
 ^docs$
 ^\.github$
+^CRAN-SUBMISSION$
+install.R

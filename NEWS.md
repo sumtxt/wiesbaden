@@ -1,5 +1,9 @@
 # wiesbaden
 
+# Version 1.2.9 (2022-01-17)
+
+* Removed `tidyverse` package suggest 
+
 # Version 1.2.8 (2022-12-17)
 
 * New Parameter inhalte for retrieve_data 

@@ -1,8 +1,8 @@
 ---
-title: "Retrieve Data from DESTATIS via R"
+title: "Getting Data from DESTATIS via R"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Data from DESTATIS from R}
+  %\VignetteIndexEntry{Getting Data from DESTATIS via R}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -35,7 +35,6 @@ Use the function `test_login()` to check if your login/password combination allo
 
 
 ```{r,eval = FALSE}
-library(tidyverse)
 library(wiesbaden)
 
 # Assuming credentials are stored via save_credentials()
@@ -59,10 +58,10 @@ d <- retrieve_datalist(tableseries="141*", genesis=c(db='regio'))
 
 Note, we are assuming that credentials are stored via `save_credentials()`.
 
-Use `str_detect()` to filter cubes with a description that contains the word "Kreise" (county): 
+Use `grepl` (or `str_detect()` from the `stringr` package) to filter cubes with a description that contains the word "Kreise" (county): 
 
 ```{r,eval = FALSE}
-filter(d, str_detect(description, "Kreise") ) 
+subset(d, grepl("Kreise", description)) 
 #>    tablename
 #> 1 14111KJ001
 #> 2 14111KJ002
@@ -70,8 +69,6 @@ filter(d, str_detect(description, "Kreise") )
 #> 1 Wahlberechtigte, Wahlbeteiligung, Gültige Zweitstimmen, Kreise und kreisfreie Städte, Stichtag
 #> 2                         Gültige Zweitstimmen, Kreise und kreisfreie Städte, Parteien, Stichtag
 ```
-
-The functions `filter` and `str_detect` are from the `dplyr` and `stringr` which are made available through the `tidyverse` package. 
 
 Having identified the correct data cube, call `retrieve_data()` to download the data: 
 
