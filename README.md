@@ -2,8 +2,11 @@
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/wiesbaden)](https://cran.r-project.org/package=wiesbaden)
-[![Downloads](https://cranlogs.r-pkg.org/badges/wiesbaden)](https://CRAN.R-project.org/package=wiesbaden)
+[![Downloads](http://cranlogs.r-pkg.org/badges/wiesbaden)](https://CRAN.R-project.org/package=wiesbaden)
+[![Downloads](http://cranlogs.r-pkg.org/badges/grand-total/wiesbaden)](https://CRAN.R-project.org/package=wiesbaden)
 <!-- badges: end -->
+
+
 
 
 The R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. The package uses the SOAP XML web service from DESTATIS [(PDF Documentation)](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
