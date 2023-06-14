@@ -62,7 +62,7 @@ retrieve_datalist <- function(tableseries,
 	} else {
 
 
-	  baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
+	  baseurl <- paste(set_db(db=genesis['db'], restapi = FALSE), "RechercheService_2010", sep="")
 
 	  param <- list(
 	    method  = 'DatenKatalog',
@@ -91,7 +91,6 @@ retrieve_datalist <- function(tableseries,
 
 	  if ( nrow(d) == 500 ) warning("The selected series might contain more data. The maximum number of results was retrieved (N=500).\n")
 	  return(d)
-
 
 	}
 
