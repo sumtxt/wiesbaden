@@ -6,6 +6,7 @@
 #' @param valuelabel "*" (default) retrieves all value labels. 
 #' @param genesis to authenticate a user and set the database (see below).
 #' @param language retrieve information in German "de" (default) or in English "en" if available. 
+#' @param restapi use RESTful/JSON Webservice if implemented (default FALSE).
 #' @param ... other arguments send to the httr::GET request. 
 #'   
 #' @details  
@@ -32,10 +33,39 @@
 retrieve_valuelabel <- function(
 	variablename, 
 	valuelabel="*", 
-	genesis=NULL, language='de', ... ) {
+	genesis=NULL, language='de',
+	restapi = FALSE, ... ) {
 
 	genesis <- make_genesis(genesis)
 
+	
+	if(restapi){
+	  
+	  baseurl <- paste(set_db(db=genesis['db'], restapi), "catalogue/values2variable", sep="")
+	  
+	  # listenLaenge: 2500 is the max for this API
+	  param <- list(
+	    username  = genesis['user'],
+	    password = genesis['password'],
+	    name = variablename,
+	    selection = valuelabel,
+	    area = "all",
+	    searchcriterion ='Code',
+	    sortcriterion = 'Code',
+	    pagelength = '2500',
+	    language = "de")
+	  
+	  datenaufbau <- GET(baseurl, query  = param)
+	  datenaufbau <- content(datenaufbau, type='application/json', encoding="UTF-8")
+	  
+	  if (is.null(datenaufbau$List) ) return("No results found.")
+	  
+	  d <- as.data.frame(do.call(rbind, datenaufbau$List))[,c(1,2)]
+	  
+	  colnames(d) <- c(variablename, "description")
+	  
+	} else {
+	
 	baseurl <- paste(set_db(db=genesis['db']), "RechercheService_2010", sep="")
 
 	# listenLaenge: 2500 is the max for this API
@@ -58,10 +88,12 @@ retrieve_valuelabel <- function(
 	
 	entries <- lapply(entries, function(x) xml_text(xml_find_all(x, './code|./inhalt')) )
 	d <- as.data.frame(do.call(rbind, entries))
-
+	
 	if ( ncol(d)==0 ) return("No results found.")
 	
 	colnames(d) <- c(variablename, "description")
+
+	}
 
 	return(d)
 	}

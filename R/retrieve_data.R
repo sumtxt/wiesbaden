@@ -137,7 +137,7 @@ retrieve_data <- function(
 	  jsondata <- content(httrdata, type='application/json', encoding="UTF-8")
 
 
-	  sstr <- str_split(jsondata5$Object$Content, '\nK')
+	  sstr <- str_split(jsondata$Object$Content, '\nK')
 
 	  #if ( sstr[[1]][1] == "" ) return("No results found.")
 
