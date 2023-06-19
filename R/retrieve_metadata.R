@@ -31,10 +31,41 @@
 #' @export
 retrieve_metadata <- function(
 	tablename, language='de',
-	genesis=NULL, ... ) {
+	genesis=NULL,
+	restapi = FALSE, ... ) {
 
 	genesis <- make_genesis(genesis)
-
+	
+	
+	if(restapi){
+	  
+	  baseurl <- paste(set_db(db=genesis['db'], restapi), "metadata/cube", sep="")
+	  
+	  # listenLaenge: 2500 is the max for this API
+	  param <- list(
+	    username  = genesis['user'],
+	    password = genesis['password'],
+	    name = tablename,
+	    area = "all",
+	    language = "de")
+	  
+	  datenaufbau <- GET(baseurl, query  = param)
+	  datenaufbau <- content(datenaufbau, type='application/json', encoding="UTF-8")
+	  
+	  if (is.null(datenaufbau$Object$Structure$Axis) ) return("No results found.")
+	  
+	  #Combine Code and Axis and Contents results
+	  ax <- as.data.frame(do.call(rbind, datenaufbau$Object$Structure$Axis))[,c("Code", "Content")]
+	  ax$Unit <- ""
+	 
+	  ct <- as.data.frame(do.call(rbind, datenaufbau$Object$Structure$Contents))[,c("Code", "Content", "Unit")]
+	  
+	  d <- rbind(ax,ct)
+	  
+	  colnames(d) <- c("name", "description_rest", "unit")
+	  
+	} else {
+	  
 	baseurl <- paste(set_db(db=genesis['db']), "ExportService_2010", sep="")
 
 	param <- list(
@@ -57,6 +88,8 @@ retrieve_metadata <- function(
 	if ( ncol(d)==0 ) return("No results found.")
 
 	colnames(d) <- c("name", "description", "unit")
+	
+	}
 
 	return(d)
 	}

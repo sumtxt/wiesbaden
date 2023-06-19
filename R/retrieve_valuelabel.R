@@ -62,7 +62,7 @@ retrieve_valuelabel <- function(
 	  
 	  d <- as.data.frame(do.call(rbind, datenaufbau$List))[,c(1,2)]
 	  
-	  colnames(d) <- c(variablename, "description")
+	  colnames(d) <- c(variablename, "description_rest")
 	  
 	} else {
 	
