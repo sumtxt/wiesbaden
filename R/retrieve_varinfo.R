@@ -30,10 +30,32 @@
 #' @export
 retrieve_varinfo <- function(
 	variablename, 
-	genesis=NULL, language='de', ... ) {
+	genesis=NULL, language='de',
+	restapi = FALSE, ... ) {
 
 	genesis <- make_genesis(genesis)
 
+	if(restapi){
+	  
+	  baseurl <- paste(set_db(db=genesis['db'], restapi), "metadata/variable", sep="")
+	  
+	  # listenLaenge: 2500 is the max for this API
+	  param <- list(
+	    username  = genesis['user'],
+	    password = genesis['password'],
+	    name = variablename,
+	    area = "all",
+	    language = language)
+	  
+	  datenaufbau <- GET(baseurl, query  = param)
+	  datenaufbau <- content(datenaufbau, type='application/json', encoding="UTF-8")
+	  
+	  if (is.null(datenaufbau$Object) ) return("No results found.")
+	  
+	  d <- data.frame(as.list(unlist(datenaufbau$Object)))
+	  
+	} else{
+	
 	baseurl <- paste(set_db(db=genesis['db']), "ExportService_2010", sep="")
 
 	param <- list(
@@ -56,6 +78,8 @@ retrieve_varinfo <- function(
 	if ( ncol(d)==0 ) return("No results found.")
 	
 	colnames(d) <- c(variablename, "description")
+	
+	}
 
 	return(d)
 	}

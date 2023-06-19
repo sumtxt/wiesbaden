@@ -47,7 +47,7 @@ retrieve_metadata <- function(
 	    password = genesis['password'],
 	    name = tablename,
 	    area = "all",
-	    language = "de")
+	    language = language)
 	  
 	  datenaufbau <- GET(baseurl, query  = param)
 	  datenaufbau <- content(datenaufbau, type='application/json', encoding="UTF-8")
