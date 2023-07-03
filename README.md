@@ -63,7 +63,9 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 
 ### Similar and Complementary Packages 
 
-* The R package `destatiscleanr`  [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanr) provides functions to help importing `csv` files downloaded via the web application. 
+* The R package `destatiscleanr` [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanr) provides functions to help importing `csv` files downloaded via the web application.
+
+* The R package `restatis` [correlaid.github.io/restatis/](https://correlaid.github.io/restatis/) provides similar functions to access [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online).
 
 * The R package `bonn` [github.com/sumtxt/bonn](https://github.com/sumtxt/bonn) provides functions to retrieve data from the [INKAR](https://www.inkar.de/) database maintained by the Federal Office for Building and Regional Planning (BBSR) in Bonn.
 
