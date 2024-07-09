@@ -106,7 +106,11 @@ data <- retrieve_data("12711GJ002", genesis=c(db="regio"))
 
 data <- retrieve_data("12711GJ002", inhalte="BEV081", genesis=c(db="regio"))
 
+# Example using the sachschluessel: Number of refugees from Afghanistan (ST423) 
+# and Egypt (ST287) by district (Kreis) in 2022. 
 
+data <- retrieve_data("12531KJ003", startyear = 2022, endyear = 2022, 
+		sachmerkmal="STAAG5", sachschluessel = "ST423, ST287", genesis=c(db='de'))
 
 } 
 

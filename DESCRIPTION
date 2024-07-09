@@ -17,7 +17,7 @@ Imports:
     readr (>= 1.0.0),
     jsonlite (>= 1.6.0),
     keyring (>= 1.1.0)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     knitr,
     rmarkdown
