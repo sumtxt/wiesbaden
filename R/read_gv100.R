@@ -90,7 +90,7 @@ read_gv100 <- function(file, stzrt,
 		# accomodate Sorbian (Latin-1 can not). 
 		x <- read_lines(file=file, 
 			locale = locale(encoding = "UTF-8"), ...)
-		x <- iconv(x, from = "UTF-8", to = "ISO8859-2")
+		x <- stri_encode(x, from = "UTF-8", to = "ISO8859-2")
 
 		d <- withCallingHandlers(
 				read_fwf(
