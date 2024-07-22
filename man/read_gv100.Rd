@@ -28,7 +28,7 @@ The Gemeindeverzeichnis (municipality register) is published
  in a fixed width file refered to as "GV1000 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
  higher order administrative units. The function is a wrapper  
- around \link[readr::read_fwf]{read_fwf}.
+ around \code{\link[readr:read_fwf]{read_fwf}}. 
 
 There are two types of files: One feature the administrative 
 information (\code{version="AD"}) and one with non-administrative 
