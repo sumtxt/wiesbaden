@@ -1,5 +1,10 @@
 # wiesbaden
 
+# Version 1.2.10 (2024-07-22)
+
+* read_gv100() now uses stri_encode() instead of iconv(). This seems to work better with the most recent DESTATIS files. 
+* Updated broken links in the documentation.
+
 # Version 1.2.9 (2022-01-17)
 
 * Removed `tidyverse` package suggest 

@@ -11,7 +11,7 @@
 #'  If a user/password pair for a database already exists, it is silently replaced with the new pair.  
 #'  This function relies on the \code{\link{keyring}}  package. 
 #' 
-#' @seealso \code{\link{wiesbaden}}, \code{\link{keyring}} 
+#' @seealso \code{\link{wiesbaden}}, \code{\link[keyring:keyring]{keyring}} 
 #'
 #' 
 #' 

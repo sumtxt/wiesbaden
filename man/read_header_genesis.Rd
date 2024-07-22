@@ -56,5 +56,5 @@ and removes whitespaces. Multi-line headers are joined but separated with a '_'.
 
 }
 \seealso{
-\code{\link{read_csv2}}
+\code{\link[readr:read_csv2]{read_csv2}}
 }

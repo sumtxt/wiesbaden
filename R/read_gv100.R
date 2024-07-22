@@ -15,7 +15,7 @@
 #'  in a fixed width file refered to as "GV1000 ASCII Format" by 
 #'  DESTATIS. The register features the list of municipality and 
 #'  higher order administrative units. The function is a wrapper  
-#'  around [readr::read_fwf()].
+#'  around \link[readr::read_fwf]{read_fwf}.
 #' 
 #' There are two types of files: One feature the administrative 
 #' information (\code{version="AD"}) and one with non-administrative 
@@ -39,14 +39,12 @@
 #'  61 - Gemeinden (municipalities)
 #' 
 #' Since about 2019, the Gemeindeverzeichnis is using UTF-8 encoding rather 
-#' than ISO-8859-1. 
+#' than ISO-8859-1. See also DESTATIS Website: \href{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html}{GV-ISys}
 #'  
 #' @return a \code{data.frame}. 
 #'   
 #' 
-#' @seealso 
-#' \url{https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html}
-#' [readr::read_fwf()]
+#' @seealso \code{\link[readr:read_fwf]{read_fwf}}
 #' 
 #' 	
 #'

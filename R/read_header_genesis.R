@@ -17,7 +17,7 @@
 #'  
 #' @return a \code{vector} of column names.
 #'
-#' @seealso \code{\link{read_csv2}}
+#' @seealso \code{\link[readr:read_csv2]{read_csv2}}
 #'
 #' @examples 
 #'  \dontrun{

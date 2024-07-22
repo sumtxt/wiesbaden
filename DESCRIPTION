@@ -1,6 +1,6 @@
 Package: wiesbaden
 Title: Access Databases from the Federal Statistical Office of Germany
-Version: 1.2.9
+Version: 1.2.10
 Authors@R: c(person("Moritz", "Marbach", role = c("aut", "cre"), email="m.marbach@ucl.ac.uk", comment = c(ORCID = "0000-0002-7101-2821")))
 Description: Retrieve and import data from different databases of the Federal Statistical Office of Germany (DESTATIS) using their SOAP XML web service <https://www-genesis.destatis.de/>.
 Depends:

@@ -22,5 +22,5 @@ User/password are stored in Keychain on macOS, Credential Store on Windows or Se
  This function relies on the \code{\link{keyring}}  package.
 }
 \seealso{
-\code{\link{wiesbaden}}, \code{\link{keyring}}
+\code{\link{wiesbaden}}, \code{\link[keyring:keyring]{keyring}}
 }

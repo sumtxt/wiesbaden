@@ -9,7 +9,7 @@
 #' \code{c(user="your-username", password="your-password", db="database-shortname")}
 #' 
 #' Alternatively, store the credentials on your computer using the \code{\link{save_credentials}} function. This function 
-#' relies on the \code{\link{keyring}} package. 
+#' relies on the \code{\link[keyring:keyring]{keyring}} package. 
 #' 
 #' Available databases are regionalstatistik.de (shortname: "regio"), landesdatenbank.nrw.de ("nrw"), 
 #' www-genesis.destatis.de ("de") and bildungsmonitoring.de ("bm").
