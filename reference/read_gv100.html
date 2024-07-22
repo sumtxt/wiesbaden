@@ -91,7 +91,7 @@
  in a fixed width file refered to as "GV1000 ASCII Format" by 
  DESTATIS. The register features the list of municipality and 
  higher order administrative units. The function is a wrapper  
- around [readr::read_fwf()].</p>
+ around read_fwf.</p>
 <p>There are two types of files: One feature the administrative 
 information (<code>version="AD"</code>) and one with non-administrative 
 (<code>version="NAD"</code>). If <code>version=NULL</code>, read_gv100() guess the 
@@ -109,12 +109,11 @@ type based on the file name.</p>
 <p>41 - Kreise (counties)
  61 - Gemeinden (municipalities)</p>
 <p>Since about 2019, the Gemeindeverzeichnis is using UTF-8 encoding rather 
-than ISO-8859-1.</p>
+than ISO-8859-1. See also DESTATIS Website: <a href="https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html" class="external-link">GV-ISys</a></p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html" class="external-link">https://www.destatis.de/DE/Themen/Laender-Regionen/Regionales/Gemeindeverzeichnis/_inhalt.html</a>
-[readr::read_fwf()]</p></div>
+    <div class="dont-index"><p><code><a href="https://readr.tidyverse.org/reference/read_fwf.html" class="external-link">read_fwf</a></code></p></div>
     </div>
 
     <div class="section level2">

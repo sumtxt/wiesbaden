@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   wiesbaden: wiesbaden.html
-last_built: 2024-07-22T20:55Z
+last_built: 2024-07-22T21:39Z
 urls:
   reference: https://sumtxt.github.io/wiesbaden/reference
   article: https://sumtxt.github.io/wiesbaden/articles
