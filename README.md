@@ -7,7 +7,7 @@
 <!-- badges: end -->
 
 > [!CAUTION]
-The Federal Statistical Office of Germany (DESTATIS) will discontinue the old API endpoint currently used by this R package, which means the package will stop working for [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) in mid-2025. The old API endpoints for the other databases—[regionalstatistik.de](https://www.regionalstatistik.de/genesis/online), [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), and [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de)—will also be shut down in the near future. **There are no plans to update this package to support the new API endpoints**, so users are encouraged to switch to the R package [`restatis`](https://correlaid.github.io/restatis/) which provides similar functionality compared to `wiesbaden` and uses the modern API endpoints. 
+The Federal Statistical Office of Germany (DESTATIS) will discontinue the old API endpoint currently used by this R package, which means the package will stop working for [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online) in mid-2025. The old API endpoints for the other databases—[regionalstatistik.de](https://www.regionalstatistik.de/genesis/online), [bildungsmonitoring.de](https://www.bildungsmonitoring.de/bildung/online/logon), and [landesdatenbank.nrw.de](https://www.landesdatenbank.nrw.de)—will also be shut down in the near future. **There are no plans to update this package to support the new API endpoints**, so users are encouraged to switch to the R package [`restatis`](https://github.com/CorrelAid/restatis) which provides similar functionality compared to `wiesbaden` and uses the modern API endpoints. 
 
 Since 2016 the R package `wiesbaden` provides functions to directly retrieve data from databases maintained by the Federal Statistical Office of Germany (DESTATIS) in Wiesbaden. The package uses the SOAP XML web service from DESTATIS [(PDF Documentation)](https://www-genesis.destatis.de/genesis/online?Menu=Webservice). 
 
@@ -66,7 +66,7 @@ Users that wish to work with the `csv` files might find the `download_csv()` and
 
 * The R package `destatiscleanr` [github.com/cutterkom/destatiscleanr](https://github.com/cutterkom/destatiscleanr) provides functions to help importing `csv` files downloaded via the web application.
 
-* The R package `restatis` [correlaid.github.io/restatis/](https://correlaid.github.io/restatis/) provides similar functions to access [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online), [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and the [Zensus 2022](https://ergebnisse.zensus2022.de/datenbank/online/).
+* The R package `restatis` [github.com/CorrelAid/restatis](https://github.com/CorrelAid/restatis) provides similar functions to access [genesis.destatis.de](https://www-genesis.destatis.de/genesis/online), [regionalstatistik.de](https://www.regionalstatistik.de/genesis/online) and the [Zensus 2022](https://ergebnisse.zensus2022.de/datenbank/online/).
 
 * The R package `bonn` [github.com/sumtxt/bonn](https://github.com/sumtxt/bonn) provides functions to retrieve data from the [INKAR](https://www.inkar.de/) database maintained by the Federal Office for Building and Regional Planning (BBSR) in Bonn.
 
